@@ -81,6 +81,38 @@
                 <div class="form-group"></div>
                 <div class="form-group">
                     <div class="col-sm-2">
+                        <label for="first_name" >Author </label>
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="author_ref" placeholder="Author Ref">
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="author_name" placeholder="Author Name">
+                    </div>
+                    <div class="col-md-2">
+                    <a class="btn btn-default" onclick="window.open('search_m_author.php?IDF=item', 'mywin', 'width=800, height=700');" class="btn btn-info btn-sm">...</a>
+                  </div>
+                </div><br><br>
+
+                <div class="form-group"></div>
+                <div class="form-group">
+                    <div class="col-sm-2">
+                        <label for="first_name" >Publisher </label>
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="publisher_ref" placeholder="Publisher Ref">
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="publisher_name" placeholder="Publisher Name">
+                    </div>
+                    <div class="col-md-2">
+                    <a class="btn btn-default" onclick="window.open('search_m_publisher.php?IDF=item', 'mywin', 'width=800, height=700');" class="btn btn-info btn-sm">...</a>
+                  </div>
+                </div><br><br>
+
+                <div class="form-group"></div>
+                <div class="form-group">
+                    <div class="col-sm-2">
                         <label for="first_name" >Item Name</label>
                     </div>
                     <div class="col-sm-2">

@@ -24,9 +24,7 @@ if (isset($_GET['url'])) {
   //   include 'm_registration.php';
   // }
 
-  if ($_GET['url'] == "pay"){
-    include 'm_payment.php';
-  }
+
   if ($_GET['url'] == "store"){
     include 'm_store.php';
   }
@@ -46,6 +44,13 @@ if (isset($_GET['url'])) {
   }
   if ($_GET['url'] == "shop_item"){
     include 'm_shop_item.php';
+  }
+
+  if ($_GET['url'] == "publisher"){
+    include 'm_publisher.php';
+  }
+  if ($_GET['url'] == "author"){
+    include 'm_author.php';
   }
 
   

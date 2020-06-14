@@ -6,7 +6,7 @@ var vue = new Vue({
   },
     mounted () {
         axios
-          .get('m_payment_data.php?Command=generate')
+          .get('m_author_data.php?Command=generate')
           .then(response => {
             this.en_name = response.data[1]
             this.REF = response.data[0]
@@ -47,38 +47,38 @@ function lost_focus(key) {
 
 
 
-function getdt() {
+// function getdt() {
     
 
-    xmlHttp = GetXmlHttpObject();
-    if (xmlHttp == null) {
-        alert("Browser does not support HTTP Request");
-        return;
-    }
+//     xmlHttp = GetXmlHttpObject();
+//     if (xmlHttp == null) {
+//         alert("Browser does not support HTTP Request");
+//         return;
+//     }
 
-    var url = "m_payment_data.php";
-    url = url + "?Command=" + "getdt";
-    url = url + "&ls=" + "new";
+//     var url = "m_author_data.php";
+//     url = url + "?Command=" + "getdt";
+//     url = url + "&ls=" + "new";
 
-    xmlHttp.onreadystatechange = assign_dt;
-    xmlHttp.open("GET", url, true);
-    xmlHttp.send(null);
-}
+//     xmlHttp.onreadystatechange = assign_dt;
+//     xmlHttp.open("GET", url, true);
+//     xmlHttp.send(null);
+// }
 
-function assign_dt() {
-    var XMLAddress1;
+// function assign_dt() {
+//     var XMLAddress1;
 
-    if (xmlHttp.readyState == 4 || xmlHttp.readyState == "complete")
-    {
+//     if (xmlHttp.readyState == 4 || xmlHttp.readyState == "complete")
+//     {
 
-      XMLAddress1 = xmlHttp.responseXML.getElementsByTagName("id");
-      vue.REF = XMLAddress1[0].childNodes[0].nodeValue;
+//       XMLAddress1 = xmlHttp.responseXML.getElementsByTagName("id");
+//       vue.REF = XMLAddress1[0].childNodes[0].nodeValue;
 
-      XMLAddress1 = xmlHttp.responseXML.getElementsByTagName("en_name");
-      vue.en_name = XMLAddress1[0].childNodes[0].nodeValue;
+//       XMLAddress1 = xmlHttp.responseXML.getElementsByTagName("en_name");
+//       vue.en_name = XMLAddress1[0].childNodes[0].nodeValue;
 
-    }
-}
+//     }
+// }
 
 
 
@@ -98,16 +98,10 @@ function save_info()
         return false;
     }
 
-    var url = "m_payment_data.php";
+    var url = "m_author_data.php";
     url = url + "?Command=" + "save_item";
     url = url + "&REF=" + document.getElementById("REF").value;
-    url = url + "&batch_ref=" + document.getElementById("batch_ref").value;
-    url = url + "&batch_code=" + document.getElementById("batch_code").value;
-    url = url + "&batch_name=" + document.getElementById("batch_name").value;
-    url = url + "&student_ref=" + document.getElementById("student_ref").value;
-    url = url + "&student_name=" + document.getElementById("student_name").value;
-    url = url + "&mdate=" + document.getElementById("mdate").value;
-    url = url + "&amount=" + document.getElementById("amount").value;
+    url = url + "&name=" + document.getElementById("name").value;
     
     xmlHttp.onreadystatechange = salessaveresult;
     xmlHttp.open("GET", url, true);
@@ -143,7 +137,7 @@ function getForm(REF, IDF)
         alert("Browser does not support HTTP Request");
         return;
     }
-    var url = "m_payment_data.php";
+    var url = "m_author_data.php";
     url = url + "?Command=" + "getForm";
     url = url + "&REF=" + REF;
     url = url + "&IDF=" + IDF;
@@ -167,15 +161,13 @@ function getFromValues()
         var objSup = JSON.parse(XMLAddress1[0].childNodes[0].nodeValue);
 
         if (IDF === "Master") {
-            
             opener.document.getElementById('REF').value = objSup.REF;
-            opener.document.getElementById('student_ref').value = objSup.student_ref;
-            opener.document.getElementById('student_name').value = objSup.student_name;
-            opener.document.getElementById('batch_ref').value = objSup.batch_ref;
-            opener.document.getElementById('batch_code').value = objSup.batch_code;
-            opener.document.getElementById('batch_name').value = objSup.batch_name;
-            opener.document.getElementById('mdate').value = objSup.mdate;
-            opener.document.getElementById('amount').value = objSup.amount;
+            opener.document.getElementById('name').value = objSup.name;
+            
+        }
+        if (IDF === "item") {
+            opener.document.getElementById('author_ref').value = objSup.REF;
+            opener.document.getElementById('author_name').value = objSup.name;
         }
 
       

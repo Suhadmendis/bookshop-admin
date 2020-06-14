@@ -14,16 +14,16 @@ if ($_GET["Command"] == "generate") {
     $ResponseXML = "";
     $ResponseXML .= "<new>";
 
-    $sql = "SELECT payment_ref FROM sys_info";
+    $sql = "SELECT author_ref FROM sys_info";
     $result = $conn->query($sql);
     $row = $result->fetch();
-    $no = $row['payment_ref'];
-    $tmpinvno = "000000" . $row["payment_ref"];
+    $no = $row['author_ref'];
+    $tmpinvno = "000000" . $row["author_ref"];
     $lenth = strlen($tmpinvno);
-    $no = trim("PAY/") . substr($tmpinvno, $lenth - 7);
+    $no = trim("AU/") . substr($tmpinvno, $lenth - 7);
 
 
-    $en_name = "Payment";
+    $en_name = "Author";
 
     $objArray = Array();
     array_push($objArray,$no,$en_name);
@@ -44,21 +44,21 @@ if ($_GET["Command"] == "save_item") {
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $conn->beginTransaction();
 
-        $sql = "SELECT payment_ref FROM sys_info";
+        $sql = "SELECT author_ref FROM sys_info";
         $resul = $conn->query($sql);
         $row = $resul->fetch();
-        $no = $row["payment_ref"];
-        $tmpinvno = "000000" . $row["payment_ref"];
+        $no = $row["author_ref"];
+        $tmpinvno = "000000" . $row["author_ref"];
         $lenth = strlen($tmpinvno);
-        $no1 = trim("PAY/") . substr($tmpinvno, $lenth - 7);
+        $no1 = trim("AU/") . substr($tmpinvno, $lenth - 7);
 
-        $sql = "Insert into m_payment(REF, batch_ref, batch_code, batch_name, student_ref, student_name, mdate, amount,user)values
-                        ('" . $no1 . "' ,'" . $_GET['batch_ref'] . "' ,'" . $_GET['batch_code'] . "' ,'" . $_GET['batch_name'] . "' ,'" . $_GET['student_ref'] . "' ,'" . $_GET['student_name'] . "' ,'" . $_GET['mdate'] . "' ,'" . $_GET['amount'] . "','" . $_SESSION['UserName'] . "')";
+        $sql = "Insert into m_author(REF, category_name, user)values
+                        ('" . $no1 . "' ,'" . $_GET['name'] . "','" . $_SESSION['UserName'] . "')";
         $result = $conn->query($sql);
         
         
         $no2 = $no + 1;
-        $sql = "update sys_info set payment_ref = $no2 where payment_ref = $no";
+        $sql = "update sys_info set author_ref = $no2 where author_ref = $no";
         $result = $conn->query($sql);
 
         $sql = "Insert into sys_log(REF, entry, operation, user, ip)values
@@ -84,7 +84,7 @@ if ($_GET["Command"] == "getForm") {
 
     $REF = $_GET["REF"];
 
-    $sql = "select * from m_payment where REF= '" . $REF . "'";
+    $sql = "select * from m_author where REF= '" . $REF . "'";
 
     $sql = $conn->query($sql);
     if ($row = $sql->fetch()) {
