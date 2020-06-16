@@ -101,7 +101,7 @@ function save_info()
     var url = "m_item_data.php";
     url = url + "?Command=" + "save_item";
     url = url + "&REF=" + document.getElementById("REF").value;
-    url = url + "&category_ref=" + document.getElementById("category_ref").value;
+    // url = url + "&category_ref=" + document.getElementById("category_ref").value;
     url = url + "&category_name=" + document.getElementById("category_name").value;
     url = url + "&store_ref=" + document.getElementById("store_ref").value;
     url = url + "&store_name=" + document.getElementById("store_name").value;

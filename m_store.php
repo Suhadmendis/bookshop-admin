@@ -85,16 +85,24 @@
                 <div class="form-group"></div>
                 <div class="form-group">
                 <div class="col-sm-2">
-                  <label for="first_name">Listing Type</label>
+                  <label for="first_name">Type</label>
                 </div>
-                <div class="col-sm-2">
-                  <input type="text" class="form-control" id="listing_type" placeholder="Listing Type">
+                <div class="col-sm-3">
+                  <!-- <input type="text" class="form-control" id="listing_type" placeholder="Type"> -->
+                  <div class="form-group">
+                    <!-- <label>Select</label> -->
+                    <select class="form-control" id="listing_type">
+                      <option value="BSS">Books and Stationeries Store</option>
+                      <option value="UC">Uniforms and Costumes Store</option>
+                      <option value="AC">Arts and Crafts Store</option>
+                    </select>
+                  </div>
                 </div>
                 </div><br><br>
 
 
-                <div class="form-group"></div>
-                <div class="form-group">
+                <!-- <div class="form-group"></div> -->
+                <div class="form-group" hidden>
                 <div class="col-sm-2">
                   <label for="first_name">Vendor Ref</label>
                 </div>
@@ -107,7 +115,8 @@
                 <div class="col-md-2">
                     <a class="btn btn-default" onclick="window.open('search_m_registration.php?IDF=store', 'mywin', 'width=800, height=700');" class="btn btn-info btn-sm">...</a>
                   </div>
-                </div><br><br>
+                </div>
+                <!-- <br><br> -->
 
 
              
@@ -117,14 +126,14 @@
                 <div class="col-sm-2">
                   <label for="first_name">Address</label>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-5">
                   <input type="text" class="form-control" id="address" placeholder="Address">
                 </div>
                 </div><br><br>
 
 
-                <div class="form-group"></div>
-                <div class="form-group">
+                <!-- <div class="form-group"></div> -->
+                <div class="form-group" hidden>
                 <div class="col-sm-2">
                   <label for="first_name">Loctaion Point</label>
                 </div>
@@ -134,7 +143,8 @@
                 <div class="col-sm-2">
                   <input type="text" class="form-control" id="loctaion_point_lng" placeholder="Loctaion Point Lng">
                 </div>
-                </div><br><br>
+                </div>
+                <!-- <br><br> -->
                 
 
 

@@ -52,7 +52,7 @@ if ($_GET["Command"] == "save_item") {
         $lenth = strlen($tmpinvno);
         $no1 = trim("AU/") . substr($tmpinvno, $lenth - 7);
 
-        $sql = "Insert into m_author(REF, category_name, user)values
+        $sql = "Insert into m_author(REF, name, user)values
                         ('" . $no1 . "' ,'" . $_GET['name'] . "','" . $_SESSION['UserName'] . "')";
         $result = $conn->query($sql);
         
