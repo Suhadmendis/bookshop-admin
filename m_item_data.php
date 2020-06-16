@@ -52,8 +52,8 @@ if ($_GET["Command"] == "save_item") {
         $lenth = strlen($tmpinvno);
         $no1 = trim("ITEM/") . substr($tmpinvno, $lenth - 7);
 
-        $sql = "Insert into m_item(REF, category_ref, category_name, store_ref, store_name, item_name, des, selling_price, quantity, user)values
-                        ('" . $no1 . "' ,'" . $_GET['category_ref'] . "' ,'" . $_GET['category_name'] . "' ,'" . $_GET['store_ref'] . "' ,'" . $_GET['store_name'] . "' ,'" . $_GET['item_name'] . "' ,'" . $_GET['des'] . "' ,'" . $_GET['selling_price'] . "' ,'" . $_GET['quantity'] . "' ,'" . $_SESSION['UserName'] . "')";
+        $sql = "Insert into m_item(REF, category_ref, category_name, store_ref, store_name,author_ref, author_name,publisher_ref, publisher_name, item_name, des,isbn, selling_price, quantity, user, listtype)values
+                        ('" . $no1 . "' ,'" . $_GET['category_ref'] . "' ,'" . $_GET['category_name'] . "' ,'" . $_GET['store_ref'] . "' ,'" . $_GET['store_name'] . "' ,'" . $_GET['author_ref'] . "' ,'" . $_GET['author_name'] . "' ,'" . $_GET['publisher_ref'] . "' ,'" . $_GET['publisher_name'] . "' ,'" . $_GET['item_name'] . "' ,'" . $_GET['des'] . "' ,'" . $_GET['isbn'] . "' ,'" . $_GET['selling_price'] . "' ,'" . $_GET['quantity'] . "' ,'" . $_SESSION['UserName'] . "','BKS')";
         $result = $conn->query($sql);
  
 

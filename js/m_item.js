@@ -105,8 +105,13 @@ function save_info()
     url = url + "&category_name=" + document.getElementById("category_name").value;
     url = url + "&store_ref=" + document.getElementById("store_ref").value;
     url = url + "&store_name=" + document.getElementById("store_name").value;
+    url = url + "&author_ref=" + document.getElementById("author_ref").value;
+    url = url + "&author_name=" + document.getElementById("author_name").value;
+    url = url + "&publisher_ref=" + document.getElementById("publisher_ref").value;
+    url = url + "&publisher_name=" + document.getElementById("publisher_name").value;
     url = url + "&item_name=" + document.getElementById("item_name").value;
     url = url + "&des=" + document.getElementById("des").value;
+    url = url + "&isbn=" + document.getElementById("isbn").value;
     url = url + "&selling_price=" + document.getElementById("selling_price").value;
     url = url + "&quantity=" + document.getElementById("quantity").value;
     
@@ -216,7 +221,12 @@ function getFromValues()
             opener.document.getElementById('category_name').value = objSup.category_name;
             opener.document.getElementById('store_ref').value = objSup.store_ref;
             opener.document.getElementById('store_name').value = objSup.store_name;
+            opener.document.getElementById('author_ref').value = objSup.author_ref;
+            opener.document.getElementById('author_name').value = objSup.author_name;
+            opener.document.getElementById('publisher_ref').value = objSup.publisher_ref;
+            opener.document.getElementById('publisher_name').value = objSup.publisher_name;
             opener.document.getElementById('item_name').value = objSup.item_name;
+            opener.document.getElementById("isbn").value = objSup.isbn;
             opener.document.getElementById('des').value = objSup.des;
             opener.document.getElementById('selling_price').value = objSup.selling_price;
             opener.document.getElementById('quantity').value = objSup.quantity;

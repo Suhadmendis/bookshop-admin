@@ -135,6 +135,16 @@
                 <div class="form-group"></div>
                 <div class="form-group">
                     <div class="col-sm-2">
+                        <label for="first_name" >ISBN</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="isbn" placeholder="ISBN">
+                    </div>
+                </div><br><br>
+
+                <div class="form-group"></div>
+                <div class="form-group">
+                    <div class="col-sm-2">
                         <label for="first_name" >Selling Price/Unit</label>
                     </div>
                     <div class="col-sm-2">
