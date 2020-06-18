@@ -217,7 +217,7 @@ function getFromValues()
 
         if (IDF === "Master") {
             opener.document.getElementById('REF').value = objSup.REF;
-            opener.document.getElementById('category_ref').value = objSup.category_ref;
+            // opener.document.getElementById('category_ref').value = objSup.category_ref;
             opener.document.getElementById('category_name').value = objSup.category_name;
             opener.document.getElementById('store_ref').value = objSup.store_ref;
             opener.document.getElementById('store_name').value = objSup.store_name;
