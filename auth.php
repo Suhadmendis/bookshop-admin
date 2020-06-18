@@ -35,7 +35,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="index2.html"><b>Book Shop</b></a>
+    <a href="index2.html"><b>Books N Beyond</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">

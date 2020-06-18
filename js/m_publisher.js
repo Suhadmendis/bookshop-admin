@@ -141,7 +141,7 @@ function getFromValues() {
     if (IDF === "Master") {
       opener.document.getElementById("REF").value = objSup.REF;
       opener.document.getElementById("name").value =
-        objSup.category_name;
+        objSup.name;
       
     }
     if (IDF === "item") {
