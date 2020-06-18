@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Quotro</title>
+  <title>Books N Beyond</title>
  
 
 
@@ -78,9 +78,9 @@ desired effect
     <!-- Logo -->
     <a href="?url=" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>Q</b></span>
+      <span class="logo-mini"><b>BNB</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Q</b>uotro</span>
+      <span class="logo-lg"><b>B</b>ooks <b>N</b> <b>B</b>eyond</span>
     </a>
 
     <!-- Header Navbar -->
@@ -207,7 +207,7 @@ desired effect
                 <p>
                   <?php echo $_SESSION['UserName']; ?> 
                   <!-- - Web Developer -->
-                  <small>Member since Nov. 2012</small>
+                  <!-- <small>Member since Nov. 2012</small> -->
                 </p>
               </li>
               
