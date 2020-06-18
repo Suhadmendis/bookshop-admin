@@ -43,8 +43,8 @@
 
     <!-- <form action="index2.html" method="post"> -->
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email" id="txtUserName">
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <input type="email" class="form-control" placeholder="User Name" id="txtUserName">
+        <!-- <span class="glyphicon glyphicon-envelope form-control-feedback"></span> -->
       </div>
       <div class="form-group has-feedback">
         <input type="password" class="form-control" placeholder="Password" id="txtPassword">
