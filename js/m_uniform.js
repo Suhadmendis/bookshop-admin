@@ -6,7 +6,7 @@ var vue = new Vue({
   },
     mounted () {
         axios
-          .get('m_item_data.php?Command=generate')
+          .get('m_uniform_data.php?Command=generate')
           .then(response => {
             this.en_name = response.data[1]
             this.REF = response.data[0]
@@ -56,7 +56,7 @@ function lost_focus(key) {
 //         return;
 //     }
 
-//     var url = "m_item_data.php";
+//     var url = "m_uniform_data.php";
 //     url = url + "?Command=" + "getdt";
 //     url = url + "&ls=" + "new";
 
@@ -98,13 +98,15 @@ function save_info()
         return false;
     }
 
-    var url = "m_item_data.php";
+    var url = "m_uniform_data.php";
     url = url + "?Command=" + "save_item";
     url = url + "&REF=" + document.getElementById("REF").value;
     // url = url + "&category_ref=" + document.getElementById("category_ref").value;
     url = url + "&category_name=" + document.getElementById("category_name").value;
-    url = url + "&store_ref=" + document.getElementById("store_ref").value;
-    url = url + "&store_name=" + document.getElementById("store_name").value;
+    url = url + "&school_ref=" + document.getElementById("school_ref").value;
+    url = url + "&school_name=" + document.getElementById("school_name").value;
+    url = url + "&level_ref=" + document.getElementById("level_ref").value;
+    url = url + "&level_name=" + document.getElementById("level_name").value;
     url = url + "&author_ref=" + document.getElementById("author_ref").value;
     url = url + "&author_name=" + document.getElementById("author_name").value;
     url = url + "&publisher_ref=" + document.getElementById("publisher_ref").value;
@@ -112,8 +114,9 @@ function save_info()
     url = url + "&item_name=" + document.getElementById("item_name").value;
     url = url + "&des=" + document.getElementById("des").value;
     url = url + "&isbn=" + document.getElementById("isbn").value;
-    url = url + "&selling_price=" + document.getElementById("selling_price").value;
-    url = url + "&quantity=" + document.getElementById("quantity").value;
+    
+    // url = url + "&selling_price=" + document.getElementById("selling_price").value;
+    // url = url + "&quantity=" + document.getElementById("quantity").value;
     
     
     xmlHttp.onreadystatechange = salessaveresult;
@@ -153,7 +156,7 @@ function approve() {
         return false;
     }
 
-    var url = "m_item_data.php";
+    var url = "m_uniform_data.php";
     url = url + "?Command=" + "approve";
     url = url + "&REF=" + document.getElementById("REF").value;
    
@@ -192,7 +195,7 @@ function getForm(REF, IDF)
         alert("Browser does not support HTTP Request");
         return;
     }
-    var url = "m_item_data.php";
+    var url = "m_uniform_data.php";
     url = url + "?Command=" + "getForm";
     url = url + "&REF=" + REF;
     url = url + "&IDF=" + IDF;
@@ -216,11 +219,14 @@ function getFromValues()
         var objSup = JSON.parse(XMLAddress1[0].childNodes[0].nodeValue);
 
         if (IDF === "Master") {
+            
             opener.document.getElementById('REF').value = objSup.REF;
             // opener.document.getElementById('category_ref').value = objSup.category_ref;
             opener.document.getElementById('category_name').value = objSup.category_name;
-            opener.document.getElementById('store_ref').value = objSup.store_ref;
-            opener.document.getElementById('store_name').value = objSup.store_name;
+            opener.document.getElementById('school_ref').value = objSup.school_ref;
+            opener.document.getElementById('school_name').value = objSup.school_name;
+            opener.document.getElementById('level_ref').value = objSup.level_ref;
+            opener.document.getElementById('level_name').value = objSup.level_name;
             opener.document.getElementById('author_ref').value = objSup.author_ref;
             opener.document.getElementById('author_name').value = objSup.author_name;
             opener.document.getElementById('publisher_ref').value = objSup.publisher_ref;
@@ -228,8 +234,8 @@ function getFromValues()
             opener.document.getElementById('item_name').value = objSup.item_name;
             opener.document.getElementById("isbn").value = objSup.isbn;
             opener.document.getElementById('des').value = objSup.des;
-            opener.document.getElementById('selling_price').value = objSup.selling_price;
-            opener.document.getElementById('quantity').value = objSup.quantity;
+            // opener.document.getElementById('selling_price').value = objSup.selling_price;
+            // opener.document.getElementById('quantity').value = objSup.quantity;
 
 
             if (objSup.approve == "1"){

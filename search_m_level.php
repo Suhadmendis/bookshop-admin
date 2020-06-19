@@ -9,7 +9,7 @@ include_once './DB_connector.php';
         <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
 
 
-        <title>Search School</title>
+        <title>Search Level</title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
 
 

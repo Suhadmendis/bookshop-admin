@@ -46,6 +46,9 @@
 
 
 
+
+
+
                 <div class="form-group"></div>
                 <div class="form-group">
                     <div class="col-sm-2">
@@ -76,18 +79,36 @@
                 <div class="form-group"></div>
                 <div class="form-group">
                     <div class="col-sm-2">
-                        <label for="first_name" >Store </label>
+                        <label for="first_name" >School </label>
                     </div>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control" id="store_ref" placeholder="Store Ref">
+                        <input type="text" class="form-control" id="school_ref" placeholder="School Ref">
                     </div>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control" id="store_name" placeholder="Store Name">
+                        <input type="text" class="form-control" id="school_name" placeholder="School Name">
                     </div>
                     <div class="col-md-2">
-                    <a class="btn btn-default" onclick="window.open('search_m_store.php?IDF=item', 'mywin', 'width=800, height=700');" class="btn btn-info btn-sm">...</a>
+                    <a class="btn btn-default" onclick="window.open('search_m_school.php?IDF=item', 'mywin', 'width=800, height=700');" class="btn btn-info btn-sm">...</a>
                   </div>
                 </div><br><br>
+
+                <div class="form-group"></div>
+                <div class="form-group">
+                    <div class="col-sm-2">
+                        <label for="first_name" >Level</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="level_ref" placeholder="Level Ref">
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="level_name" placeholder="Level Name">
+                    </div>
+                    <div class="col-md-2">
+                    <a class="btn btn-default" onclick="window.open('search_m_level.php?IDF=item', 'mywin', 'width=800, height=700');" class="btn btn-info btn-sm">...</a>
+                  </div>
+                </div><br><br>
+
+               
 
                 <div class="form-group"></div>
                 <div class="form-group">
@@ -153,7 +174,7 @@
                     </div>
                 </div><br><br>
 
-                <div class="form-group"></div>
+                <!-- <div class="form-group"></div>
                 <div class="form-group">
                     <div class="col-sm-2">
                         <label for="first_name" >Selling Price/Unit</label>
@@ -172,7 +193,7 @@
                     <div class="col-sm-2">
                         <input type="number" class="form-control" id="quantity" placeholder="Quantity">
                     </div>
-                </div><br><br>
+                </div><br><br> -->
 
 
                 
@@ -196,7 +217,7 @@
       </div>
 
 </section>
-<script src="js/m_item.js"></script>
+<script src="js/m_uniform.js"></script>
 <!-- <script>getdt();</script> -->
 
 

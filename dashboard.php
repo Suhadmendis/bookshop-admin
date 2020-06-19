@@ -30,7 +30,7 @@
                 <!-- small box -->
                 <div class="small-box bg-aqua">
                   <div class="inner">
-                    <h3><?php echo $row[$i]['entry']; ?></h3>
+                    <h4 style="font-size: 22px;"><b><?php echo $row[$i]['entry']; ?></b></h4>
 
                     <p><?php echo $row[$i]['entry']; ?></p>
                   </div>

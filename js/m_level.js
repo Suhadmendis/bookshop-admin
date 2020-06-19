@@ -166,8 +166,8 @@ function getFromValues()
             
         }
         if (IDF === "item") {
-            opener.document.getElementById('author_ref').value = objSup.REF;
-            opener.document.getElementById('author_name').value = objSup.name;
+            opener.document.getElementById('level_ref').value = objSup.REF;
+            opener.document.getElementById('level_name').value = objSup.name;
         }
 
       

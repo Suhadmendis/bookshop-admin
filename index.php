@@ -29,9 +29,7 @@ if (isset($_GET['url'])) {
     include 'm_store.php';
   }
 
-  if ($_GET['url'] == "item"){
-    include 'm_item.php';
-  }
+  
   if ($_GET['url'] == "category"){
     include 'm_category.php';
   }
@@ -58,6 +56,27 @@ if (isset($_GET['url'])) {
   }
   if ($_GET['url'] == "level"){
     include 'm_level.php';
+  }
+
+  if ($_GET['url'] == "book"){
+    include 'm_book_allo.php';
+  }
+  if ($_GET['url'] == "arts_and_crafts"){
+    include 'm_arts_and_crafts.php';
+  }
+  if ($_GET['url'] == "uniform"){
+    include 'm_uniform.php';
+  }
+
+
+  if ($_GET['url'] == "book_allo"){
+    include 'm_book_allo.php';
+  }
+  if ($_GET['url'] == "arts_and_crafts_allo"){
+    include 'm_arts_and_crafts_allo.php';
+  }
+  if ($_GET['url'] == "uniform_allo"){
+    include 'm_uniform_allo.php';
   }
 
   
