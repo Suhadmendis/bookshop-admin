@@ -9,7 +9,7 @@ include_once './DB_connector.php';
         <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
 
 
-        <title>Search Author</title>
+        <title>Search School</title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
 
 
@@ -29,7 +29,7 @@ include_once './DB_connector.php';
             <script language="JavaScript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
             <script language="JavaScript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
-            <script language="JavaScript" src="js/m_author.js"></script>
+            <script language="JavaScript" src="js/m_level.js"></script>
 
 
 
@@ -69,7 +69,7 @@ include_once './DB_connector.php';
 
                 <tbody>
                 <?php
-                $sql = "SELECT * from m_author";
+                $sql = "SELECT * from m_level";
               
 
               

@@ -53,6 +53,13 @@ if (isset($_GET['url'])) {
     include 'm_author.php';
   }
 
+  if ($_GET['url'] == "school"){
+    include 'm_school.php';
+  }
+  if ($_GET['url'] == "level"){
+    include 'm_level.php';
+  }
+
   
 
 
