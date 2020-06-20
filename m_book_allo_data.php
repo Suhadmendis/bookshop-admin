@@ -58,9 +58,23 @@ if ($_GET["Command"] == "save_item") {
 
         for ($i=0; $i < sizeof($items); $i++) { 
 
-            $sql = "Insert into store_item_allocation(STORE_REF, ITEM_REF ,selling_price ,quantity)values
-                            ('" . $no . "','" . $items[$i]['Reference'] . "', '" . $items[$i]['Selling Price'] . "', '" . $items[$i]['Quantity'] . "')";
+            $sql = "SELECT * FROM store_item_allocation where STORE_REF = '" . $no . "' and ITEM_REF = '" . $items[$i]['Reference'] . "'";
             $result = $conn->query($sql);
+            $row = $result->fetch();
+
+            if ($row['STORE_REF'] == "") {
+                $sql = "Insert into store_item_allocation(STORE_REF, ITEM_REF ,selling_price ,quantity)values
+                                ('" . $no . "','" . $items[$i]['Reference'] . "', '" . $items[$i]['Selling Price'] . "', '" . $items[$i]['Quantity'] . "')";
+                $result = $conn->query($sql);
+            }else{
+                $sql = "update store_item_allocation set selling_price = '" . $items[$i]['Selling Price'] . "' where STORE_REF = '" . $no . "' and ITEM_REF = '" . $items[$i]['Reference'] . "'";
+                $result = $conn->query($sql);
+
+                $sql = "update store_item_allocation set quantity = '" . $items[$i]['Quantity'] . "' where STORE_REF = '" . $no . "' and ITEM_REF = '" . $items[$i]['Reference'] . "'";
+                $result = $conn->query($sql);
+            }
+
+
         }
 
        

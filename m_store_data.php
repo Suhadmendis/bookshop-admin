@@ -124,12 +124,23 @@ if ($_GET["Command"] == "getForm") {
         $ResponseXML .= "<objSup><![CDATA[" . json_encode($row) . "]]></objSup>";
     }
 
-    // $sql = "select * from m_item where store_ref = '" . $REF . "'";
+    $sql = "select * from store_item_allocation where STORE_REF = '" . $REF . "'";
 
-    // $sql = $conn->query($sql);
-    // if ($row = $sql->fetchAll()) {
-    // }
-    // $ResponseXML .= "<objSub><![CDATA[" . json_encode($row) . "]]></objSub>";
+    $sql = $conn->query($sql);
+    if ($row = $sql->fetchAll()) {
+        for ($i=0; $i < sizeof($row) ; $i++) { 
+            $sqlSub = "SELECT item_name, des, approve FROM m_item where REF = '" . $row[$i]['ITEM_REF'] . "'";
+            $resulSub = $conn->query($sqlSub);
+            $rowSub = $resulSub->fetch();
+
+            $row[$i]['item_name'] = $rowSub['item_name'];
+            $row[$i]['des'] = $rowSub['des'];
+            $row[$i]['approve'] =  $rowSub['approve'];
+        }
+
+
+        $ResponseXML .= "<objSub><![CDATA[" . json_encode($row) . "]]></objSub>";
+    }
     
 
     $ResponseXML .= "<IDF><![CDATA[" . $_GET['IDF'] . "]]></IDF>";

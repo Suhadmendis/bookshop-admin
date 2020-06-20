@@ -73,7 +73,12 @@ include_once './DB_connector.php';
 
                 <tbody>
                 <?php
-                $sql = "SELECT * from m_store";
+
+                if ($IDF == "book_allo") {
+                    $sql = "SELECT * from m_store where listing_type = 'BKS'";
+                }else{
+
+                }
               
 
                 foreach ($conn->query($sql) as $row) {
