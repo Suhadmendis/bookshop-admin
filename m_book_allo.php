@@ -13,12 +13,12 @@
           <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">{{ en_name }}Shop & Item</h3>
+              <h3 class="box-title">{{ en_name }}Book Allocation</h3>
             </div>
             <!-- /.box-header -->
              <div class="btn-group" style="padding: 10px;">
-              <!-- <a class="btn btn-success" onclick="save_info();">Save</a> -->
-              <a class="btn btn-primary" onclick="window.open('search_m_shop_item.php?IDF=Master', 'mywin', 'width=1200, height=700');" class="btn btn-info btn-sm">Search</a>
+              <a class="btn btn-success" onclick="save_info();">Save</a>
+              <a class="btn btn-primary" onclick="window.open('search_m_store.php?IDF=book_allo', 'mywin', 'width=1200, height=700');" class="btn btn-info btn-sm">Search Store</a>
               <a id="app_info" class="btn btn-success" onclick="approve();">Approve</a>
               <a class="btn btn-danger" onclick="">Cancel</a>
               
@@ -26,154 +26,38 @@
               
             </div>
             <!-- form start -->
-                        <form role="form">
+            <form role="form">
               <div class="box-body col-md-12">
 
-
-                
-                <div class="form-group"></div>
-               <div class="form-group" >
-                <div class="col-sm-2">
-                  <label for="exampleInputEmail1" >Reference No</label>
-                  </div>
-                  <div class="col-sm-2">
-                  <input type="text" class="form-control" id="REF" v-model="REF" placeholder="Reference No">
-                  </div>
-                  <div class="col-sm-2">
-                    <label for="exampleInputEmail1"  id="app_status"></label>
-                  </div>
-                   <div class="col-sm-2" hidden>                    
-                    <div class="checkbox">
-                    <label>
-                      <input id="active" checked="" type="checkbox"> Active
-                    </label>
-                    </div>
-                    </div>
-                     <div class="col-sm-2" hidden>                    
-                    <div class="checkbox">
-                    <label>
-                      <input id="approve" checked="" type="checkbox"> Approve
-                    </label>
-                    </div>
-                    </div>
-                     <div class="col-sm-2">
-                    <label for="exampleInputEmail1"  id="app_status"></label>
-                  </div>
-                    
-                    
-                </div><br><br>
-
-
-
                 <div class="form-group"></div>
                 <div class="form-group">
                 <div class="col-sm-2">
-                  <label for="first_name">Shop Name</label>
+                  <label for="first_name">Store</label>
                 </div>
                 <div class="col-sm-2">
-                  <input type="text" class="form-control" id="shop_name" placeholder="Shop Name">
-                </div>
-                </div><br><br>
-
-
-                <div class="form-group"></div>
-                <div class="form-group">
-                <div class="col-sm-2">
-                  <label for="first_name">Tagline</label>
+                  <input type="text" class="form-control" id="store_ref" placeholder="Store Ref">
                 </div>
                 <div class="col-sm-2">
-                  <input type="text" class="form-control" id="tagline" placeholder="Tagline">
+                  <input type="text" class="form-control" id="store_name" placeholder="Store Name">
                 </div>
-                </div><br><br>
-
-
-                <div class="form-group"></div>
-                <div class="form-group">
-                <div class="col-sm-2">
-                  <label for="first_name">Listing Type</label>
-                </div>
-                <div class="col-sm-2">
-                  <input type="text" class="form-control" id="listing_type" placeholder="Listing Type">
-                </div>
-                </div><br><br>
-
-
-                <div class="form-group"></div>
-                <div class="form-group">
-                <div class="col-sm-2">
-                  <label for="first_name">Vendor Ref</label>
-                </div>
-                <div class="col-sm-2">
-                  <input type="text" class="form-control" id="vendor_ref" placeholder="Vendor Ref">
-                </div>
-                <div class="col-sm-2">
-                  <input type="text" class="form-control" id="vendor_name" placeholder="Vendor Name">
-                </div>
-                <!-- <div class="col-md-2">
+               <!-- <div class="col-md-2">
                     <a class="btn btn-default" onclick="window.open('search_m_registration.php?IDF=store', 'mywin', 'width=800, height=700');" class="btn btn-info btn-sm">...</a>
                   </div> -->
                 </div><br><br>
 
 
-             
-
                 <div class="form-group"></div>
                 <div class="form-group">
                 <div class="col-sm-2">
-                  <label for="first_name">Address</label>
+                  <label for="first_name">Book</label>
                 </div>
-                <div class="col-sm-2">
-                  <input type="text" class="form-control" id="address" placeholder="Address">
-                </div>
-                </div><br><br>
-
-
-                <div class="form-group"></div>
-                <div class="form-group">
-                <div class="col-sm-2">
-                  <label for="first_name">Loctaion Point</label>
-                </div>
-                <div class="col-sm-2">
-                  <input type="text" class="form-control" id="loctaion_point_lat" placeholder="Loctaion Point Lat">
-                </div>
-                <div class="col-sm-2">
-                  <input type="text" class="form-control" id="loctaion_point_lng" placeholder="Loctaion Point Lng">
-                </div>
-                </div><br><br>
                 
-
-
-                <div class="form-group"></div>
-                <div class="form-group">
-                <div class="col-sm-2">
-                  <label for="first_name">Phone Number 1</label>
-                </div>
-                <div class="col-sm-2">
-                  <input type="text" class="form-control" id="phone_number_1" placeholder="Phone Number 1">
-                </div>
+               <div class="col-md-2">
+                    <a class="btn btn-default" onclick="window.open('search_m_book.php?IDF=ADD_BOOK', 'mywin', 'width=800, height=700');" class="btn btn-info btn-sm">Add Book</a>
+                  </div>
                 </div><br><br>
 
 
-                <div class="form-group"></div>
-                <div class="form-group">
-                <div class="col-sm-2">
-                  <label for="first_name">Phone Number 2</label>
-                </div>
-                <div class="col-sm-2">
-                  <input type="text" class="form-control" id="phone_number_2" placeholder="Phone Number 2">
-                </div>
-                </div><br><br>
-
-
-                <div class="form-group"></div>
-                <div class="form-group">
-                <div class="col-sm-2">
-                  <label for="first_name">Email Address</label>
-                </div>
-                <div class="col-sm-2">
-                  <input type="text" class="form-control" id="email_address" placeholder="Email Address">
-                </div>
-                </div><br><br>
 
 
 
@@ -202,6 +86,7 @@
                         <th>Selling Price</th>
                         <th>Quantity</th>
                         <th>Approve</th>
+                        <th>Remove</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -247,7 +132,7 @@
 <script src="js/dataTables.jqueryui.min.js"></script>
 <!-- <script src="js/tableToJsonMini.js"></script>
 <script src="js/tableToJson.js"></script> -->
-<script src="js/m_shop_item.js"></script>
+<script src="js/m_book_allo.js"></script>
 
 <script type="text/javascript">
 /*! table-to-json - v0.13.0 - Daniel White */

@@ -265,33 +265,35 @@ function getFromValues()
 
 
         if (IDF === "item") {
-            opener.document.getElementById('store_ref').value = objSup.REF;
-            opener.document.getElementById('store_name').value = objSup.shop_name;
-            // opener.document.getElementById('tagline').value = objSup.tagline;
-            // opener.document.getElementById('listing_type').value = objSup.listing_type;
-            // opener.document.getElementById('vendor_ref').value = objSup.vendor_ref;
-            // opener.document.getElementById('vendor_name').value = objSup.vendor_name;
-            // opener.document.getElementById('address').value = objSup.address;
-            // opener.document.getElementById('loctaion_point_lat').value = objSup.loctaion_point_lat;
-            // opener.document.getElementById('loctaion_point_lng').value = objSup.loctaion_point_lng;
-            // opener.document.getElementById('phone_number_1').value = objSup.phone_number_1;
-            // opener.document.getElementById('phone_number_2').value = objSup.phone_number_2;
-            // opener.document.getElementById('email_address').value = objSup.email_address;
+          opener.document.getElementById("store_ref").value = objSup.REF;
+          opener.document.getElementById("store_name").value = objSup.shop_name;
+          // opener.document.getElementById('tagline').value = objSup.tagline;
+          // opener.document.getElementById('listing_type').value = objSup.listing_type;
+          // opener.document.getElementById('vendor_ref').value = objSup.vendor_ref;
+          // opener.document.getElementById('vendor_name').value = objSup.vendor_name;
+          // opener.document.getElementById('address').value = objSup.address;
+          // opener.document.getElementById('loctaion_point_lat').value = objSup.loctaion_point_lat;
+          // opener.document.getElementById('loctaion_point_lng').value = objSup.loctaion_point_lng;
+          // opener.document.getElementById('phone_number_1').value = objSup.phone_number_1;
+          // opener.document.getElementById('phone_number_2').value = objSup.phone_number_2;
+          // opener.document.getElementById('email_address').value = objSup.email_address;
 
-            // if (objSup.active == "1") {
-            //     opener.document.getElementById('active').checked = true;
-            // } else {
-            //     opener.document.getElementById('active').checked = false;
-            // }
+          // if (objSup.active == "1") {
+          //     opener.document.getElementById('active').checked = true;
+          // } else {
+          //     opener.document.getElementById('active').checked = false;
+          // }
 
-            // if (objSup.approve == "1") {
-            //     opener.document.getElementById('approve').checked = true;
-            // } else {
-            //     opener.document.getElementById('approve').checked = false;
-            // }
+          // if (objSup.approve == "1") {
+          //     opener.document.getElementById('approve').checked = true;
+          // } else {
+          //     opener.document.getElementById('approve').checked = false;
+          // }
+        }
 
-
-
+        if (IDF === "book_allo") {
+          opener.document.getElementById("store_ref").value = objSup.REF;
+          opener.document.getElementById("store_name").value = objSup.shop_name;
         }
 
       

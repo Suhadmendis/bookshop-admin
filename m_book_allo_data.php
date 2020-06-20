@@ -50,30 +50,23 @@ if ($_GET["Command"] == "save_item") {
     try {
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $conn->beginTransaction();
-        $sql = "SELECT session_allo_ref FROM sys_info";
-        $resul = $conn->query($sql);
-        $row = $resul->fetch();
-        $no1 = $row['session_allo_ref'];
-        $tmpinvno = "000000" . $row["session_allo_ref"];
-        $lenth = strlen($tmpinvno);
-        $no = trim("SA/") . substr($tmpinvno, $lenth - 7);
+        
+        $no = $_GET['store_ref'];
 
 
-         $sessions = json_decode($_GET['sessions'],true);
+         $items = json_decode($_GET['items'],true);
 
-        for ($i=0; $i < sizeof($sessions); $i++) { 
+        for ($i=0; $i < sizeof($items); $i++) { 
 
-            $sql = "Insert into m_allo(REF, REF_REG ,REF_SESS ,remark)values
-                            ('" . $no . "','" . $_GET['player_ref'] . "', '" . $sessions[$i][0] . "', '" . $_GET['remark'] . "')";
+            $sql = "Insert into store_item_allocation(STORE_REF, ITEM_REF ,selling_price ,quantity)values
+                            ('" . $no . "','" . $items[$i]['Reference'] . "', '" . $items[$i]['Selling Price'] . "', '" . $items[$i]['Quantity'] . "')";
             $result = $conn->query($sql);
         }
 
-        $no2 = $no1 + 1;
-        $sql = "update sys_info set session_allo_ref = $no2";
-        $result = $conn->query($sql);
+       
 
         $conn->commit();
-        echo sizeof($sessions);
+        echo "Saved";
     } catch (Exception $e) {
         $conn->rollBack();
         echo $e;
@@ -91,22 +84,22 @@ if ($_GET["Command"] == "getForm") {
     $REF = $_GET["REF"];
 
     $sql = "select * from m_store where REF= '" . $REF . "'";
+    echo $sql;
 
     $sql = $conn->query($sql);
     if ($row = $sql->fetch()) {
         $ResponseXML .= "<objSup><![CDATA[" . json_encode($row) . "]]></objSup>";
     }
-    $sql = "select * from m_item where store_ref = '" . $REF . "'";
+//     $sql = "select * from m_item where store_ref = '" . $REF . "'";
 
-    $sql = $conn->query($sql);
-    if ($row = $sql->fetchAll()) {
-    }
-    $ResponseXML .= "<objSub><![CDATA[" . json_encode($row) . "]]></objSub>";
+//     $sql = $conn->query($sql);
+//     if ($row = $sql->fetchAll()) {
+//     }
+//     $ResponseXML .= "<objSub><![CDATA[" . json_encode($row) . "]]></objSub>";
 
-   $ResponseXML .= "<IDF><![CDATA[" . $_GET['IDF'] . "]]></IDF>";
+   $ResponseXML .= "<IDF><![CDATA[" . $sql . "]]></IDF>";
 
     $ResponseXML .= "</salesdetails>";
-    echo $ResponseXML;
 }
 
 

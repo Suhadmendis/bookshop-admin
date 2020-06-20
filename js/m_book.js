@@ -219,33 +219,113 @@ function getFromValues()
         var objSup = JSON.parse(XMLAddress1[0].childNodes[0].nodeValue);
 
         if (IDF === "Master") {
+          opener.document.getElementById("REF").value = objSup.REF;
+          // opener.document.getElementById('category_ref').value = objSup.category_ref;
+          opener.document.getElementById("category_name").value =
+            objSup.category_name;
+          opener.document.getElementById("school_ref").value =
+            objSup.school_ref;
+          opener.document.getElementById("school_name").value =
+            objSup.school_name;
+          opener.document.getElementById("level_ref").value = objSup.level_ref;
+          opener.document.getElementById("level_name").value =
+            objSup.level_name;
+          opener.document.getElementById("author_ref").value =
+            objSup.author_ref;
+          opener.document.getElementById("author_name").value =
+            objSup.author_name;
+          opener.document.getElementById("publisher_ref").value =
+            objSup.publisher_ref;
+          opener.document.getElementById("publisher_name").value =
+            objSup.publisher_name;
+          opener.document.getElementById("item_name").value = objSup.item_name;
+          opener.document.getElementById("isbn").value = objSup.isbn;
+          opener.document.getElementById("des").value = objSup.des;
+          // opener.document.getElementById('selling_price').value = objSup.selling_price;
+          // opener.document.getElementById('quantity').value = objSup.quantity;
+
+          if (objSup.approve == "1") {
+            window.opener.document.getElementById("app_status").innerHTML =
+              "Approved";
+          } else {
+            window.opener.document.getElementById("app_status").innerHTML =
+              "Not Approved";
+          }
+        }
+
+        if (IDF === "ADD_BOOK") {
+
+
+      
+          
+
+          var rowCount = window.opener.document.getElementById('exampletable').rows.length;
+  
+          var i;
+        var condition = "0";
+          for (i = 0; i < rowCount; i++) {
+              if (window.opener.document.getElementById("exampletable").rows[i].cells[0].innerHTML == objSup.REF) {
+                   condition = "1";
+              }
             
-            opener.document.getElementById('REF').value = objSup.REF;
-            // opener.document.getElementById('category_ref').value = objSup.category_ref;
-            opener.document.getElementById('category_name').value = objSup.category_name;
-            opener.document.getElementById('school_ref').value = objSup.school_ref;
-            opener.document.getElementById('school_name').value = objSup.school_name;
-            opener.document.getElementById('level_ref').value = objSup.level_ref;
-            opener.document.getElementById('level_name').value = objSup.level_name;
-            opener.document.getElementById('author_ref').value = objSup.author_ref;
-            opener.document.getElementById('author_name').value = objSup.author_name;
-            opener.document.getElementById('publisher_ref').value = objSup.publisher_ref;
-            opener.document.getElementById('publisher_name').value = objSup.publisher_name;
-            opener.document.getElementById('item_name').value = objSup.item_name;
-            opener.document.getElementById("isbn").value = objSup.isbn;
-            opener.document.getElementById('des').value = objSup.des;
-            // opener.document.getElementById('selling_price').value = objSup.selling_price;
-            // opener.document.getElementById('quantity').value = objSup.quantity;
+            
+            
+          }
+  
+            if (condition != 1) {
+                var table = window.opener.document.getElementById('exampletable');
+  
+                var row = table.insertRow(table.length);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                var cell4 = row.insertCell(3);
+                var cell5 = row.insertCell(4);
+                var cell6 = row.insertCell(5);
+                var cell7 = row.insertCell(6);
+        
+
+                cell1.innerHTML = objSup.REF;
+                cell2.innerHTML = objSup.item_name;
+                cell3.innerHTML = objSup.item_name;
+                cell4.innerHTML = objSup.selling_price;
+                cell4.setAttribute("contentEditable","true");
+                cell4.setAttribute("style","background-color: antiquewhite");
 
 
-            if (objSup.approve == "1"){
-                window.opener.document.getElementById('app_status').innerHTML = "Approved";
+
+                cell5.innerHTML = objSup.quantity;
+                cell5.setAttribute("contentEditable", "true");
+                cell5.setAttribute("style", "background-color: antiquewhite");
+
+                if (objSup.approve == 1){
+                    cell6.innerHTML = 'Approved';
+                }else{
+                    cell6.innerHTML = "Not Approved";
+                }
+            
+                cell7.innerHTML = '<input type="button" value="-" onclick="deleteRow(this)">';
             }else{
-                window. opener.document.getElementById('app_status').innerHTML = "Not Approved";
+                alert("Already Selected");
             }
 
-            
+
+
+
+            //   if (objSup.approve == "1") {
+            //     window.opener.document.getElementById("app_status").innerHTML =
+            //       "Approved";
+            //   } else {
+            //     window.opener.document.getElementById("app_status").innerHTML =
+            //       "Not Approved";
+            //   }
+
+
         }
+
+        
+
+
      
         self.close();
     

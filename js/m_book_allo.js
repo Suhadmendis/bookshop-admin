@@ -6,7 +6,7 @@ var vue = new Vue({
   },
     mounted () {
         // axios
-        //   .get('m_shop_item_data.php?Command=generate')
+        //   .get('m_book_allo_data.php?Command=generate')
         //   .then(response => {
         //     this.en_name = response.data[1];
         //     this.REF = response.data[0];
@@ -172,42 +172,43 @@ function save_info()
         alert("Browser does not support HTTP Request");
         return;
     }
-     if (document.getElementById('REF').value == "") {
-        document.getElementById('REF').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'></span></div>";
-        return false;
-    }
+    //  if (document.getElementById('REF').value == "") {
+    //     document.getElementById('REF').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'></span></div>";
+    //     return false;
+    // }
             
-    var url = "m_session_allo_data.php";
+    var url = "m_book_allo_data.php";
     url = url + "?Command=" + "save_item";
-    url = url + "&REF=" + document.getElementById("REF").value;
-    url = url + "&player_ref=" + document.getElementById("player_ref").value;
-    url = url + "&player_Name=" + document.getElementById("player_Name").value;
-    url = url + "&remark=" + document.getElementById("remark").value;
+    url = url + "&store_ref=" + document.getElementById("store_ref").value;
+    // url = url + "&player_ref=" + document.getElementById("player_ref").value;
+    // url = url + "&player_Name=" + document.getElementById("player_Name").value;
+    // url = url + "&remark=" + document.getElementById("remark").value;
    
     
 
-    var table = $('#example').DataTable();
+    var table = $("#exampletable").tableToJSON();
+    url = url + "&items=" + JSON.stringify(table);
  
-    $('#example tbody').on( 'click', 'tr', function () {
-        $(this).toggleClass('selected');
-    } );
+    // $('#exampletable tbody').on( 'click', 'tr', function () {
+    //     $(this).toggleClass('selected');
+    // } );
    
-    var rowObj = table.rows('.selected').data();
+    // var rowObj = table.rows('.selected').data();
     
-    var sessions = [];
+    // var sessions = [];
     
 
-    if (rowObj.length === 0) {
-        alert("Wrong Entry");
-        return false;
-    }
+    // if (rowObj.length === 0) {
+    //     alert("Wrong Entry");
+    //     return false;
+    // }
 
-    for (var i = 0; i < rowObj.length; i++) {
-        sessions.push(rowObj[i]);
-    }
+
+    // for (var i = 0; i < rowObj.length; i++) {
+    //     sessions.push(rowObj[i]);
+    // }
         
-    url = url + "&sessions=" + JSON.stringify(sessions);
-
+console.log(url);
 
     xmlHttp.onreadystatechange = salessaveresult;
     xmlHttp.open("GET", url, true);
@@ -222,6 +223,8 @@ function salessaveresult() {
     if (xmlHttp.readyState == 4 || xmlHttp.readyState == "complete") {
 
         if (xmlHttp.responseText == "Saved") {
+            alert(xmlHttp.responseText);
+            location.reload();
             // document.getElementById('msg_box').innerHTML = "<div class='alert alert-success' role='alert'><span class='center-block'>Saved</span></div>";
             // $("#msg_box").hide().slideDown(400).delay(2000);
             // $("#msg_box").slideUp(400);
@@ -241,7 +244,7 @@ function getForm(REF, IDF)
         alert("Browser does not support HTTP Request");
         return;
     }
-    var url = "m_shop_item_data.php";
+    var url = "m_book_allo_data.php";
     url = url + "?Command=" + "getForm";
     url = url + "&REF=" + REF;
     url = url + "&IDF=" + IDF;
@@ -263,78 +266,96 @@ function getFromValues()
 
         XMLAddress1 = xmlHttp.responseXML.getElementsByTagName("objSup");
         var objSup = JSON.parse(XMLAddress1[0].childNodes[0].nodeValue);
-
+alert("fds");
         
-        if (IDF === "Master") {
-            
-            opener.document.getElementById('REF').value = objSup.REF;
-            opener.document.getElementById('shop_name').value = objSup.shop_name;
-            opener.document.getElementById('tagline').value = objSup.tagline;
-            
-            if (objSup.listing_type == "IT") {
-                window.opener.document.getElementById('listing_type').value = "Item";
-            } else {
-                window.opener.document.getElementById('listing_type').value = "Package";
-            }
-            opener.document.getElementById('address').value = objSup.address;
-            // opener.document.getElementById('city').value = objSup.city;
-            opener.document.getElementById('vendor_ref').value = objSup.vendor_ref;
-            opener.document.getElementById('vendor_name').value = objSup.vendor_name;
-            opener.document.getElementById('loctaion_point_lat').value = objSup.loctaion_point_lat;
-            opener.document.getElementById('loctaion_point_lng').value = objSup.loctaion_point_lng;
-            opener.document.getElementById('phone_number_1').value = objSup.phone_number_1;
-            opener.document.getElementById('phone_number_2').value = objSup.phone_number_2;
-            opener.document.getElementById('email_address').value = objSup.email_address;
-            // opener.document.getElementById('img_logo').value = objSup.img_logo;
-            // opener.document.getElementById('img_cover').value = objSup.img_cover;
-            if (objSup.approve == "1") {
-                window.opener.document.getElementById('app_status').innerHTML = "Approved";
-            } else {
-                window.opener.document.getElementById('app_status').innerHTML = "Not Approved";
-            }
-            
-            // opener.document.getElementById('user').value = objSup.user;
-            // opener.document.getElementById('active').value = objSup.active;
-            // opener.document.getElementById('sys_time').value = objSup.sys_time;
-            // opener.document.getElementById('min_order_value').value = objSup.min_order_value;
-            
+        if (IDF === "book_allo") {
+
+          opener.document.getElementById("store_ref").value = objSup.REF;
+          opener.document.getElementById("store_name").value = objSup.shop_name;
+        //   opener.document.getElementById("tagline").value = objSup.tagline;
+
+        //   if (objSup.listing_type == "IT") {
+        //     window.opener.document.getElementById("listing_type").value =
+        //       "Item";
+        //   } else {
+        //     window.opener.document.getElementById("listing_type").value =
+        //       "Package";
+        //   }
+        //   opener.document.getElementById("address").value = objSup.address;
+          
+        //   opener.document.getElementById("vendor_ref").value =
+        //     objSup.vendor_ref;
+        //   opener.document.getElementById("vendor_name").value =
+        //     objSup.vendor_name;
+        //   opener.document.getElementById("loctaion_point_lat").value =
+        //     objSup.loctaion_point_lat;
+        //   opener.document.getElementById("loctaion_point_lng").value =
+        //     objSup.loctaion_point_lng;
+        //   opener.document.getElementById("phone_number_1").value =
+        //     objSup.phone_number_1;
+        //   opener.document.getElementById("phone_number_2").value =
+        //     objSup.phone_number_2;
+        //   opener.document.getElementById("email_address").value =
+        //     objSup.email_address;
+          
+          
+        //   if (objSup.approve == "1") {
+        //     window.opener.document.getElementById("app_status").innerHTML =
+        //       "Approved";
+        //   } else {
+        //     window.opener.document.getElementById("app_status").innerHTML =
+        //       "Not Approved";
+        //   }
+
+          // opener.document.getElementById('user').value = objSup.user;
+          // opener.document.getElementById('active').value = objSup.active;
+          // opener.document.getElementById('sys_time').value = objSup.sys_time;
+          // opener.document.getElementById('min_order_value').value = objSup.min_order_value;
+
+///////////////////////
+
+        //   XMLAddress1 = xmlHttp.responseXML.getElementsByTagName("objSub");
+        //   var objSub = JSON.parse(XMLAddress1[0].childNodes[0].nodeValue);
+          
+          
+  
+        //   var rowCount = window.opener.document.getElementById('exampletable').rows.length;
+  
+        //   var i;
+  
+        //   for (i = 0; i < rowCount - 1; i++) {
+        //       window.opener.document.getElementById("exampletable").deleteRow(1);
+        //   }
+  
+          
+              var table = window.opener.document.getElementById('exampletable');
+  
+              var row = table.insertRow(table.length);
+              var cell1 = row.insertCell(0);
+              var cell2 = row.insertCell(1);
+              var cell3 = row.insertCell(2);
+              var cell4 = row.insertCell(3);
+              var cell5 = row.insertCell(4);
+              var cell6 = row.insertCell(5);
+              
+  
+              cell1.innerHTML = objSup.REF;
+              cell2.innerHTML = objSub.category_name;
+              cell3.innerHTML = objSub.item_name;
+              cell4.innerHTML = objSub.selling_price;
+              cell5.innerHTML = objSub.quantity;
+              if (objSub.approve == 1){
+                  cell6.innerHTML = '<input checked="" onchange="setApprove(\'' + objSub.REF + '\',this)" type="checkbox">';
+              }else{
+                  cell6.innerHTML = '<input onchange="setApprove(\'' + objSub[i].REF +'\',this)" type="checkbox">';
+              }
+              
+          
+              
+
+
         }
         
-        XMLAddress1 = xmlHttp.responseXML.getElementsByTagName("objSub");
-        var objSub = JSON.parse(XMLAddress1[0].childNodes[0].nodeValue);
-        
-        
-
-        var rowCount = window.opener.document.getElementById('exampletable').rows.length;
-
-        var i;
-
-        for (i = 0; i < rowCount - 1; i++) {
-            window.opener.document.getElementById("exampletable").deleteRow(1);
-        }
-
-        for (i = 0; i < objSub.length; i++) { 
-            var table = window.opener.document.getElementById('exampletable');
-
-            var row = table.insertRow(table.length);
-            var cell1 = row.insertCell(0);
-            var cell2 = row.insertCell(1);
-            var cell3 = row.insertCell(2);
-            var cell4 = row.insertCell(3);
-            var cell5 = row.insertCell(4);
-            var cell6 = row.insertCell(5);
-
-            cell1.innerHTML = objSub[i].REF;
-            cell2.innerHTML = objSub[i].category_name;
-            cell3.innerHTML = objSub[i].item_name;
-            cell4.innerHTML = objSub[i].selling_price;
-            cell5.innerHTML = objSub[i].quantity;
-            if (objSub[i].approve == 1){
-                cell6.innerHTML = '<input checked="" onchange="setApprove(\'' + objSub[i].REF + '\',this)" type="checkbox">';
-            }else{
-                cell6.innerHTML = '<input onchange="setApprove(\'' + objSub[i].REF +'\',this)" type="checkbox">';
-            }
-        }
         // id
         // REF
         // category_ref
@@ -392,7 +413,7 @@ function setApprove(ref, ele){
         return false;
     }
 
-    var url = "m_shop_item_data.php";
+    var url = "m_book_allo_data.php";
     url = url + "?Command=" + "setapprove";
     url = url + "&REF=" + ref;
     if (ele.checked){
@@ -439,7 +460,7 @@ function approve() {
         return false;
     }
 
-    var url = "m_shop_item_data.php";
+    var url = "m_book_allo_data.php";
     url = url + "?Command=" + "approve";
     url = url + "&REF=" + document.getElementById("REF").value;
 
@@ -467,4 +488,13 @@ function approvesaveresult() {
             // document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>" + xmlHttp.responseText + "</span></div>";
         }
     }
+}
+
+
+
+function deleteRow(r) {
+  var i = r.parentNode.parentNode.rowIndex;
+  document.getElementById("exampletable").deleteRow(i);
+
+  qtyTot();
 }

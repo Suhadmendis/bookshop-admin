@@ -59,7 +59,7 @@ if (isset($_GET['url'])) {
   }
 
   if ($_GET['url'] == "book"){
-    include 'm_book_allo.php';
+    include 'm_book.php';
   }
   if ($_GET['url'] == "arts_and_crafts"){
     include 'm_arts_and_crafts.php';

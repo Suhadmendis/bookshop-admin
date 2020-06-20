@@ -124,7 +124,15 @@ if ($_GET["Command"] == "getForm") {
         $ResponseXML .= "<objSup><![CDATA[" . json_encode($row) . "]]></objSup>";
     }
 
-   $ResponseXML .= "<IDF><![CDATA[" . $_GET['IDF'] . "]]></IDF>";
+    // $sql = "select * from m_item where store_ref = '" . $REF . "'";
+
+    // $sql = $conn->query($sql);
+    // if ($row = $sql->fetchAll()) {
+    // }
+    // $ResponseXML .= "<objSub><![CDATA[" . json_encode($row) . "]]></objSub>";
+    
+
+    $ResponseXML .= "<IDF><![CDATA[" . $_GET['IDF'] . "]]></IDF>";
 
     $ResponseXML .= "</salesdetails>";
     echo $ResponseXML;
