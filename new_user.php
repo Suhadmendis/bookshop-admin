@@ -13,12 +13,12 @@
                     <a onclick="save_inv();" class="btn btn-success">
                         <span class="fa fa-save"></span> &nbsp; Save
                     </a>
-                    <a onclick="edit();" class="btn btn-warning">
+                    <!-- <a onclick="edit();" class="btn btn-warning">
                         <span class="fa fa-edit"></span> &nbsp; Edit
                     </a>
                     <a onclick="deleteproduct();" class="btn btn-danger">
                         <span class="fa fa-trash"></span> &nbsp; Delete
-                    </a>
+                    </a> -->
                 </div>
                 <div id="msg_box"  class="span12 text-center"  >
 

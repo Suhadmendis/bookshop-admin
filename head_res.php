@@ -286,7 +286,7 @@ desired effect
 
             include ("DB_connector.php");
 
-            $sql = "SELECT * FROM sys_entry order by sub";
+            $sql = "select * from view_menu WHERE username = '" . $_SESSION['CURRENT_USER'] . "' AND doc_view = '1' ORDER BY grp";
             $result = $conn->query($sql);
             $row = $result->fetchAll();
 
@@ -303,7 +303,7 @@ desired effect
 
 
             <?php for ($i=0; $i < sizeof($row); $i++) {  ?>
-              <li><a href="?url=<?php echo $row[$i]['url'] ?>"><?php echo $row[$i]['entry'] ?></a></li>
+              <li><a href="?url=<?php echo $row[$i]['name'] ?>"><?php echo $row[$i]['entry'] ?></a></li>
             <?php } ?>
             
           </ul>
