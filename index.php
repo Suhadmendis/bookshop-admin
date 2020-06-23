@@ -20,6 +20,17 @@ if (isset($_COOKIE[$cookie_name])) {
 include 'head_res.php'; 
 if (isset($_GET['url'])) {
 
+  if ($_GET['url'] == "new_user") {
+        include_once './new_user.php';
+    }
+    if ($_GET['url'] == "user_p") {
+        include_once './user_permission.php';
+    }
+    if ($_GET['url'] == "change_password") {
+        include_once './change_password.php';
+    }
+
+    
   // if ($_GET['url'] == "registration"){
   //   include 'm_registration.php';
   // }

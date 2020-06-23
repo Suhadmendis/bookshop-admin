@@ -107,16 +107,16 @@ if ($_GET["Command"] == "save_inv") {
 
         date_default_timezone_set('Asia/Colombo');
 
-        require 'email/PHPMailerAutoload.php';
-        $mail = new PHPMailer;
-        $mail->isSMTP();
+        // require 'email/PHPMailerAutoload.php';
+        // $mail = new PHPMailer;
+        // $mail->isSMTP();
 
-        $mail->Host = 'mail.infodatasl.com';
-        $mail->Port = 587;
-        $mail->SMTPSecure = 'tls';
-        $mail->SMTPAuth = true;
-        $mail->Username = "autoemail@infodatasl.com";
-        $mail->Password = "autoemail@123";
+        // $mail->Host = 'mail.infodatasl.com';
+        // $mail->Port = 587;
+        // $mail->SMTPSecure = 'tls';
+        // $mail->SMTPAuth = true;
+        // $mail->Username = "autoemail@infodatasl.com";
+        // $mail->Password = "autoemail@123";
 
 
         $sql = "select * from user_mast where user_name='" . $_GET["user_name"] . "'";
@@ -171,12 +171,12 @@ if ($_GET["Command"] == "save_inv") {
                     </tr></table>";
 
 
-        $mail->Body = '"' . $table . '"';
-        $mail->Subject = 'Kot Order';
-        $mail->isHTML(true);
+        // $mail->Body = '"' . $table . '"';
+        // $mail->Subject = 'Kot Order';
+        // $mail->isHTML(true);
 
         if (!$mail->send()) {
-            echo "Mailer Error: " . $mail->ErrorInfo;
+            // echo "Mailer Error: " . $mail->ErrorInfo;
         } else {
             echo "Saved";
         }
@@ -209,20 +209,20 @@ if ($_GET["Command"] == "getdt") {
 
     $tb .= "<tr>";
     $tb .= "<th style=\"width: 100px;\" class=\"success\">Name</th>";
-    $tb .= "<th style=\"width: 200px;\" class=\"success\">User Type</th>";
-    $tb .= "<th style=\"width: 100px;\" class=\"success\">User Department</th>";
-    $tb .= "<th style=\"width: 100px;\" class=\"success\">User Email</th>";
-    $tb .= "<th style=\"width: 200px;\" class=\"success\">Department Head Mail</th>";
+    // $tb .= "<th style=\"width: 200px;\" class=\"success\">User Type</th>";
+    // $tb .= "<th style=\"width: 100px;\" class=\"success\">User Department</th>";
+    // $tb .= "<th style=\"width: 100px;\" class=\"success\">User Email</th>";
+    // $tb .= "<th style=\"width: 200px;\" class=\"success\">Department Head Mail</th>";
 
     $tb .= "</tr>";
 
     foreach ($conn->query($sql) as $row) {
         $tb .= "<tr>";
         $tb .= "<td onclick=\"getcode('" . $row['user_name'] . "','" . $row['user_type'] . "','" . $row['user_depart'] . "','" . $row['U_email'] . "','" . $row['R_email'] . "')\">" . $row['user_name'] . "</td>";
-        $tb .= "<td onclick=\"getcode('" . $row['user_name'] . "','" . $row['user_type'] . "','" . $row['user_depart'] . "','" . $row['U_email'] . "','" . $row['R_email'] . "')\">" . $row['user_type'] . "</td>";
-        $tb .= "<td onclick=\"getcode('" . $row['user_name'] . "','" . $row['user_type'] . "','" . $row['user_depart'] . "','" . $row['U_email'] . "','" . $row['R_email'] . "')\">" . $row['user_depart'] . "</td>";
-        $tb .= "<td onclick=\"getcode('" . $row['user_name'] . "','" . $row['user_type'] . "','" . $row['user_depart'] . "','" . $row['U_email'] . "','" . $row['R_email'] . "')\">" . $row['U_email'] . "</td>";
-        $tb .= "<td onclick=\"getcode('" . $row['user_name'] . "','" . $row['user_type'] . "','" . $row['user_depart'] . "','" . $row['U_email'] . "','" . $row['R_email'] . "')\">" . $row['R_email'] . "</td>";
+        // $tb .= "<td onclick=\"getcode('" . $row['user_name'] . "','" . $row['user_type'] . "','" . $row['user_depart'] . "','" . $row['U_email'] . "','" . $row['R_email'] . "')\">" . $row['user_type'] . "</td>";
+        // $tb .= "<td onclick=\"getcode('" . $row['user_name'] . "','" . $row['user_type'] . "','" . $row['user_depart'] . "','" . $row['U_email'] . "','" . $row['R_email'] . "')\">" . $row['user_depart'] . "</td>";
+        // $tb .= "<td onclick=\"getcode('" . $row['user_name'] . "','" . $row['user_type'] . "','" . $row['user_depart'] . "','" . $row['U_email'] . "','" . $row['R_email'] . "')\">" . $row['U_email'] . "</td>";
+        // $tb .= "<td onclick=\"getcode('" . $row['user_name'] . "','" . $row['user_type'] . "','" . $row['user_depart'] . "','" . $row['U_email'] . "','" . $row['R_email'] . "')\">" . $row['R_email'] . "</td>";
         $tb .= "</tr>";
     }
     $tb .= "</table>";

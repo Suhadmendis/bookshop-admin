@@ -8,7 +8,11 @@
 
             include ("DB_connector.php");
 
-            $sql = "SELECT * FROM sys_entry order by sub";
+            // $sql = "SELECT * FROM sys_entry order by sub";
+
+            $sql = "select * from view_menu WHERE username = '" . $_SESSION['CURRENT_USER'] . "' AND doc_view = '1' ORDER BY grp";
+
+            
             $result = $conn->query($sql);
             $row = $result->fetchAll();
             
@@ -17,11 +21,11 @@
             
             for ($i=0; $i < sizeof($row); $i++) {  ?>
 
-              <?php if($row[$i]['sub'] != $sub){ ?>
+              <?php if($row[$i]['grp'] != $sub){ ?>
                <div class="col-lg-12">
                 <h1><?php 
-                  echo $row[$i]['sub']; 
-                  $sub = $row[$i]['sub'];
+                  echo $row[$i]['grp']; 
+                  $sub = $row[$i]['grp'];
                 ?></h1>
                 </div>
               <?php } ?>
@@ -37,7 +41,7 @@
                   <div class="icon">
                     <i class="ion ion-bag"></i>
                   </div>
-                  <a href="index.php?url=<?php echo $row[$i]['url']; ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                  <a href="index.php?url=<?php echo $row[$i]['name']; ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
               </div>
             <?php } ?>
