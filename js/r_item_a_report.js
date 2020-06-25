@@ -83,96 +83,13 @@ function lost_focus(key) {
 
 
 
+function print_view() {
+  var url = "r_item_a_report_view.php";
+  url = url + "?Command=" + "view";
+  
 
-function save_info()
-{
+//   url = url + "&from_txt=" + document.getElementById("from_txt").value;
+//   url = url + "&to_txt=" + document.getElementById("to_txt").value;
 
-    xmlHttp = GetXmlHttpObject();
-    if (xmlHttp == null)
-    {
-        alert("Browser does not support HTTP Request");
-        return;
-    }
-     if (document.getElementById('REF').value == "") {
-        document.getElementById('REF').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'></span></div>";
-        return false;
-    }
-
-    var url = "m_school_data.php";
-    url = url + "?Command=" + "save_item";
-    url = url + "&REF=" + document.getElementById("REF").value;
-    url = url + "&name=" + document.getElementById("name").value;
-    
-    xmlHttp.onreadystatechange = salessaveresult;
-    xmlHttp.open("GET", url, true);
-    xmlHttp.send(null);
-
-}
-
-
-function salessaveresult() {
-    var XMLAddress1;
-
-    if (xmlHttp.readyState == 4 || xmlHttp.readyState == "complete") {
-
-        if (xmlHttp.responseText == "Saved") {
-            alert(xmlHttp.responseText);
-            // document.getElementById('msg_box').innerHTML = "<div class='alert alert-success' role='alert'><span class='center-block'>Saved</span></div>";
-            // $("#msg_box").hide().slideDown(400).delay(2000);
-            // $("#msg_box").slideUp(400);
-        } else {
-            alert(xmlHttp.responseText);
-            // document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>" + xmlHttp.responseText + "</span></div>";
-        }
-    }
-}
-
-
-function getForm(REF, IDF)
-{
-   
-    xmlHttp = GetXmlHttpObject();
-    if (xmlHttp == null)
-    {
-        alert("Browser does not support HTTP Request");
-        return;
-    }
-    var url = "m_school_data.php";
-    url = url + "?Command=" + "getForm";
-    url = url + "&REF=" + REF;
-    url = url + "&IDF=" + IDF;
-
-    xmlHttp.onreadystatechange = getFromValues;
-    xmlHttp.open("GET", url, true);
-    xmlHttp.send(null);
-}
-
-function getFromValues()
-{
-    var XMLAddress1;
-
-    if (xmlHttp.readyState == 4 || xmlHttp.readyState == "complete")
-    {
-
-        XMLAddress1 = xmlHttp.responseXML.getElementsByTagName("IDF");
-        var IDF = XMLAddress1[0].childNodes[0].nodeValue;
-
-        XMLAddress1 = xmlHttp.responseXML.getElementsByTagName("objSup");
-        var objSup = JSON.parse(XMLAddress1[0].childNodes[0].nodeValue);
-
-        if (IDF === "Master") {
-            opener.document.getElementById('REF').value = objSup.REF;
-            opener.document.getElementById('name').value = objSup.name;
-            
-        }
-        if (IDF === "item") {
-            opener.document.getElementById('school_ref').value = objSup.REF;
-            opener.document.getElementById('school_name').value = objSup.name;
-        }
-
-      
-        self.close();
-    
-    }
-    
+  window.open(url, "_blank");
 }

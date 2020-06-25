@@ -33,7 +33,7 @@
                   </div>
                   <div class="col-sm-2">
                   <!-- <input type="text" class="form-control" id="REF" v-model="REF" placeholder="Reference No"> -->
-                  <input type="text" class="form-control" id="REF" v-model="REF" placeholder="Reference No">
+                  <input type="text" class="form-control" id="REF"  placeholder="Reference No">
                   </div>
                 </div><br><br>
 
@@ -56,7 +56,7 @@
                         
                     </div>
                     <div class="col-sm-3">
-                      <a class="btn btn-info" onclick="">View</a>                         
+                      <a class="btn btn-info" onclick="print_view();">View</a>                         
                     </div>
                 </div><br><br>
 
@@ -82,7 +82,7 @@
       </div>
 
 </section>
-<script src="js/r_order_a_report.js"></script>
+<script src="js/r_item_a_report.js"></script>
 <!-- <script>getdt();</script> -->
 
 
