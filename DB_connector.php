@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
- $servername = 'localhost';
+$servername = 'localhost';
 $username = 'root';
 $password = '';
 $port = 3306;

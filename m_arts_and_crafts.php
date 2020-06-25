@@ -14,7 +14,7 @@
             <div class="btn-group" style="padding: 10px;">
               <a id="save_info" class="btn btn-success" onclick="save_info();">Save</a>
               <a id="app_info" class="btn btn-success" onclick="approve();">Approve</a>
-              <a id="search_info" class="btn btn-primary" onclick="window.open('search_m_book.php?IDF=Master', 'mywin', 'width=800, height=700');" class="btn btn-info btn-sm">Search</a>
+              <a id="search_info" class="btn btn-primary" onclick="window.open('search_m_arts_and_crafts.php?IDF=Master', 'mywin', 'width=800, height=700');" class="btn btn-info btn-sm">Search</a>
               <a id="cancel_info" class="btn btn-danger" onclick="">Cancel</a>
               
               

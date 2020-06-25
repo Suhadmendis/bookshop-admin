@@ -29,7 +29,7 @@ include_once './DB_connector.php';
             <script language="JavaScript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
             <script language="JavaScript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
-            <script language="JavaScript" src="js/m_book.js"></script>
+            <script language="JavaScript" src="js/m_uniform.js"></script>
 
 
 
@@ -75,7 +75,7 @@ include_once './DB_connector.php';
                 <?php
 
                 
-                $sql = "SELECT * from m_item where listtype = 'BKS'";
+                $sql = "SELECT * from m_item where listtype = 'UN'";
               
 
               

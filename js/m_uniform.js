@@ -101,23 +101,13 @@ function save_info()
     var url = "m_uniform_data.php";
     url = url + "?Command=" + "save_item";
     url = url + "&REF=" + document.getElementById("REF").value;
-    // url = url + "&category_ref=" + document.getElementById("category_ref").value;
-    url = url + "&category_name=" + document.getElementById("category_name").value;
     url = url + "&school_ref=" + document.getElementById("school_ref").value;
     url = url + "&school_name=" + document.getElementById("school_name").value;
-    url = url + "&level_ref=" + document.getElementById("level_ref").value;
-    url = url + "&level_name=" + document.getElementById("level_name").value;
-    url = url + "&author_ref=" + document.getElementById("author_ref").value;
-    url = url + "&author_name=" + document.getElementById("author_name").value;
-    url = url + "&publisher_ref=" + document.getElementById("publisher_ref").value;
-    url = url + "&publisher_name=" + document.getElementById("publisher_name").value;
     url = url + "&item_name=" + document.getElementById("item_name").value;
     url = url + "&des=" + document.getElementById("des").value;
-    url = url + "&isbn=" + document.getElementById("isbn").value;
     
     // url = url + "&selling_price=" + document.getElementById("selling_price").value;
     // url = url + "&quantity=" + document.getElementById("quantity").value;
-    
     
     xmlHttp.onreadystatechange = salessaveresult;
     xmlHttp.open("GET", url, true);
@@ -221,22 +211,12 @@ function getFromValues()
         if (IDF === "Master") {
             
             opener.document.getElementById('REF').value = objSup.REF;
-            // opener.document.getElementById('category_ref').value = objSup.category_ref;
-            opener.document.getElementById('category_name').value = objSup.category_name;
             opener.document.getElementById('school_ref').value = objSup.school_ref;
             opener.document.getElementById('school_name').value = objSup.school_name;
-            opener.document.getElementById('level_ref').value = objSup.level_ref;
-            opener.document.getElementById('level_name').value = objSup.level_name;
-            opener.document.getElementById('author_ref').value = objSup.author_ref;
-            opener.document.getElementById('author_name').value = objSup.author_name;
-            opener.document.getElementById('publisher_ref').value = objSup.publisher_ref;
-            opener.document.getElementById('publisher_name').value = objSup.publisher_name;
             opener.document.getElementById('item_name').value = objSup.item_name;
-            opener.document.getElementById("isbn").value = objSup.isbn;
             opener.document.getElementById('des').value = objSup.des;
             // opener.document.getElementById('selling_price').value = objSup.selling_price;
             // opener.document.getElementById('quantity').value = objSup.quantity;
-
 
             if (objSup.approve == "1"){
                 window.opener.document.getElementById('app_status').innerHTML = "Approved";
