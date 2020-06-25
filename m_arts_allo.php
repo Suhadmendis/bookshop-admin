@@ -132,7 +132,7 @@
 <script src="js/dataTables.jqueryui.min.js"></script>
 <!-- <script src="js/tableToJsonMini.js"></script>
 <script src="js/tableToJson.js"></script> -->
-<script src="js/m_uniform_allo.js"></script>
+<script src="js/m_book_allo.js"></script>
 
 <script type="text/javascript">
 /*! table-to-json - v0.13.0 - Daniel White */
