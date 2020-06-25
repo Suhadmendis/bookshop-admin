@@ -101,22 +101,10 @@ function save_info()
     var url = "m_arts_and_crafts_data.php";
     url = url + "?Command=" + "save_item";
     url = url + "&REF=" + document.getElementById("REF").value;
-    // url = url + "&category_ref=" + document.getElementById("category_ref").value;
-    url = url + "&category_name=" + document.getElementById("category_name").value;
-    url = url + "&school_ref=" + document.getElementById("school_ref").value;
-    url = url + "&school_name=" + document.getElementById("school_name").value;
-    url = url + "&level_ref=" + document.getElementById("level_ref").value;
-    url = url + "&level_name=" + document.getElementById("level_name").value;
-    url = url + "&author_ref=" + document.getElementById("author_ref").value;
-    url = url + "&author_name=" + document.getElementById("author_name").value;
-    url = url + "&publisher_ref=" + document.getElementById("publisher_ref").value;
-    url = url + "&publisher_name=" + document.getElementById("publisher_name").value;
     url = url + "&item_name=" + document.getElementById("item_name").value;
     url = url + "&des=" + document.getElementById("des").value;
-    url = url + "&isbn=" + document.getElementById("isbn").value;
-    
-    // url = url + "&selling_price=" + document.getElementById("selling_price").value;
-    // url = url + "&quantity=" + document.getElementById("quantity").value;
+    url = url + "&selling_price=" + document.getElementById("selling_price").value;
+    url = url + "&quantity=" + document.getElementById("quantity").value;
     
     
     xmlHttp.onreadystatechange = salessaveresult;

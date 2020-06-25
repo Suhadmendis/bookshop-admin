@@ -14,7 +14,7 @@
             <div class="btn-group" style="padding: 10px;">
               <a id="save_info" class="btn btn-success" onclick="save_info();">Save</a>
               <a id="app_info" class="btn btn-success" onclick="approve();">Approve</a>
-              <a id="search_info" class="btn btn-primary" onclick="window.open('search_m_arts_and_crafts.php?IDF=Master', 'mywin', 'width=800, height=700');" class="btn btn-info btn-sm">Search</a>
+              <a id="search_info" class="btn btn-primary" onclick="window.open('search_m_uniform.php?IDF=Master', 'mywin', 'width=800, height=700');" class="btn btn-info btn-sm">Search</a>
               <a id="cancel_info" class="btn btn-danger" onclick="">Cancel</a>
               
               
@@ -49,15 +49,13 @@
 
 
 
-                <div class="form-group"></div>
+                <!-- <div class="form-group"></div>
                 <div class="form-group">
                     <div class="col-sm-2">
                         <label for="first_name" >Category </label>
                     </div>
                     <div class="col-sm-3">
-                        <!-- <input type="text" class="form-control" id="listing_type" placeholder="Type"> -->
                         <div class="form-group">
-                            <!-- <label>Select</label> -->
                             <select class="form-control" id="category_name">
                                 <option value="SYL">Syllabus</option>
                                 <option value="STA">Stationeries</option>
@@ -66,17 +64,11 @@
                                 <option value="PB">Practical Books</option>
                             </select>
                         </div>
-                        <!-- <input type="text" class="form-control" id="category_ref" placeholder="Category Ref"> -->
+                        
                     </div>
-                    <!-- <div class="col-sm-2">
-                        <input type="text" class="form-control" id="category_name" placeholder="Category Name">
-                    </div>
-                    <div class="col-md-2">
-                    <a class="btn btn-default" onclick="window.open('search_m_category.php?IDF=item', 'mywin', 'width=800, height=700');" class="btn btn-info btn-sm">...</a>
-                  </div> -->
-                </div><br><br>
+                </div><br><br> -->
 
-                <div class="form-group"></div>
+                <!-- <div class="form-group"></div>
                 <div class="form-group">
                     <div class="col-sm-2">
                         <label for="first_name" >School </label>
@@ -90,9 +82,9 @@
                     <div class="col-md-2">
                     <a class="btn btn-default" onclick="window.open('search_m_school.php?IDF=item', 'mywin', 'width=800, height=700');" class="btn btn-info btn-sm">...</a>
                   </div>
-                </div><br><br>
+                </div><br><br> -->
 
-                <div class="form-group"></div>
+                <!-- <div class="form-group"></div>
                 <div class="form-group">
                     <div class="col-sm-2">
                         <label for="first_name" >Level</label>
@@ -106,41 +98,12 @@
                     <div class="col-md-2">
                     <a class="btn btn-default" onclick="window.open('search_m_level.php?IDF=item', 'mywin', 'width=800, height=700');" class="btn btn-info btn-sm">...</a>
                   </div>
-                </div><br><br>
+                </div><br><br> -->
 
                
 
-                <div class="form-group"></div>
-                <div class="form-group">
-                    <div class="col-sm-2">
-                        <label for="first_name" >Author </label>
-                    </div>
-                    <div class="col-sm-2">
-                        <input type="text" class="form-control" id="author_ref" placeholder="Author Ref">
-                    </div>
-                    <div class="col-sm-2">
-                        <input type="text" class="form-control" id="author_name" placeholder="Author Name">
-                    </div>
-                    <div class="col-md-2">
-                    <a class="btn btn-default" onclick="window.open('search_m_author.php?IDF=item', 'mywin', 'width=800, height=700');" class="btn btn-info btn-sm">...</a>
-                  </div>
-                </div><br><br>
 
-                <div class="form-group"></div>
-                <div class="form-group">
-                    <div class="col-sm-2">
-                        <label for="first_name" >Publisher </label>
-                    </div>
-                    <div class="col-sm-2">
-                        <input type="text" class="form-control" id="publisher_ref" placeholder="Publisher Ref">
-                    </div>
-                    <div class="col-sm-2">
-                        <input type="text" class="form-control" id="publisher_name" placeholder="Publisher Name">
-                    </div>
-                    <div class="col-md-2">
-                    <a class="btn btn-default" onclick="window.open('search_m_publisher.php?IDF=item', 'mywin', 'width=800, height=700');" class="btn btn-info btn-sm">...</a>
-                  </div>
-                </div><br><br>
+                
 
                 <div class="form-group"></div>
                 <div class="form-group">
@@ -159,22 +122,13 @@
                     <div class="col-sm-2">
                         <label for="first_name" >Description</label>
                     </div>
-                    <div class="col-sm-2">
-                        <input type="text" class="form-control" id="des" placeholder="Description">
+                    <div class="col-sm-4">
+                    <textarea name="" class="form-control" id="des" cols="5" rows="3"></textarea>
+                        
                     </div>
-                </div><br><br>
+                </div><br><br><br><br>
 
                 <div class="form-group"></div>
-                <div class="form-group">
-                    <div class="col-sm-2">
-                        <label for="first_name" >ISBN</label>
-                    </div>
-                    <div class="col-sm-2">
-                        <input type="text" class="form-control" id="isbn" placeholder="ISBN">
-                    </div>
-                </div><br><br>
-
-                <!-- <div class="form-group"></div>
                 <div class="form-group">
                     <div class="col-sm-2">
                         <label for="first_name" >Selling Price/Unit</label>
@@ -193,7 +147,7 @@
                     <div class="col-sm-2">
                         <input type="number" class="form-control" id="quantity" placeholder="Quantity">
                     </div>
-                </div><br><br> -->
+                </div><br><br>
 
 
                 

@@ -52,8 +52,9 @@ if ($_GET["Command"] == "save_item") {
         $lenth = strlen($tmpinvno);
         $no1 = trim("ITEM/") . substr($tmpinvno, $lenth - 7);
 
-        $sql = "Insert into m_item(REF, category_name, school_ref, school_name,level_ref,level_name,author_ref, author_name,publisher_ref, publisher_name, item_name, des,isbn, user, listtype)values
-                        ('" . $no1 . "' ,'" . $_GET['category_name'] . "' ,'" . $_GET['school_ref'] . "' ,'" . $_GET['school_name'] . "' ,'" . $_GET['level_ref'] . "' ,'" . $_GET['level_name'] . "' ,'" . $_GET['author_ref'] . "' ,'" . $_GET['author_name'] . "' ,'" . $_GET['publisher_ref'] . "' ,'" . $_GET['publisher_name'] . "' ,'" . $_GET['item_name'] . "' ,'" . $_GET['des'] . "' ,'" . $_GET['isbn'] . "' ,'" . $_SESSION['UserName'] . "','AC')";
+
+        $sql = "Insert into m_item(REF, item_name, des,isbn, user, listtype)values
+                        ('" . $no1 . "' ,'" . $_GET['item_name'] . "' ,'" . $_GET['des'] . "' ,'" . $_SESSION['UserName'] . "','AC')";
         $result = $conn->query($sql);
        
         $no2 = $no + 1;
