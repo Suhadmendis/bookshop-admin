@@ -90,6 +90,22 @@ if (isset($_GET['url'])) {
     include 'm_uniform_allo.php';
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
 
 
@@ -98,10 +114,14 @@ if (isset($_GET['url'])) {
 
 
 
-
-
-
-
+  if ($_GET['url'] == "order_a_report"){
+    include 'r_order_a_report.php';
+  }
+  if ($_GET['url'] == "item_a_report"){
+    include 'r_item_a_report.php';
+  }
+  
+  
   if ($_GET['url'] == ""){
     include 'dashboard.php';
   }
