@@ -101,6 +101,7 @@ function save_info()
     var url = "m_uniform_data.php";
     url = url + "?Command=" + "save_item";
     url = url + "&REF=" + document.getElementById("REF").value;
+    url = url + "&category_name=" + document.getElementById("category_name").value;
     url = url + "&school_ref=" + document.getElementById("school_ref").value;
     url = url + "&school_name=" + document.getElementById("school_name").value;
     url = url + "&item_name=" + document.getElementById("item_name").value;
@@ -211,6 +212,7 @@ function getFromValues()
         if (IDF === "Master") {
             
             opener.document.getElementById('REF').value = objSup.REF;
+            opener.document.getElementById("category_name").value = objSup.category_name;
             opener.document.getElementById('school_ref').value = objSup.school_ref;
             opener.document.getElementById('school_name').value = objSup.school_name;
             opener.document.getElementById('item_name').value = objSup.item_name;

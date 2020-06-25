@@ -101,6 +101,7 @@ function save_info()
     var url = "m_arts_and_crafts_data.php";
     url = url + "?Command=" + "save_item";
     url = url + "&REF=" + document.getElementById("REF").value;
+    url = url + "&category_name=" + document.getElementById("category_name").value;
     url = url + "&item_name=" + document.getElementById("item_name").value;
     url = url + "&des=" + document.getElementById("des").value;
     url = url + "&selling_price=" + document.getElementById("selling_price").value;
@@ -211,19 +212,19 @@ function getFromValues()
             opener.document.getElementById('REF').value = objSup.REF;
             // opener.document.getElementById('category_ref').value = objSup.category_ref;
             opener.document.getElementById('category_name').value = objSup.category_name;
-            opener.document.getElementById('school_ref').value = objSup.school_ref;
-            opener.document.getElementById('school_name').value = objSup.school_name;
-            opener.document.getElementById('level_ref').value = objSup.level_ref;
-            opener.document.getElementById('level_name').value = objSup.level_name;
-            opener.document.getElementById('author_ref').value = objSup.author_ref;
-            opener.document.getElementById('author_name').value = objSup.author_name;
-            opener.document.getElementById('publisher_ref').value = objSup.publisher_ref;
-            opener.document.getElementById('publisher_name').value = objSup.publisher_name;
+            // opener.document.getElementById('school_ref').value = objSup.school_ref;
+            // opener.document.getElementById('school_name').value = objSup.school_name;
+            // opener.document.getElementById('level_ref').value = objSup.level_ref;
+            // opener.document.getElementById('level_name').value = objSup.level_name;
+            // opener.document.getElementById('author_ref').value = objSup.author_ref;
+            // opener.document.getElementById('author_name').value = objSup.author_name;
+            // opener.document.getElementById('publisher_ref').value = objSup.publisher_ref;
+            // opener.document.getElementById('publisher_name').value = objSup.publisher_name;
             opener.document.getElementById('item_name').value = objSup.item_name;
-            opener.document.getElementById("isbn").value = objSup.isbn;
+            // opener.document.getElementById("isbn").value = objSup.isbn;
             opener.document.getElementById('des').value = objSup.des;
-            // opener.document.getElementById('selling_price').value = objSup.selling_price;
-            // opener.document.getElementById('quantity').value = objSup.quantity;
+            opener.document.getElementById('selling_price').value = objSup.selling_price;
+            opener.document.getElementById('quantity').value = objSup.quantity;
 
 
             if (objSup.approve == "1"){

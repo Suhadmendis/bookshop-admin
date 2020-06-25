@@ -55,7 +55,6 @@
                         <label for="first_name" >Category </label>
                     </div>
                     <div class="col-sm-3">
-                        <!-- <input type="text" class="form-control" id="listing_type" placeholder="Type"> -->
                         <div class="form-group">
                             <!-- <label>Select</label> -->
                             <select class="form-control" id="category_name">
@@ -66,14 +65,7 @@
                                 <option value="PB">Practical Books</option>
                             </select>
                         </div>
-                        <!-- <input type="text" class="form-control" id="category_ref" placeholder="Category Ref"> -->
                     </div>
-                    <!-- <div class="col-sm-2">
-                        <input type="text" class="form-control" id="category_name" placeholder="Category Name">
-                    </div>
-                    <div class="col-md-2">
-                    <a class="btn btn-default" onclick="window.open('search_m_category.php?IDF=item', 'mywin', 'width=800, height=700');" class="btn btn-info btn-sm">...</a>
-                  </div> -->
                 </div><br><br>
 
                 <div class="form-group"></div>
@@ -113,7 +105,7 @@
                 <div class="form-group"></div>
                 <div class="form-group">
                     <div class="col-sm-2">
-                        <label for="first_name" >Author </label>
+                        <label for="first_name" >Author</label>
                     </div>
                     <div class="col-sm-2">
                         <input type="text" class="form-control" id="author_ref" placeholder="Author Ref">

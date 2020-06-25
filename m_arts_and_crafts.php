@@ -14,7 +14,7 @@
             <div class="btn-group" style="padding: 10px;">
               <a id="save_info" class="btn btn-success" onclick="save_info();">Save</a>
               <a id="app_info" class="btn btn-success" onclick="approve();">Approve</a>
-              <a id="search_info" class="btn btn-primary" onclick="window.open('search_m_uniform.php?IDF=Master', 'mywin', 'width=800, height=700');" class="btn btn-info btn-sm">Search</a>
+              <a id="search_info" class="btn btn-primary" onclick="window.open('search_m_arts_and_crafts.php?IDF=Master', 'mywin', 'width=800, height=700');" class="btn btn-info btn-sm">Search</a>
               <a id="cancel_info" class="btn btn-danger" onclick="">Cancel</a>
               
               
@@ -102,7 +102,26 @@
 
                
 
-
+                <div class="form-group"></div>
+                <div class="form-group">
+                    <div class="col-sm-2">
+                        <label for="first_name" >Category</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <!-- <label>Select</label> -->
+                            <select class="form-control" id="category_name">
+                                <option value="PA">Portrait Art</option>
+                                <option value="P">Painting</option>
+                                <option value="TC">Textile Crafts</option>
+                                <option value="PC">Paper Crafts</option>
+                                <option value="DC">Decorative Crafts</option>
+                                <option value="FSC">Fashion Crafts</option>
+                                <option value="FUC">Functional Crafts</option>
+                            </select>
+                        </div>
+                    </div>
+                </div><br><br>
                 
 
                 <div class="form-group"></div>

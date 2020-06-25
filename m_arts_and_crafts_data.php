@@ -53,10 +53,10 @@ if ($_GET["Command"] == "save_item") {
         $no1 = trim("ITEM/") . substr($tmpinvno, $lenth - 7);
 
 
-        $sql = "Insert into m_item(REF, item_name, des,isbn, user, listtype)values
-                        ('" . $no1 . "' ,'" . $_GET['item_name'] . "' ,'" . $_GET['des'] . "' ,'" . $_SESSION['UserName'] . "','AC')";
+        $sql = "Insert into m_item(REF, category_name, item_name ,selling_price ,quantity , des, user, listtype)values
+                        ('" . $no1 . "' ,'" . $_GET['category_name'] . "' ,'" . $_GET['item_name'] . "' ,'" . $_GET['selling_price'] . "' ,'" . $_GET['quantity'] . "' ,'" . $_GET['des'] . "' ,'" . $_SESSION['UserName'] . "','AC')";
         $result = $conn->query($sql);
-       
+
         $no2 = $no + 1;
         $sql = "update sys_info set item_ref = $no2 where item_ref = $no";
         $result = $conn->query($sql);
