@@ -76,6 +76,8 @@ include_once './DB_connector.php';
 
                 if ($IDF == "book_allo") {
                     $sql = "SELECT * from m_store where listing_type = 'BKS'";
+                }else if($IDF == "uniform_allo"){
+                    $sql = "SELECT * from m_store where listing_type = 'UC'";
                 }else{
                     $sql = "SELECT * from m_store";
                 }

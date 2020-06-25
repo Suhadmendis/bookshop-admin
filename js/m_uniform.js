@@ -226,6 +226,69 @@ function getFromValues()
 
             
         }
+
+
+        if (IDF === "ADD_UNIFORM") {
+          var rowCount = window.opener.document.getElementById("exampletable")
+            .rows.length;
+
+          var i;
+          var condition = "0";
+          for (i = 0; i < rowCount; i++) {
+            if (
+              window.opener.document.getElementById("exampletable").rows[i]
+                .cells[0].innerHTML == objSup.REF
+            ) {
+              condition = "1";
+            }
+          }
+
+          if (condition != 1) {
+            var table = window.opener.document.getElementById("exampletable");
+
+            var row = table.insertRow(table.length);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+            var cell6 = row.insertCell(5);
+            var cell7 = row.insertCell(6);
+
+            cell1.innerHTML = objSup.REF;
+            cell2.innerHTML = objSup.item_name;
+            cell3.innerHTML = objSup.item_name;
+            cell4.innerHTML = objSup.selling_price;
+            cell4.setAttribute("contentEditable", "true");
+            cell4.setAttribute("style", "background-color: antiquewhite");
+
+            cell5.innerHTML = objSup.quantity;
+            cell5.setAttribute("contentEditable", "true");
+            cell5.setAttribute("style", "background-color: antiquewhite");
+
+            if (objSup.approve == 1) {
+              cell6.innerHTML = "Approved";
+            } else {
+              cell6.innerHTML = "Not Approved";
+            }
+
+            cell7.innerHTML =
+              '<input type="button" value="-" onclick="deleteRow(this)">';
+          } else {
+            alert("Already Selected");
+          }
+
+          //   if (objSup.approve == "1") {
+          //     window.opener.document.getElementById("app_status").innerHTML =
+          //       "Approved";
+          //   } else {
+          //     window.opener.document.getElementById("app_status").innerHTML =
+          //       "Not Approved";
+          //   }
+        }
+
+
+
      
         self.close();
     

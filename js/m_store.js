@@ -298,36 +298,150 @@ function getFromValues() {
 
         var i;
         for (i = 0; i < objSub.length; i++) {
-          var row = table.insertRow(table.length);
-          var cell1 = row.insertCell(0);
-          var cell2 = row.insertCell(1);
-          var cell3 = row.insertCell(2);
-          var cell4 = row.insertCell(3);
-          var cell5 = row.insertCell(4);
-          var cell6 = row.insertCell(5);
-          var cell7 = row.insertCell(6);
-          
-          cell1.innerHTML = objSub[i].ITEM_REF;
-          cell2.innerHTML = objSub[i].item_name;
-          cell3.innerHTML = objSub[i].des;
-          cell4.innerHTML = objSub[i].selling_price;
-          cell4.setAttribute("contentEditable","true");
-          cell4.setAttribute("style","background-color: antiquewhite");
+          if (objSub[i].listtype == "BSK") {
+            var row = table.insertRow(table.length);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+            var cell6 = row.insertCell(5);
+            var cell7 = row.insertCell(6);
 
-          cell5.innerHTML = objSub[i].quantity;
-          cell5.setAttribute("contentEditable", "true");
-          cell5.setAttribute("style", "background-color: antiquewhite");
+            cell1.innerHTML = objSub[i].ITEM_REF;
+            cell2.innerHTML = objSub[i].item_name;
+            cell3.innerHTML = objSub[i].des;
+            cell4.innerHTML = objSub[i].selling_price;
+            cell4.setAttribute("contentEditable", "true");
+            cell4.setAttribute("style", "background-color: antiquewhite");
 
-          if (objSub[i].approve == "1") {
-            cell6.innerHTML = "Approved";
-          }else{
-            cell6.innerHTML = "Not Approved";
+            cell5.innerHTML = objSub[i].quantity;
+            cell5.setAttribute("contentEditable", "true");
+            cell5.setAttribute("style", "background-color: antiquewhite");
+
+            if (objSub[i].approve == "1") {
+              cell6.innerHTML = "Approved";
+            } else {
+              cell6.innerHTML = "Not Approved";
+            }
+
+            cell7.innerHTML =
+              '<input type="button" value="-" onclick="deleteRow(this)">';
           }
-          
-          cell7.innerHTML ='<input type="button" value="-" onclick="deleteRow(this)">';
         }
+      }
+    }
 
 
+    if (IDF === "uniform_allo") {
+      opener.document.getElementById("store_ref").value = objSup.REF;
+      opener.document.getElementById("store_name").value = objSup.shop_name;
+
+      var rowCount = window.opener.document.getElementById("exampletable").rows
+        .length;
+
+      var i;
+
+      for (i = 0; i < rowCount - 1; i++) {
+        window.opener.document.getElementById("exampletable").deleteRow(1);
+      }
+
+      XMLAddress1 = xmlHttp.responseXML.getElementsByTagName("objSub");
+      if (XMLAddress1.length != 0) {
+        var objSub = JSON.parse(XMLAddress1[0].childNodes[0].nodeValue);
+        console.log(objSub);
+
+        var table = window.opener.document.getElementById("exampletable");
+
+        var i;
+        for (i = 0; i < objSub.length; i++) {
+          if (objSub[i].listtype == "UC") {
+            var row = table.insertRow(table.length);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+            var cell6 = row.insertCell(5);
+            var cell7 = row.insertCell(6);
+
+            cell1.innerHTML = objSub[i].ITEM_REF;
+            cell2.innerHTML = objSub[i].item_name;
+            cell3.innerHTML = objSub[i].des;
+            cell4.innerHTML = objSub[i].selling_price;
+            cell4.setAttribute("contentEditable", "true");
+            cell4.setAttribute("style", "background-color: antiquewhite");
+
+            cell5.innerHTML = objSub[i].quantity;
+            cell5.setAttribute("contentEditable", "true");
+            cell5.setAttribute("style", "background-color: antiquewhite");
+
+            if (objSub[i].approve == "1") {
+              cell6.innerHTML = "Approved";
+            } else {
+              cell6.innerHTML = "Not Approved";
+            }
+
+            cell7.innerHTML =
+              '<input type="button" value="-" onclick="deleteRow(this)">';
+          }
+        }
+      }
+    }
+
+    if (IDF === "arts_allo") {
+      opener.document.getElementById("store_ref").value = objSup.REF;
+      opener.document.getElementById("store_name").value = objSup.shop_name;
+
+      var rowCount = window.opener.document.getElementById("exampletable").rows
+        .length;
+
+      var i;
+
+      for (i = 0; i < rowCount - 1; i++) {
+        window.opener.document.getElementById("exampletable").deleteRow(1);
+      }
+
+      XMLAddress1 = xmlHttp.responseXML.getElementsByTagName("objSub");
+      if (XMLAddress1.length != 0) {
+        var objSub = JSON.parse(XMLAddress1[0].childNodes[0].nodeValue);
+        console.log(objSub);
+
+        var table = window.opener.document.getElementById("exampletable");
+
+        var i;
+        for (i = 0; i < objSub.length; i++) {
+          if (objSub[i].listtype == "UC") {
+            var row = table.insertRow(table.length);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+            var cell6 = row.insertCell(5);
+            var cell7 = row.insertCell(6);
+
+            cell1.innerHTML = objSub[i].ITEM_REF;
+            cell2.innerHTML = objSub[i].item_name;
+            cell3.innerHTML = objSub[i].des;
+            cell4.innerHTML = objSub[i].selling_price;
+            cell4.setAttribute("contentEditable", "true");
+            cell4.setAttribute("style", "background-color: antiquewhite");
+
+            cell5.innerHTML = objSub[i].quantity;
+            cell5.setAttribute("contentEditable", "true");
+            cell5.setAttribute("style", "background-color: antiquewhite");
+
+            if (objSub[i].approve == "1") {
+              cell6.innerHTML = "Approved";
+            } else {
+              cell6.innerHTML = "Not Approved";
+            }
+
+            cell7.innerHTML =
+              '<input type="button" value="-" onclick="deleteRow(this)">';
+          }
+        }
       }
     }
 
