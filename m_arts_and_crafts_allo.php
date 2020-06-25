@@ -13,12 +13,12 @@
           <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">{{ en_name }}Uniform Allocation</h3>
+              <h3 class="box-title">{{ en_name }}Arts and Crafts Allocation</h3>
             </div>
             <!-- /.box-header -->
              <div class="btn-group" style="padding: 10px;">
               <a class="btn btn-success" onclick="save_info();">Save</a>
-              <a class="btn btn-primary" onclick="window.open('search_m_store.php?IDF=uniform_allo', 'mywin', 'width=1200, height=700');" class="btn btn-info btn-sm">Search Store</a>
+              <a class="btn btn-primary" onclick="window.open('search_m_store.php?IDF=arts_allo', 'mywin', 'width=1200, height=700');" class="btn btn-info btn-sm">Search Store</a>
               <a id="app_info" class="btn btn-success" onclick="approve();">Approve</a>
               <a class="btn btn-danger" onclick="">Cancel</a>
               
