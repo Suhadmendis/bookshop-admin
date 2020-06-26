@@ -169,7 +169,33 @@
                 </div><br><br>
 
 
-                
+                <div class="form-group"></div>
+                <div class="form-group">
+                <div class="col-sm-2">
+                  <label for="first_name">Logo upload</label>
+                </div>
+                <div class="col-sm-2">
+                  <div class="form-group">
+                    <input type="file" id="img_file">
+                    <input type="hidden" id="img_logo">
+
+                    
+                  </div>
+                </div>
+                </div><br><br>
+
+                <div class="form-group"></div>
+                <div class="form-group">
+                <div class="col-sm-2">
+                  <label for="first_name">Preview</label>
+                </div>
+                <div class="col-sm-2">
+                  <div class="form-group">
+                    <div id=img_path></div>
+                    
+                  </div>
+                </div>
+                </div><br><br>
 
 
               </div>

@@ -55,7 +55,7 @@ if ($_GET["Command"] == "save_item") {
         $no1 = trim("ST/") . substr($tmpinvno, $lenth - 7);
 
         $sql = "Insert into m_store(REF, shop_name, tagline, listing_type, vendor_ref, vendor_name, address, loctaion_point_lat, loctaion_point_lng, phone_number_1, phone_number_2, email_address, img_logo, approve, user, active)values
-                        ('" . $no1 . "' ,'" . $_GET['shop_name'] . "' ,'" . $_GET['tagline'] . "' ,'" . $_GET['listing_type'] . "' ,'" . $_GET['vendor_ref'] . "' ,'" . $_GET['vendor_name'] . "' ,'" . $_GET['address'] . "' ,'" . $_GET['loctaion_point_lat'] . "' ,'" . $_GET['loctaion_point_lng'] . "' ,'" . $_GET['phone_number_1'] . "' ,'" . $_GET['phone_number_2'] . "' ,'" . $_GET['email_address'] . "' ,'" . $_GET['store_logo'] . "' ,'" . $_GET['approve'] . "' ,'" . $_SESSION['UserName'] . "','" . $_GET['active'] . "')";
+                        ('" . $no1 . "' ,'" . $_GET['shop_name'] . "' ,'" . $_GET['tagline'] . "' ,'" . $_GET['listing_type'] . "' ,'" . $_GET['vendor_ref'] . "' ,'" . $_GET['vendor_name'] . "' ,'" . $_GET['address'] . "' ,'" . $_GET['loctaion_point_lat'] . "' ,'" . $_GET['loctaion_point_lng'] . "' ,'" . $_GET['phone_number_1'] . "' ,'" . $_GET['phone_number_2'] . "' ,'" . $_GET['email_address'] . "' ,'" . $_GET['img_logo'] . "' ,'" . $_GET['approve'] . "' ,'" . $_SESSION['UserName'] . "','" . $_GET['active'] . "')";
         $result = $conn->query($sql);
         
         

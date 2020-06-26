@@ -115,6 +115,7 @@ function save_info()
     url = url + "&des=" + document.getElementById("des").value;
     url = url + "&isbn=" + document.getElementById("isbn").value;
     
+    url = url + "&img_logo=" + document.getElementById("img_logo").value;
     // url = url + "&selling_price=" + document.getElementById("selling_price").value;
     // url = url + "&quantity=" + document.getElementById("quantity").value;
     
@@ -243,6 +244,13 @@ function getFromValues()
             window.opener.document.getElementById("app_status").innerHTML =
               "Not Approved";
           }
+
+           opener.document.getElementById("img_path").innerHTML =
+             '<img src="uploads/item/books/' +
+             objSup.img +
+             '" alt="" width="400" >';
+
+
         }
 
         if (IDF === "ADD_BOOK") {
@@ -327,8 +335,8 @@ function getFromValues()
 
 
 
-$("#store_file").on("change", function () {
-  var file_data = $("#store_file").prop("files")[0];
+$("#img_file").on("change", function () {
+  var file_data = $("#img_file").prop("files")[0];
   var form_data = new FormData();
   form_data.append("fileToUpload", file_data);
   
@@ -347,7 +355,7 @@ $("#store_file").on("change", function () {
       // <img src="uploads/store/logo/5ef4ee67d7328.PNG" alt="" width="400" >
       document.getElementById("img_path").innerHTML =
         '<img src="uploads/item/books/' + res + '" alt="" width="400" >';
-      document.getElementById("store_logo").value = res;
+      document.getElementById("img_logo").value = res;
     },
   });
 });

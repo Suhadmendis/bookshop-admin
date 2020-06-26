@@ -113,7 +113,7 @@ function save_info() {
   url = url + "&approve=" + document.getElementById("approve").value;
   url = url + "&active=" + document.getElementById("active").value;
 
-  url = url + "&store_logo=" + document.getElementById("store_logo").value;
+  url = url + "&img_logo=" + document.getElementById("img_logo").value;
 
 
   if (document.getElementById("approve").checked) {
@@ -461,8 +461,8 @@ function getFromValues() {
   }
 }
 
-$("#store_file").on("change", function () {
-  var file_data = $("#store_file").prop("files")[0];
+$("#img_file").on("change", function () {
+  var file_data = $("#img_file").prop("files")[0];
   var form_data = new FormData();
   form_data.append("fileToUpload", file_data);
 
@@ -481,7 +481,7 @@ $("#store_file").on("change", function () {
       // <img src="uploads/store/logo/5ef4ee67d7328.PNG" alt="" width="400" >
       document.getElementById("img_path").innerHTML =
         '<img src="uploads/store/logo/' + res + '" alt="" width="400" >';
-      document.getElementById("store_logo").value = res;
+      document.getElementById("img_logo").value = res;
     },
   });
 });

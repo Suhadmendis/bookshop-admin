@@ -107,7 +107,8 @@ function save_info()
     url = url + "&selling_price=" + document.getElementById("selling_price").value;
     url = url + "&quantity=" + document.getElementById("quantity").value;
     
-    
+    url = url + "&img_logo=" + document.getElementById("img_logo").value;
+
     xmlHttp.onreadystatechange = salessaveresult;
     xmlHttp.open("GET", url, true);
     xmlHttp.send(null);
@@ -233,6 +234,10 @@ function getFromValues()
                 window. opener.document.getElementById('app_status').innerHTML = "Not Approved";
             }
 
+            opener.document.getElementById("img_path").innerHTML =
+              '<img src="uploads/item/asts/' +
+              objSup.img +
+              '" alt="" width="400" >';
             
         }
      
@@ -241,3 +246,29 @@ function getFromValues()
     }
     
 }
+
+
+
+$("#img_file").on("change", function () {
+  var file_data = $("#img_file").prop("files")[0];
+  var form_data = new FormData();
+  form_data.append("fileToUpload", file_data);
+
+  $.ajax({
+    url: "m_arts_and_crafts_data.php?Command=upload",
+    dataType: "script",
+    cache: false,
+    contentType: false,
+    processData: false,
+    data: form_data,
+    type: "post",
+    success: function (res) {
+      // alert(res);
+
+      // <img src="uploads/store/logo/5ef4ee67d7328.PNG" alt="" width="400" >
+      document.getElementById("img_path").innerHTML =
+        '<img src="uploads/item/arts/' + res + '" alt="" width="400" >';
+      document.getElementById("img_logo").value = res;
+    },
+  });
+});

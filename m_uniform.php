@@ -158,8 +158,8 @@
                 </div>
                 <div class="col-sm-2">
                   <div class="form-group">
-                    <input type="file" id="store_file">
-                    <input type="hidden" id="store_logo">
+                    <input type="file" id="img_file">
+                    <input type="hidden" id="img_logo">
 
                     
                   </div>
