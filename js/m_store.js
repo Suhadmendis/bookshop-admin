@@ -113,6 +113,9 @@ function save_info() {
   url = url + "&approve=" + document.getElementById("approve").value;
   url = url + "&active=" + document.getElementById("active").value;
 
+  url = url + "&store_logo=" + document.getElementById("store_logo").value;
+
+
   if (document.getElementById("approve").checked) {
     url = url + "&approve=" + "1";
   } else {
@@ -247,6 +250,14 @@ function getFromValues() {
         window.opener.document.getElementById("app_status").innerHTML =
           "Not Approved";
       }
+
+      opener.document.getElementById("img_path").innerHTML =
+        '<img src="uploads/store/logo/' +
+        objSup.img_logo +
+        '" alt="" width="400" >';
+
+
+
     }
 
     if (IDF === "item") {
@@ -331,7 +342,6 @@ function getFromValues() {
         }
       }
     }
-
 
     if (IDF === "uniform_allo") {
       opener.document.getElementById("store_ref").value = objSup.REF;
@@ -440,6 +450,8 @@ function getFromValues() {
 
             cell7.innerHTML =
               '<input type="button" value="-" onclick="deleteRow(this)">';
+
+
           }
         }
       }
@@ -448,3 +460,28 @@ function getFromValues() {
     self.close();
   }
 }
+
+$("#store_file").on("change", function () {
+  var file_data = $("#store_file").prop("files")[0];
+  var form_data = new FormData();
+  form_data.append("fileToUpload", file_data);
+
+  $.ajax({
+    url: "m_store_data.php?Command=upload",
+    dataType: "script",
+    cache: false,
+    contentType: false,
+    processData: false,
+    data: form_data,
+    type: "post",
+    success: function (res) {
+      // alert(res);
+
+
+      // <img src="uploads/store/logo/5ef4ee67d7328.PNG" alt="" width="400" >
+      document.getElementById("img_path").innerHTML =
+        '<img src="uploads/store/logo/' + res + '" alt="" width="400" >';
+      document.getElementById("store_logo").value = res;
+    },
+  });
+});

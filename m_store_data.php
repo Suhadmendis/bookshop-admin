@@ -25,6 +25,8 @@ if ($_GET["Command"] == "generate") {
 
     $en_name = "Store";
 
+
+    // $_SESSION['store_logo'] = "";
     $objArray = Array();
     array_push($objArray,$no,$en_name);
 
@@ -52,8 +54,8 @@ if ($_GET["Command"] == "save_item") {
         $lenth = strlen($tmpinvno);
         $no1 = trim("ST/") . substr($tmpinvno, $lenth - 7);
 
-        $sql = "Insert into m_store(REF, shop_name, tagline, listing_type, vendor_ref, vendor_name, address, loctaion_point_lat, loctaion_point_lng, phone_number_1, phone_number_2, email_address, approve, user, active)values
-                        ('" . $no1 . "' ,'" . $_GET['shop_name'] . "' ,'" . $_GET['tagline'] . "' ,'" . $_GET['listing_type'] . "' ,'" . $_GET['vendor_ref'] . "' ,'" . $_GET['vendor_name'] . "' ,'" . $_GET['address'] . "' ,'" . $_GET['loctaion_point_lat'] . "' ,'" . $_GET['loctaion_point_lng'] . "' ,'" . $_GET['phone_number_1'] . "' ,'" . $_GET['phone_number_2'] . "' ,'" . $_GET['email_address'] . "' ,'" . $_GET['approve'] . "' ,'" . $_SESSION['UserName'] . "','" . $_GET['active'] . "')";
+        $sql = "Insert into m_store(REF, shop_name, tagline, listing_type, vendor_ref, vendor_name, address, loctaion_point_lat, loctaion_point_lng, phone_number_1, phone_number_2, email_address, img_logo, approve, user, active)values
+                        ('" . $no1 . "' ,'" . $_GET['shop_name'] . "' ,'" . $_GET['tagline'] . "' ,'" . $_GET['listing_type'] . "' ,'" . $_GET['vendor_ref'] . "' ,'" . $_GET['vendor_name'] . "' ,'" . $_GET['address'] . "' ,'" . $_GET['loctaion_point_lat'] . "' ,'" . $_GET['loctaion_point_lng'] . "' ,'" . $_GET['phone_number_1'] . "' ,'" . $_GET['phone_number_2'] . "' ,'" . $_GET['email_address'] . "' ,'" . $_GET['store_logo'] . "' ,'" . $_GET['approve'] . "' ,'" . $_SESSION['UserName'] . "','" . $_GET['active'] . "')";
         $result = $conn->query($sql);
         
         
@@ -147,4 +149,70 @@ if ($_GET["Command"] == "getForm") {
 
     $ResponseXML .= "</salesdetails>";
     echo $ResponseXML;
+}
+
+
+if ($_GET["Command"] == "upload") {
+    
+    
+    // print_r($_FILES);
+    $target_dir = "uploads/store/logo/";
+    $filename = explode(".",$_FILES["fileToUpload"]["name"]);
+    
+    $uniq = uniqid();
+    
+    $filename =  $uniq.'.'.$filename[1];
+    // $_SESSION['store_logo'] = $filename;
+
+    $target_file = $target_dir . $filename;
+    // echo $target_file;
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+    // Check if image file is a actual image or fake image
+    if(isset($_POST["submit"])) {
+    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+    if($check !== false) {
+        echo "File is an image - " . $check["mime"] . ".";
+        $uploadOk = 1;
+    } else {
+        echo "File is not an image.";
+        $uploadOk = 0;
+    }
+    }
+
+    // Check if file already exists
+    if (file_exists($target_file)) {
+    echo "Sorry, file already exists.";
+    $uploadOk = 0;
+    }
+
+    // Check file size
+    if ($_FILES["fileToUpload"]["size"] > 500000) {
+    echo "Sorry, your file is too large.";
+    $uploadOk = 0;
+    }
+
+    // Allow certain file formats
+    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+    && $imageFileType != "gif" ) {
+    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+    $uploadOk = 0;
+    }
+
+    // Check if $uploadOk is set to 0 by an error
+    if ($uploadOk == 0) {
+    echo "Sorry, your file was not uploaded.";
+    // if everything is ok, try to upload file
+    } else {
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+        // echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+        echo $filename;
+    } else {
+        echo "Sorry, there was an error uploading your file.";
+    }
+    }
+
+
+
 }

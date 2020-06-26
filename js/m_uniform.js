@@ -297,3 +297,29 @@ function getFromValues()
     }
     
 }
+
+
+
+$("#store_file").on("change", function () {
+  var file_data = $("#store_file").prop("files")[0];
+  var form_data = new FormData();
+  form_data.append("fileToUpload", file_data);
+
+  $.ajax({
+    url: "m_uniform_data.php?Command=upload",
+    dataType: "script",
+    cache: false,
+    contentType: false,
+    processData: false,
+    data: form_data,
+    type: "post",
+    success: function (res) {
+      // alert(res);
+
+      // <img src="uploads/store/logo/5ef4ee67d7328.PNG" alt="" width="400" >
+      document.getElementById("img_path").innerHTML =
+        '<img src="uploads/item/uniforms/' + res + '" alt="" width="400" >';
+      document.getElementById("store_logo").value = res;
+    },
+  });
+});
