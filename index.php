@@ -48,6 +48,9 @@ if (isset($_GET['url'])) {
   if ($_GET['url'] == "registration"){
     include 'm_registration.php';
   }
+  if ($_GET['url'] == "student_verification"){
+    include 'm_student_verification.php';
+  }
   if ($_GET['url'] == "system_info"){
     include 'sys_info.php';
   }
