@@ -59,11 +59,10 @@ include_once './DB_connector.php';
                         <th>Reference</th>
                         <th>First Name</th>
                         <th>Last Name</th>
-                        <th>Guadian's Name</th>
                         <th>Address</th>
                         <th>Tel</th>
                         <th>Email</th>
-                        <th>Joined Date</th>
+                        
                     </tr>
                 </thead>
 
@@ -79,11 +78,9 @@ include_once './DB_connector.php';
                               <td onclick=\"getForm('$REF','$IDF');\">" . $REF . "</a></td>
                               <td onclick=\"getForm('$REF','$IDF');\">" . $row['first_name'] . "</a></td>
                               <td onclick=\"getForm('$REF','$IDF');\">" . $row['last_name'] . "</a></td>
-                              <td onclick=\"getForm('$REF','$IDF');\">" . $row['guardian_name'] . "</a></td>
                               <td onclick=\"getForm('$REF','$IDF');\">" . $row['address_1'] . "</a></td>
                               <td onclick=\"getForm('$REF','$IDF');\">" . $row['tel_1'] . "</a></td>
                               <td onclick=\"getForm('$REF','$IDF');\">" . $row['email'] . "</a></td>
-                              <td onclick=\"getForm('$REF','$IDF');\">" . $row['joineddate'] . "</a></td>
                              </tr>";
                 }
                 ?>

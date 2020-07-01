@@ -51,6 +51,11 @@ if (isset($_GET['url'])) {
   if ($_GET['url'] == "student_verification"){
     include 'm_student_verification.php';
   }
+  if ($_GET['url'] == "orders"){
+    include 'm_order.php';
+  }
+
+
   if ($_GET['url'] == "system_info"){
     include 'sys_info.php';
   }

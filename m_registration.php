@@ -38,42 +38,45 @@
                 <div class="form-group"></div>
                 <div class="form-group">
                   <div class="col-sm-2">
-                    <label for="first_name" >First name</label>
+                    <label for="first_name" >Name</label>
                     </div>
                     <div class="col-sm-2">
-                    <input type="text" class="form-control" id="first_name" placeholder="First name">
+                    <input type="text" class="form-control" id="first_name" placeholder="Name">
                     </div>
                   </div><br><br>
                   
                   <div class="form-group"></div>
-                  <div class="form-group">
+                  <div class="form-group" hidden>
                     <div class="col-sm-2">
                     <label for="last_name" >Last Name</label>
                     </div>
                     <div class="col-sm-2">
                     <input type="text" class="form-control" id="last_name" placeholder="Last Name">
                     </div>
-                  </div><br><br>
+                  </div>
+                  <!-- <br><br> -->
                   
                   <div class="form-group"></div>
-                  <div class="form-group">
+                  <div class="form-group" hidden>
                     <div class="col-sm-2">
                     <label for="guardian_name" >Guardian Name</label>
                     </div>
                     <div class="col-sm-2">
                     <input type="text" class="form-control" id="guardian_name" placeholder="Guardian Name">
                     </div>
-                  </div><br><br>
+                  </div>
+                  <!-- <br><br> -->
                   
                   <div class="form-group"></div>
-                  <div class="form-group">
+                  <div class="form-group" hidden>
                     <div class="col-sm-2">
                     <label for="guardian_tel" >Guardian Tel</label>
                     </div>
                     <div class="col-sm-2">
                     <input type="text" class="form-control" id="guardian_tel" placeholder="Guardian Tel">
                     </div>
-                  </div><br><br>
+                  </div>
+                  <!-- <br><br> -->
                   
                   <div class="form-group"></div>
                   <div class="form-group">
@@ -116,17 +119,18 @@
                   </div><br><br>
                   
                   <div class="form-group"></div>
-                  <div class="form-group">
+                  <div class="form-group" hidden>
                     <div class="col-sm-2">
                     <label for="sex" >Sex</label>
                     </div>
                     <div class="col-sm-2">
                     <input type="text" class="form-control" id="sex" placeholder="sex">
                     </div>
-                  </div><br><br>
+                  </div>
+                  <!-- <br><br> -->
                   
                   <div class="form-group"></div>
-                  <div class="form-group">
+                  <div class="form-group" hidden>
                     <div class="col-sm-2">
                     <label for="dob" >DOB</label>
                     </div>
@@ -139,7 +143,8 @@
                 </div>
                     </div>
                     
-                  </div><br><br>
+                  </div>
+                  <!-- <br><br> -->
                   
                   <div class="form-group"></div>
                   <div class="form-group">
@@ -152,34 +157,36 @@
                   </div><br><br>
                   
                   <div class="form-group"></div>
-                  <div class="form-group">
+                  <div class="form-group" hidden>
                     <div class="col-sm-2">
                     <label for="remark" >Remark</label>
                     </div>
                     <div class="col-sm-2">
                     <input type="text" class="form-control" id="remark" placeholder="Remark">
                     </div>
-                  </div><br><br>
+                  </div>
+                  <!-- <br><br> -->
                   
                   <div class="form-group"></div>
-                  <div class="form-group">
+                  <div class="form-group" hidden>
                     <div class="col-sm-2">
                     <label for="joineddate" >Joined Date</label>
                     </div>
                     <div class="col-sm-2">
                     <input type="text" class="form-control datepicker" value="<?php echo date("Y/m/d");?>" id="joineddate" placeholder="Joined Date">
                     </div>
-                  </div><br><br>
+                  </div>
+                  <!-- <br><br> -->
                 
-                  <div class="checkbox">
+                  <div class="checkbox" hidden>
                   <label>
-                    <input id="active" checked="" type="checkbox"> Active
+                    <input id="active" checked="" type="checkbox" hidden> <p hidden>Active </p>
                   </label>
                   </div>
 
-                  <div class="checkbox">
+                  <div class="checkbox" hidden>
                   <label>
-                    <input id="black_list" type="checkbox"> Black List
+                    <input id="black_list" type="checkbox" hidden> <p hidden>Black List </p>
                   </label>
                   </div>
 
