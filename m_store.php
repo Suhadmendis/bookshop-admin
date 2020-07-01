@@ -92,7 +92,7 @@
                   <div class="form-group">
                     <!-- <label>Select</label> -->
                     <select class="form-control" id="listing_type">
-                      <option value="BSS">Books and Stationeries Store</option>
+                      <option value="BKS">Books and Stationeries Store</option>
                       <option value="UC">Uniforms and Costumes Store</option>
                       <option value="AC">Arts and Crafts Store</option>
                     </select>
@@ -180,6 +180,20 @@
                 </div>
                 </div><br><br>
 
+                <div class="form-group"></div>
+                <div class="form-group">
+                <div class="col-sm-2">
+                  <label for="first_name">student verification</label>
+                </div>
+                <div class="col-sm-2">
+                  <div class="checkbox">
+                  <label>
+                    <input id="verify" type="checkbox"> verify needed
+                  </label>
+                  </div>
+                </div>
+                </div><br><br>
+
 
 
                 <div class="form-group"></div>
@@ -211,6 +225,7 @@
                 </div><br><br>
 
 
+                  
 
 
  

@@ -94,11 +94,25 @@ include_once './DB_connector.php';
                     }else{
                         $app = "Not Approved";
                     }
-                      
+                    
+                    $listing_type = "";
+                    if ($row['listing_type'] == "BKS") {
+                        $listing_type = "Books and Stationeries";
+                    }
+
+                    if ($row['listing_type'] == "UC") {
+                        $listing_type = "Uniforms and Costumes";
+                    }
+
+                    if ($row['listing_type'] == "AC") {
+                        $listing_type = "Arts and Crafts";
+                    }
+
+
                     echo "<tr>                
                               <td onclick=\"getForm('$REF','$IDF');\">" . $REF . "</a></td>
                               <td onclick=\"getForm('$REF','$IDF');\">" . $row['shop_name'] . "</a></td>
-                              <td onclick=\"getForm('$REF','$IDF');\">" . $row['listing_type'] . "</a></td>
+                              <td onclick=\"getForm('$REF','$IDF');\">" . $listing_type . "</a></td>
                               <td onclick=\"getForm('$REF','$IDF');\">" . $row['address'] . "</a></td>
                               <td onclick=\"getForm('$REF','$IDF');\">" . $row['phone_number_1'] . "</a></td>
                                <td onclick=\"getForm('$REF','$IDF');\">" . $app . "</a></td>

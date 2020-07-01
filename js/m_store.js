@@ -116,6 +116,11 @@ function save_info() {
   url = url + "&img_logo=" + document.getElementById("img_logo").value;
 
 
+  if (document.getElementById("verify").checked) {
+    url = url + "&verify=" + "1";
+  } else {
+    url = url + "&verify=" + "0";
+  }
   if (document.getElementById("approve").checked) {
     url = url + "&approve=" + "1";
   } else {
@@ -243,6 +248,12 @@ function getFromValues() {
         opener.document.getElementById("approve").checked = false;
       }
 
+
+      if (objSup.verify == "1") {
+        window.opener.document.getElementById("verify").checked = true;
+      } else {
+        window.opener.document.getElementById("verify").checked = false;
+      }
       if (objSup.approve == "1") {
         window.opener.document.getElementById("app_status").innerHTML =
           "Approved";
