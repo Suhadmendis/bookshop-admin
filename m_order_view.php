@@ -214,7 +214,7 @@ require_once ("DB_connector.php");
                     <div class="row">
                         <div class="col">
                             
-                                <img src="img/logo123.png" width="300" data-holder-rendered="true" />
+                                <img src="img/logo123.PNG" width="300" data-holder-rendered="true" />
                              
                         </div>
                         <div class="col company-details">
