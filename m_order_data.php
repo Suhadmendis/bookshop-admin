@@ -28,21 +28,6 @@ if ($_GET["Command"] == "generate") {
     $objArray = Array();
     array_push($objArray,$no,$en_name);
 
-// first_name1
-// second_name1
-// school1
-// std_id1
-// s1_approve
-// first_name2
-// second_name2
-// school2
-// std_id2
-// s2_approve
-// first_name3
-// second_name3
-// school3
-// std_id3
-// s3_approve
 
     $sql = "SELECT * FROM m_order where status = '0' or status = '1'";
     $result = $conn->query($sql);
