@@ -283,6 +283,9 @@ function getFromValues()
                 var cell5 = row.insertCell(4);
                 var cell6 = row.insertCell(5);
                 var cell7 = row.insertCell(6);
+                var cell8 = row.insertCell(7);
+                var cell9 = row.insertCell(8);
+                var cell10 = row.insertCell(9);
         
 
                 cell1.innerHTML = objSup.REF;
@@ -292,19 +295,38 @@ function getFromValues()
                 cell4.setAttribute("contentEditable","true");
                 cell4.setAttribute("style","background-color: antiquewhite");
 
+                cell4.setAttribute("onkeyup", "cal_discount(this,'SELL');");
 
 
-                cell5.innerHTML = objSup.quantity;
+                
                 cell5.setAttribute("contentEditable", "true");
                 cell5.setAttribute("style", "background-color: antiquewhite");
 
+                cell5.setAttribute("onkeyup", "cal_discount(this,'DISRS');");
+
+
+
+                
+                cell6.setAttribute("contentEditable", "true");
+                cell6.setAttribute("style", "background-color: antiquewhite");
+                cell6.setAttribute("onkeyup", "cal_discount(this,'DISPER');");
+
+
+                // var sell_dis = objSup[i].selling_price - objSup[i].discount;
+                // cell7.innerHTML = sell_dis.toFixed(2);
+
+
+                
+                cell8.setAttribute("contentEditable", "true");
+                cell8.setAttribute("style", "background-color: antiquewhite");
+
                 if (objSup.approve == 1){
-                    cell6.innerHTML = 'Approved';
+                    cell9.innerHTML = 'Approved';
                 }else{
-                    cell6.innerHTML = "Not Approved";
+                    cell9.innerHTML = "Not Approved";
                 }
             
-                cell7.innerHTML = '<input type="button" value="-" onclick="deleteRow(this)">';
+                cell10.innerHTML = '<input type="button" value="-" onclick="deleteRow(this)">';
             }else{
                 alert("Already Selected");
             }

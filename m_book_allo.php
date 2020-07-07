@@ -84,6 +84,9 @@
                         <th>Name</th>
                         <th>Description</th>
                         <th>Selling Price</th>
+                        <th>Discount (Rs.)</th>
+                        <th>Discount (%)</th>
+                        <th>Selling Price with Discount</th>
                         <th>Quantity</th>
                         <th>Approve</th>
                         <th>Remove</th>

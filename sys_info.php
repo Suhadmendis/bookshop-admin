@@ -121,6 +121,17 @@
                 </div><br><br>
 
 
+                <div class="form-group"></div>
+                <div class="form-group" >
+                <div class="col-sm-2">
+                  <label for="exampleInputEmail1" >Tax (Rs.)</label>
+                  </div>
+                  <div class="col-sm-3">
+                  <input type="text" class="form-control" id="COM_TAX" v-model="OBJ.COM_TAX" placeholder="Tax">
+                  </div>
+                </div><br><br>
+
+
 
 
 

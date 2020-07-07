@@ -104,7 +104,9 @@ function save_info()
     url = url + "&COM_TEL1=" + document.getElementById("COM_TEL1").value;
     url = url + "&COM_TEL2=" + document.getElementById("COM_TEL2").value;
     url = url + "&COM_FAX=" + document.getElementById("COM_FAX").value;
+    url = url + "&COM_TAX=" + document.getElementById("COM_TAX").value;
    
+    
     xmlHttp.onreadystatechange = salessaveresult;
     xmlHttp.open("GET", url, true);
     xmlHttp.send(null);

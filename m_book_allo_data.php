@@ -42,7 +42,60 @@ if ($_GET["Command"] == "generate") {
     // echo json_encode($objArray);
 }
 
+if ($_GET["Command"] == "item") {
+    $request_body = file_get_contents('php://input');
+    
+    $items = json_decode($request_body);
+    
+    // print_r($data);
 
+
+    try {
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conn->beginTransaction();
+        
+        $no = $_GET['store_ref'];
+
+
+        $sqldel = "delete from store_item_allocation where STORE_REF='" . $no . "'";
+        $result = $conn->query($sqldel);
+
+        for ($i=0; $i < sizeof($items); $i++) { 
+
+            $sql = "SELECT * FROM store_item_allocation where STORE_REF = '" . $no . "' and ITEM_REF = '" . $items[$i]->Reference . "'";
+            $result = $conn->query($sql);
+            $row = $result->fetch();
+
+            if ($row['STORE_REF'] == "") {
+                $sql = "Insert into store_item_allocation(STORE_REF, ITEM_REF ,selling_price ,quantity, discount)values
+                                ('" . $no . "','" . $items[$i]->Reference . "', '" . $items[$i]->{'Selling Price'} . "', '" . $items[$i]->{'Quantity'} . "', '" . $items[$i]->{'Discount (Rs.)'}  . "')";
+                $result = $conn->query($sql);
+            }else{
+                $sql = "update store_item_allocation set selling_price = '" . $items[$i]->{'Selling Price'} . "' where STORE_REF = '" . $no . "' and ITEM_REF = '" . $items[$i]->Reference . "'";
+                $result = $conn->query($sql);
+
+                $sql = "update store_item_allocation set quantity = '" . $items[$i]->Quantity . "' where STORE_REF = '" . $no . "' and ITEM_REF = '" . $items[$i]->Reference . "'";
+                $result = $conn->query($sql);
+
+                $sql = "update store_item_allocation set discount = '" . $items[$i]->{'Discount (Rs.)'} . "' where STORE_REF = '" . $no . "' and ITEM_REF = '" . $items[$i]->Reference . "'";
+                $result = $conn->query($sql);
+            }
+
+
+        }
+
+       
+
+        $conn->commit();
+        echo "Saved";
+    } catch (Exception $e) {
+        $conn->rollBack();
+        echo $e;
+    }
+
+
+
+}
 
 if ($_GET["Command"] == "save_item") {
 
@@ -54,7 +107,7 @@ if ($_GET["Command"] == "save_item") {
         $no = $_GET['store_ref'];
 
 
-         $items = json_decode($_GET['items'],true);
+        $items = json_decode($_GET['items'],true);
 
         for ($i=0; $i < sizeof($items); $i++) { 
 
@@ -63,14 +116,17 @@ if ($_GET["Command"] == "save_item") {
             $row = $result->fetch();
 
             if ($row['STORE_REF'] == "") {
-                $sql = "Insert into store_item_allocation(STORE_REF, ITEM_REF ,selling_price ,quantity)values
-                                ('" . $no . "','" . $items[$i]['Reference'] . "', '" . $items[$i]['Selling Price'] . "', '" . $items[$i]['Quantity'] . "')";
+                $sql = "Insert into store_item_allocation(STORE_REF, ITEM_REF ,selling_price ,quantity, discount)values
+                                ('" . $no . "','" . $items[$i]['Reference'] . "', '" . $items[$i]['Selling Price'] . "', '" . $items[$i]['Quantity'] . "', '" . $items[$i]['Discount (Rs.)'] . "')";
                 $result = $conn->query($sql);
             }else{
                 $sql = "update store_item_allocation set selling_price = '" . $items[$i]['Selling Price'] . "' where STORE_REF = '" . $no . "' and ITEM_REF = '" . $items[$i]['Reference'] . "'";
                 $result = $conn->query($sql);
 
                 $sql = "update store_item_allocation set quantity = '" . $items[$i]['Quantity'] . "' where STORE_REF = '" . $no . "' and ITEM_REF = '" . $items[$i]['Reference'] . "'";
+                $result = $conn->query($sql);
+
+                $sql = "update store_item_allocation set discount = '" . $items[$i]['Discount (Rs.)'] . "' where STORE_REF = '" . $no . "' and ITEM_REF = '" . $items[$i]['Reference'] . "'";
                 $result = $conn->query($sql);
             }
 

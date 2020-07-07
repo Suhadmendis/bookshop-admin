@@ -299,6 +299,7 @@ function getFromValues() {
     }
 
     if (IDF === "book_allo") {
+      
       opener.document.getElementById("store_ref").value = objSup.REF;
       opener.document.getElementById("store_name").value = objSup.shop_name;
 
@@ -320,7 +321,8 @@ function getFromValues() {
 
         var i;
         for (i = 0; i < objSub.length; i++) {
-          if (objSub[i].listtype == "BSK") {
+          // alert(objSub[i].listtype);
+        
             var row = table.insertRow(table.length);
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
@@ -329,27 +331,60 @@ function getFromValues() {
             var cell5 = row.insertCell(4);
             var cell6 = row.insertCell(5);
             var cell7 = row.insertCell(6);
+            var cell8 = row.insertCell(7);
+            var cell9 = row.insertCell(8);
+            var cell10 = row.insertCell(9);
 
             cell1.innerHTML = objSub[i].ITEM_REF;
             cell2.innerHTML = objSub[i].item_name;
             cell3.innerHTML = objSub[i].des;
+            
             cell4.innerHTML = objSub[i].selling_price;
             cell4.setAttribute("contentEditable", "true");
             cell4.setAttribute("style", "background-color: antiquewhite");
 
-            cell5.innerHTML = objSub[i].quantity;
+            cell4.setAttribute("onkeyup", "cal_discount(this,'SELL');");
+
+
+
+
+            cell5.innerHTML = objSub[i].discount;
             cell5.setAttribute("contentEditable", "true");
             cell5.setAttribute("style", "background-color: antiquewhite");
+            
+            cell5.setAttribute("onkeyup", "cal_discount(this,'DISRS');");
+
+
+            var temp1 = objSub[i].selling_price / 100;
+            var temp2 = objSub[i].discount / temp1;
+
+
+            cell6.innerHTML = temp2.toFixed(2);
+            cell6.setAttribute("contentEditable", "true");
+            cell6.setAttribute("style", "background-color: antiquewhite");
+            cell6.setAttribute("onkeyup", "cal_discount(this,'DISPER');");
+
+            var sell_dis = objSub[i].selling_price - objSub[i].discount;
+            cell7.innerHTML = sell_dis.toFixed(2);
+            // cell7.setAttribute("contentEditable", "true");
+            // cell7.setAttribute("style", "background-color: antiquewhite");
+
+
+
+
+            cell8.innerHTML = objSub[i].quantity;
+            cell8.setAttribute("contentEditable", "true");
+            cell8.setAttribute("style", "background-color: antiquewhite");
 
             if (objSub[i].approve == "1") {
-              cell6.innerHTML = "Approved";
+              cell9.innerHTML = "Approved";
             } else {
-              cell6.innerHTML = "Not Approved";
+              cell9.innerHTML = "Not Approved";
             }
 
-            cell7.innerHTML =
+            cell10.innerHTML =
               '<input type="button" value="-" onclick="deleteRow(this)">';
-          }
+          
         }
       }
     }
@@ -376,7 +411,7 @@ function getFromValues() {
 
         var i;
         for (i = 0; i < objSub.length; i++) {
-          if (objSub[i].listtype == "UC") {
+          
             var row = table.insertRow(table.length);
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
@@ -405,7 +440,7 @@ function getFromValues() {
 
             cell7.innerHTML =
               '<input type="button" value="-" onclick="deleteRow(this)">';
-          }
+          
         }
       }
     }
@@ -432,7 +467,7 @@ function getFromValues() {
 
         var i;
         for (i = 0; i < objSub.length; i++) {
-          if (objSub[i].listtype == "UC") {
+          
             var row = table.insertRow(table.length);
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
@@ -463,7 +498,7 @@ function getFromValues() {
               '<input type="button" value="-" onclick="deleteRow(this)">';
 
 
-          }
+          
         }
       }
     }

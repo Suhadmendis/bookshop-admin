@@ -67,6 +67,8 @@ if ($_GET["Command"] == "save_item") {
         $result = $conn->query($sql);
         $sql = "update sys_info set COM_FAX = '" . $_GET['COM_FAX'] . "'";
         $result = $conn->query($sql);
+        $sql = "update sys_info set COM_TAX = '" . $_GET['COM_TAX'] . "'";
+        $result = $conn->query($sql);
 
        
 
