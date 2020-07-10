@@ -6,11 +6,17 @@
  * and open the template in the editor.
  */
 
+// $servername = 'localhost';
+// $username = 'root';
+// $password = '';
+// $port = 3306;
+// $dbname = 'bookshop';
+
 $servername = 'localhost';
 $username = 'root';
 $password = '';
 $port = 3306;
-$dbname = 'bookshop';
+$dbname = 'bnb';
 
 
 // $servername = '162.252.83.203';

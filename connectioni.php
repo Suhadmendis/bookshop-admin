@@ -2,10 +2,15 @@
 
 
 
+// $GLOBALS['hostname'] = 'localhost';
+// $GLOBALS['username'] = 'root';
+// $GLOBALS['password'] = '';
+// $GLOBALS['db'] = 'bookshop';
+
 $GLOBALS['hostname'] = 'localhost';
 $GLOBALS['username'] = 'root';
 $GLOBALS['password'] = '';
-$GLOBALS['db'] = 'bookshop';
+$GLOBALS['db'] = 'bnb';
 
 // $GLOBALS['hostname'] = '162.252.83.203';
 // $GLOBALS['username'] = 'quotrolk';

@@ -104,8 +104,8 @@ function save_info()
     url = url + "&category_name=" + document.getElementById("category_name").value;
     url = url + "&item_name=" + document.getElementById("item_name").value;
     url = url + "&des=" + document.getElementById("des").value;
-    url = url + "&selling_price=" + document.getElementById("selling_price").value;
-    url = url + "&quantity=" + document.getElementById("quantity").value;
+    // url = url + "&selling_price=" + document.getElementById("selling_price").value;
+    // url = url + "&quantity=" + document.getElementById("quantity").value;
     
     url = url + "&img_logo=" + document.getElementById("img_logo").value;
 
@@ -224,8 +224,8 @@ function getFromValues()
             opener.document.getElementById('item_name').value = objSup.item_name;
             // opener.document.getElementById("isbn").value = objSup.isbn;
             opener.document.getElementById('des').value = objSup.des;
-            opener.document.getElementById('selling_price').value = objSup.selling_price;
-            opener.document.getElementById('quantity').value = objSup.quantity;
+            // opener.document.getElementById('selling_price').value = objSup.selling_price;
+            // opener.document.getElementById('quantity').value = objSup.quantity;
 
 
             if (objSup.approve == "1"){
@@ -239,6 +239,82 @@ function getFromValues()
               objSup.img +
               '" alt="" width="400" >';
             
+        }
+
+
+        if (IDF === "ADD_ARTS_AND_CRAFT") {
+          var rowCount = window.opener.document.getElementById("exampletable")
+            .rows.length;
+
+          var i;
+          var condition = "0";
+          for (i = 0; i < rowCount; i++) {
+            if (
+              window.opener.document.getElementById("exampletable").rows[i]
+                .cells[0].innerHTML == objSup.REF
+            ) {
+              condition = "1";
+            }
+          }
+
+          if (condition != 1) {
+            var table = window.opener.document.getElementById("exampletable");
+
+            var row = table.insertRow(table.length);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+            var cell6 = row.insertCell(5);
+            var cell7 = row.insertCell(6);
+            var cell8 = row.insertCell(7);
+            var cell9 = row.insertCell(8);
+            var cell10 = row.insertCell(9);
+
+            cell1.innerHTML = objSup.REF;
+            cell2.innerHTML = objSup.item_name;
+            cell3.innerHTML = objSup.item_name;
+            cell4.innerHTML = objSup.selling_price;
+            cell4.setAttribute("contentEditable", "true");
+            cell4.setAttribute("style", "background-color: antiquewhite");
+
+            cell4.setAttribute("onkeyup", "cal_discount(this,'SELL');");
+
+            cell5.setAttribute("contentEditable", "true");
+            cell5.setAttribute("style", "background-color: antiquewhite");
+
+            cell5.setAttribute("onkeyup", "cal_discount(this,'DISRS');");
+
+            cell6.setAttribute("contentEditable", "true");
+            cell6.setAttribute("style", "background-color: antiquewhite");
+            cell6.setAttribute("onkeyup", "cal_discount(this,'DISPER');");
+
+            // var sell_dis = objSup[i].selling_price - objSup[i].discount;
+            // cell7.innerHTML = sell_dis.toFixed(2);
+
+            cell8.setAttribute("contentEditable", "true");
+            cell8.setAttribute("style", "background-color: antiquewhite");
+
+            if (objSup.approve == 1) {
+              cell9.innerHTML = "Approved";
+            } else {
+              cell9.innerHTML = "Not Approved";
+            }
+
+            cell10.innerHTML =
+              '<input type="button" value="-" onclick="deleteRow(this)">';
+          } else {
+            alert("Already Selected");
+          }
+
+          //   if (objSup.approve == "1") {
+          //     window.opener.document.getElementById("app_status").innerHTML =
+          //       "Approved";
+          //   } else {
+          //     window.opener.document.getElementById("app_status").innerHTML =
+          //       "Not Approved";
+          //   }
         }
      
         self.close();

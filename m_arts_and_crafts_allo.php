@@ -49,11 +49,11 @@
                 <div class="form-group"></div>
                 <div class="form-group">
                 <div class="col-sm-2">
-                  <label for="first_name">Uniform</label>
+                  <label for="first_name">Arts and Crafts</label>
                 </div>
                 
                <div class="col-md-2">
-                    <a class="btn btn-default" onclick="window.open('search_m_uniform.php?IDF=ADD_UNIFORM', 'mywin', 'width=800, height=700');" class="btn btn-info btn-sm">Add Uniform</a>
+                    <a class="btn btn-default" onclick="window.open('search_m_arts_and_crafts.php?IDF=ADD_ARTS_AND_CRAFT', 'mywin', 'width=800, height=700');" class="btn btn-info btn-sm">Add Arts and Crafts</a>
                   </div>
                 </div><br><br>
 
@@ -84,6 +84,9 @@
                         <th>Name</th>
                         <th>Description</th>
                         <th>Selling Price</th>
+                        <th>Discount (Rs.)</th>
+                        <th>Discount (%)</th>
+                        <th>Selling Price with Discount</th>
                         <th>Quantity</th>
                         <th>Approve</th>
                         <th>Remove</th>

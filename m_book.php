@@ -61,8 +61,8 @@
                                 <option value="SYL">Syllabus</option>
                                 <option value="STA">Stationeries</option>
                                 <option value="TB">Text Books</option>
-                                <option value="CB">Course Books</option>
-                                <option value="PB">Practical Books</option>
+                                <option value="NO">Novels</option>
+                                <option value="KI">Kids</option>
                             </select>
                         </div>
                     </div>

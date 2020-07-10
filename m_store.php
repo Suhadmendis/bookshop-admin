@@ -91,10 +91,31 @@
                   <!-- <input type="text" class="form-control" id="listing_type" placeholder="Type"> -->
                   <div class="form-group">
                     <!-- <label>Select</label> -->
-                    <select class="form-control" id="listing_type">
-                      <option value="BKS">Books and Stationeries Store</option>
+                    <select class="form-control" id="listing_type" v-model="selectType" @change="setSubTypes" >
+                      <option :value="type.value" v-for="type in TYPES">{{ type.name }}</option>      
+                      <!-- <option value="BKS">Books and Stationeries Store</option>
                       <option value="UC">Uniforms and Costumes Store</option>
-                      <option value="AC">Arts and Crafts Store</option>
+                      <option value="AC">Arts and Crafts Store</option> -->
+                    </select>
+                  </div>
+                </div>
+                </div><br><br>
+
+
+                <div class="form-group"></div>
+                <div class="form-group">
+                <div class="col-sm-2">
+                  <label for="first_name">Sub Type</label>
+                </div>
+                <div class="col-sm-3">
+                  <!-- <input type="text" class="form-control" id="listing_type" placeholder="Type"> -->
+                  <div class="form-group">
+                    <!-- <label>Select</label> -->
+                    <select class="form-control" id="sub_listing_type">
+                      <option :value="subtype.value" v-for="subtype in SUBTYPES">{{ subtype.name }}</option>      
+                      <!-- <option value="BKS">Books and Stationeries Store</option>
+                      <option value="UC">Uniforms and Costumes Store</option>
+                      <option value="AC">Arts and Crafts Store</option> -->
                     </select>
                   </div>
                 </div>

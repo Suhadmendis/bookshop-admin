@@ -111,13 +111,9 @@
                         <div class="form-group">
                             <!-- <label>Select</label> -->
                             <select class="form-control" id="category_name">
-                                <option value="PA">Portrait Art</option>
-                                <option value="P">Painting</option>
-                                <option value="TC">Textile Crafts</option>
-                                <option value="PC">Paper Crafts</option>
-                                <option value="DC">Decorative Crafts</option>
-                                <option value="FSC">Fashion Crafts</option>
-                                <option value="FUC">Functional Crafts</option>
+                                <option value="PAP">Paper n Board</option>
+                                <option value="PAI">Paints n Brushes</option>
+                                <option value="CRA">Crafts</option>
                             </select>
                         </div>
                     </div>
@@ -127,7 +123,7 @@
                 <div class="form-group"></div>
                 <div class="form-group">
                     <div class="col-sm-2">
-                        <label for="first_name" >Item Name</label>
+                        <label for="first_name">Item Name</label>
                     </div>
                     <div class="col-sm-2">
                         <input type="text" class="form-control" id="item_name" placeholder="Item Name">
@@ -147,7 +143,7 @@
                     </div>
                 </div><br><br><br><br>
 
-                <div class="form-group"></div>
+                <!-- <div class="form-group"></div>
                 <div class="form-group">
                     <div class="col-sm-2">
                         <label for="first_name" >Selling Price/Unit</label>
@@ -166,7 +162,7 @@
                     <div class="col-sm-2">
                         <input type="number" class="form-control" id="quantity" placeholder="Quantity">
                     </div>
-                </div><br><br>
+                </div><br><br> -->
 
 
                 <div class="form-group"></div>

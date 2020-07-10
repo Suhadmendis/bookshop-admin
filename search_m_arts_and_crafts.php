@@ -65,7 +65,7 @@ include_once './DB_connector.php';
                         <th>Reference</th>
                         <th>Category</th>
                         <th>Name</th>
-                        <th>Selling Price</th>
+                        <!-- <th>Selling Price</th> -->
                         <th>Approve</th>
                         <!-- not approve -->
                     </tr>
@@ -94,7 +94,7 @@ include_once './DB_connector.php';
                               <td onclick=\"getForm('$REF','$IDF');\">" . $REF . "</a></td>
                               <td onclick=\"getForm('$REF','$IDF');\">" . $row['category_name'] . "</a></td>
                               <td onclick=\"getForm('$REF','$IDF');\">" . $row['item_name'] . "</a></td>
-                              <td onclick=\"getForm('$REF','$IDF');\">" . $row['selling_price'] . "</a></td>
+                              
 
                               <td onclick=\"getForm('$REF','$IDF');\">" . $app . "</a></td>
                              </tr>";

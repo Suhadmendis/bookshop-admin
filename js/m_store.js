@@ -3,12 +3,99 @@ var vue = new Vue({
   data: {
     en_name: "",
     REF: "",
+    selectType: "",
+    TYPES: [
+      {
+        value: "BKS",
+        name: "Books and Stationeries Store",
+        sub: [],
+      },
+      {
+        value: "UC",
+        name: "Uniforms and Costumes Store",
+        sub: [
+          {
+            value: "UNI",
+            name: "Uniforms",
+          },
+          {
+            value: "COS",
+            name: "Costumes",
+          },
+          {
+            value: "FOO",
+            name: "Footwear",
+          },
+        ],
+      },
+      {
+        value: "AC",
+        name: "Arts and Crafts Store",
+        sub: [],
+      },
+      {
+        value: "ES",
+        name: "Events n Snacks",
+        sub: [
+          {
+            value: "SNA",
+            name: "Snacks",
+          },
+          {
+            value: "DEC",
+            name: "Decor",
+          },
+        ],
+      },
+      {
+        value: "HS",
+        name: "Health n Sports",
+        sub: [
+          {
+            value: "HEA",
+            name: "Health",
+          },
+          {
+            value: "SPO",
+            name: "Sports",
+          },
+        ],
+      },
+      {
+        value: "TG",
+        name: "Toys n Gifts",
+        sub: [
+          {
+            value: "CAR",
+            name: "Cards",
+          },
+          {
+            value: "FLO",
+            name: "Flowers",
+          },
+          {
+            value: "TOY",
+            name: "Toys",
+          },
+        ],
+      },
+    ],
+    SUBTYPES: "",
   },
   mounted() {
     axios.get("m_store_data.php?Command=generate").then((response) => {
       this.en_name = response.data[1];
       this.REF = response.data[0];
     });
+  },
+  methods: {
+    setSubTypes: function () {
+      for (let index = 0; index < this.TYPES.length; index++) {
+        if (this.TYPES[index].value == this.selectType) {
+          this.SUBTYPES = this.TYPES[index].sub;
+        }
+      }
+    },
   },
 });
 
@@ -92,6 +179,7 @@ function save_info() {
   url = url + "&shop_name=" + document.getElementById("shop_name").value;
   url = url + "&tagline=" + document.getElementById("tagline").value;
   url = url + "&listing_type=" + document.getElementById("listing_type").value;
+  url = url + "&sub_listing_type=" + document.getElementById("sub_listing_type").value;
   url = url + "&vendor_ref=" + document.getElementById("vendor_ref").value;
   url = url + "&vendor_name=" + document.getElementById("vendor_name").value;
 
@@ -476,27 +564,51 @@ function getFromValues() {
             var cell5 = row.insertCell(4);
             var cell6 = row.insertCell(5);
             var cell7 = row.insertCell(6);
+            var cell8 = row.insertCell(7);
+            var cell9 = row.insertCell(8);
+            var cell10 = row.insertCell(9);
 
             cell1.innerHTML = objSub[i].ITEM_REF;
             cell2.innerHTML = objSub[i].item_name;
             cell3.innerHTML = objSub[i].des;
+
             cell4.innerHTML = objSub[i].selling_price;
             cell4.setAttribute("contentEditable", "true");
             cell4.setAttribute("style", "background-color: antiquewhite");
 
-            cell5.innerHTML = objSub[i].quantity;
+            cell4.setAttribute("onkeyup", "cal_discount(this,'SELL');");
+
+            cell5.innerHTML = objSub[i].discount;
             cell5.setAttribute("contentEditable", "true");
             cell5.setAttribute("style", "background-color: antiquewhite");
 
+            cell5.setAttribute("onkeyup", "cal_discount(this,'DISRS');");
+
+            var temp1 = objSub[i].selling_price / 100;
+            var temp2 = objSub[i].discount / temp1;
+
+            cell6.innerHTML = temp2.toFixed(2);
+            cell6.setAttribute("contentEditable", "true");
+            cell6.setAttribute("style", "background-color: antiquewhite");
+            cell6.setAttribute("onkeyup", "cal_discount(this,'DISPER');");
+
+            var sell_dis = objSub[i].selling_price - objSub[i].discount;
+            cell7.innerHTML = sell_dis.toFixed(2);
+            // cell7.setAttribute("contentEditable", "true");
+            // cell7.setAttribute("style", "background-color: antiquewhite");
+
+            cell8.innerHTML = objSub[i].quantity;
+            cell8.setAttribute("contentEditable", "true");
+            cell8.setAttribute("style", "background-color: antiquewhite");
+
             if (objSub[i].approve == "1") {
-              cell6.innerHTML = "Approved";
+              cell9.innerHTML = "Approved";
             } else {
-              cell6.innerHTML = "Not Approved";
+              cell9.innerHTML = "Not Approved";
             }
 
-            cell7.innerHTML =
+            cell10.innerHTML =
               '<input type="button" value="-" onclick="deleteRow(this)">';
-
 
           
         }
