@@ -86,6 +86,14 @@ if (isset($_GET['url'])) {
   if ($_GET['url'] == "uniform"){
     include 'm_uniform.php';
   }
+  if ($_GET['url'] == "health_and_sports"){
+    include 'm_health_and_sports.php';
+  }
+  if ($_GET['url'] == "snacks_and_deco"){
+    include 'm_snacks_and_deco.php';
+  }
+
+
 
 
   if ($_GET['url'] == "book_allo"){
