@@ -72,16 +72,34 @@
                 <div class="form-group"></div>
                 <div class="form-group">
                     <div class="col-sm-2">
+                        <label for="first_name" >Type </label>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <!-- <label>Select</label> -->
+                            <select class="form-control" id="category_name12" v-model="selectType" @change="setSubTypes" >
+                
+                                <option :value="type.value" v-for="type in TYPES">{{ type.name }}</option>     
+                            </select>
+                        </div>
+                    </div>
+                </div><br><br>
+
+
+                <div class="form-group"></div>
+                <div class="form-group">
+                    <div class="col-sm-2">
                         <label for="first_name" >Category </label>
                     </div>
                     <div class="col-sm-3">
                         <div class="form-group">
                             <!-- <label>Select</label> -->
                             <select class="form-control" id="category_name">
-                                <option value="UN">Uniforms</option>
-                                <option value="SC">Sports Clothing</option>
-                                <option value="C">Costumes</option>
-                                <option value="CC">Concert Clothing</option>
+                            <option :value="subtype.value" v-for="subtype in SUBTYPES">{{ subtype.name }}</option>      
+                                <!-- <option value="MAL">Male</option>
+                                
+                                <option value="FEM">Female</option>
+                                <option value="ACC">Accessories</option> -->
                                 
                             </select>
                         </div>

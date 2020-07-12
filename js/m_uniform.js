@@ -1,17 +1,82 @@
 var vue = new Vue({
-  el: '#app',
+  el: "#app",
   data: {
-    en_name: '',
-    REF: ''    
+    en_name: "",
+    REF: "",
+    selectType: "",
+    SUBTYPES: "",
+    TYPES: [
+      {
+        value: "UNIF",
+        name: "Uniforms",
+        sub: [
+          {
+            value: "UMAL",
+            name: "Male",
+          },
+          {
+            value: "UFEM",
+            name: "Female",
+          },
+          {
+            value: "UACC",
+            name: "Accessories",
+          },
+        ],
+      },
+      {
+        value: "COST",
+        name: "Costumes",
+        sub: [
+          {
+            value: "CFOR",
+            name: "Formal Wear",
+          },
+          {
+            value: "CTHE",
+            name: "Themed Costumes",
+          },
+          {
+            value: "ACC",
+            name: "Accessories",
+          },
+        ],
+      },
+      {
+        value: "FOOT",
+        name: "Footwear",
+        sub: [
+          {
+            value: "FMAL",
+            name: "Male",
+          },
+          {
+            value: "FFEM",
+            name: "Female",
+          },
+          {
+            value: "FACC",
+            name: "Accessories",
+          },
+        ],
+      },
+    ],
   },
-    mounted () {
-        axios
-          .get('m_uniform_data.php?Command=generate')
-          .then(response => {
-            this.en_name = response.data[1]
-            this.REF = response.data[0]
-        })
-    }
+  mounted() {
+    axios.get("m_uniform_data.php?Command=generate").then((response) => {
+      this.en_name = response.data[1];
+      this.REF = response.data[0];
+    });
+  },
+  methods: {
+    setSubTypes: function () {
+      for (let index = 0; index < this.TYPES.length; index++) {
+        if (this.TYPES[index].value == this.selectType) {
+          this.SUBTYPES = this.TYPES[index].sub;
+        }
+      }
+    },
+  },
 });
 
 function GetXmlHttpObject() {
@@ -262,6 +327,9 @@ function getFromValues()
             var cell5 = row.insertCell(4);
             var cell6 = row.insertCell(5);
             var cell7 = row.insertCell(6);
+            var cell8 = row.insertCell(7);
+            var cell9 = row.insertCell(8);
+            var cell10 = row.insertCell(9);
 
             cell1.innerHTML = objSup.REF;
             cell2.innerHTML = objSup.item_name;
@@ -270,17 +338,30 @@ function getFromValues()
             cell4.setAttribute("contentEditable", "true");
             cell4.setAttribute("style", "background-color: antiquewhite");
 
-            cell5.innerHTML = objSup.quantity;
+            cell4.setAttribute("onkeyup", "cal_discount(this,'SELL');");
+
             cell5.setAttribute("contentEditable", "true");
             cell5.setAttribute("style", "background-color: antiquewhite");
 
+            cell5.setAttribute("onkeyup", "cal_discount(this,'DISRS');");
+
+            cell6.setAttribute("contentEditable", "true");
+            cell6.setAttribute("style", "background-color: antiquewhite");
+            cell6.setAttribute("onkeyup", "cal_discount(this,'DISPER');");
+
+            // var sell_dis = objSup[i].selling_price - objSup[i].discount;
+            // cell7.innerHTML = sell_dis.toFixed(2);
+
+            cell8.setAttribute("contentEditable", "true");
+            cell8.setAttribute("style", "background-color: antiquewhite");
+
             if (objSup.approve == 1) {
-              cell6.innerHTML = "Approved";
+              cell9.innerHTML = "Approved";
             } else {
-              cell6.innerHTML = "Not Approved";
+              cell9.innerHTML = "Not Approved";
             }
 
-            cell7.innerHTML =
+            cell10.innerHTML =
               '<input type="button" value="-" onclick="deleteRow(this)">';
           } else {
             alert("Already Selected");

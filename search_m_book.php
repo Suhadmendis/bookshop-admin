@@ -90,9 +90,30 @@ include_once './DB_connector.php';
                         $app = "Not Approved";
                     }
 
+                $category_name = "";
+
+                if ($row['category_name'] == "SYL") {
+                    $category_name = "Syllabus";
+                }
+                if ($row['category_name'] == "STA") {
+                    $category_name = "Stationeries";
+                }
+                if ($row['category_name'] == "TB") {
+                    $category_name = "Text Books";
+                }
+                if ($row['category_name'] == "NO") {
+                    $category_name = "Novels";
+                }
+                if ($row['category_name'] == "KI") {
+                    $category_name = "Kids";
+                }
+
+
+
+
                     echo "<tr>                
                               <td onclick=\"getForm('$REF','$IDF');\">" . $REF . "</a></td>
-                              <td onclick=\"getForm('$REF','$IDF');\">" . $row['category_name'] . "</a></td>
+                              <td onclick=\"getForm('$REF','$IDF');\">" . $category_name . "</a></td>
                               <td onclick=\"getForm('$REF','$IDF');\">" . $row['item_name'] . "</a></td>
                               <td onclick=\"getForm('$REF','$IDF');\">" . $row['selling_price'] . "</a></td>
 

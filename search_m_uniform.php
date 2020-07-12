@@ -90,9 +90,49 @@ include_once './DB_connector.php';
                         $app = "Not Approved";
                     }
 
+
+                    $category_name = "";
+
+                if ($row['category_name'] == "UMAL") {
+                    $category_name = "Male";
+                }
+                if ($row['category_name'] == "UFEM") {
+                    $category_name = "Female";
+                }
+                if ($row['category_name'] == "UACC") {
+                    $category_name = "Accessories";
+                }
+
+
+                if ($row['category_name'] == "CFOR") {
+                    $category_name = "Formal Wear";
+                }
+                if ($row['category_name'] == "CTHE") {
+                    $category_name = "Themed Costumes";
+                }
+                if ($row['category_name'] == "ACC") {
+                    $category_name = "Accessories";
+                }
+
+
+                if ($row['category_name'] == "FMAL") {
+                    $category_name = "Male";
+                }
+                if ($row['category_name'] == "FFEM") {
+                    $category_name = "Female";
+                }
+                if ($row['category_name'] == "FACC") {
+                    $category_name = "Accessories";
+                }
+               
+
+
+
+
+
                     echo "<tr>                
                               <td onclick=\"getForm('$REF','$IDF');\">" . $REF . "</a></td>
-                              <td onclick=\"getForm('$REF','$IDF');\">" . $row['category_name'] . "</a></td>
+                              <td onclick=\"getForm('$REF','$IDF');\">" . $category_name . "</a></td>
                               <td onclick=\"getForm('$REF','$IDF');\">" . $row['item_name'] . "</a></td>
                               <td onclick=\"getForm('$REF','$IDF');\">" . $row['selling_price'] . "</a></td>
 

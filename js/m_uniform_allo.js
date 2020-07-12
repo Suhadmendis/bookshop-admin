@@ -498,3 +498,60 @@ function deleteRow(r) {
 
   qtyTot();
 }
+
+
+
+
+function cal_discount(element, flag) {
+  var row = element.parentElement;
+
+  var SELL = row.cells[3];
+  var DISRS = row.cells[4];
+  var DISPER = row.cells[5];
+  var SELL_DIS = row.cells[6];
+
+  var NUM_SELL = parseFloat(row.cells[3].innerHTML) || 0;
+  var NUM_DISRS = parseFloat(row.cells[4].innerHTML) || 0;
+  var NUM_DISPER = parseFloat(row.cells[5].innerHTML) || 0;
+  var NUM_SELL_DIS = parseFloat(row.cells[6].innerHTML) || 0;
+
+  if (flag == "SELL") {
+    if (NUM_SELL < NUM_DISRS) {
+      SELL.innerHTML = NUM_DISRS;
+      SELL_DIS.innerHTML = parseFloat(SELL.innerHTML) - NUM_DISRS;
+    } else {
+      SELL_DIS.innerHTML = NUM_SELL - NUM_DISRS;
+    }
+  }
+
+  if (flag == "DISRS") {
+    if (NUM_DISRS > NUM_SELL) {
+      DISRS.innerHTML = 0;
+      DISPER.innerHTML = 0;
+      SELL_DIS.innerHTML = NUM_SELL - parseFloat(DISRS.innerHTML) || 0;
+    } else {
+      SELL_DIS.innerHTML = NUM_SELL - NUM_DISRS;
+
+      var tempcal1 = NUM_SELL / 100;
+      var tempcal2 = NUM_DISRS / tempcal1;
+
+      DISPER.innerHTML = tempcal2.toFixed(1);
+    }
+  }
+
+  if (flag == "DISPER") {
+    if (NUM_DISPER >= 100) {
+      DISRS.innerHTML = 0;
+      DISPER.innerHTML = 0;
+      SELL_DIS.innerHTML = SELL.innerHTML;
+    } else {
+      var tempcal1 = NUM_SELL / 100;
+
+      var tempcal2 = tempcal1 * NUM_DISPER;
+      DISRS.innerHTML = tempcal2.toFixed(2);
+
+      var tempcal3 = NUM_SELL - tempcal2;
+      SELL_DIS.innerHTML = tempcal3.toFixed(2);
+    }
+  }
+}
