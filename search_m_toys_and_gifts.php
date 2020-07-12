@@ -29,7 +29,7 @@ include_once './DB_connector.php';
             <script language="JavaScript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
             <script language="JavaScript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
-            <script language="JavaScript" src="js/m_snacks_and_deco.js"></script>
+            <script language="JavaScript" src="js/m_health_and_sports.js"></script>
 
 
 
@@ -75,7 +75,7 @@ include_once './DB_connector.php';
                 <?php
 
                 
-                $sql = "SELECT * from m_item where listtype = 'SNA'";
+                $sql = "SELECT * from m_item where listtype = 'HEL'";
               
 
               
@@ -93,17 +93,17 @@ include_once './DB_connector.php';
 
                     $category_name = "";
 
-                    if ($row['category_name'] == "CAKE") {
-                        $category_name = "Cakes";
+                    if ($row['category_name'] == "SPOR") {
+                        $category_name = "Sports Equipment";
                     }
-                    if ($row['category_name'] == "SWEE") {
-                        $category_name = "Sweets";
+                    if ($row['category_name'] == "CLOT") {
+                        $category_name = "Clothes";
                     }
-                    if ($row['category_name'] == "SAVO") {
-                        $category_name = "Savories";
+                    if ($row['category_name'] == "SHOE") {
+                        $category_name = "Shoes";
                     }
-                    if ($row['category_name'] == "CATE") {
-                        $category_name = "Catering";
+                    if ($row['category_name'] == "ACCE") {
+                        $category_name = "Accessories";
                     }
             
                     echo "<tr>                

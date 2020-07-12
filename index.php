@@ -92,6 +92,9 @@ if (isset($_GET['url'])) {
   if ($_GET['url'] == "snacks_and_deco"){
     include 'm_snacks_and_deco.php';
   }
+  if ($_GET['url'] == "toys_and_gifts"){
+    include 'm_toys_and_gifts.php';
+  }
 
 
 
