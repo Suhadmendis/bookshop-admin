@@ -29,7 +29,7 @@ include_once './DB_connector.php';
             <script language="JavaScript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
             <script language="JavaScript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
-            <script language="JavaScript" src="js/m_health_and_sports.js"></script>
+            <script language="JavaScript" src="js/m_toys_and_gifts.js"></script>
 
 
 
@@ -75,7 +75,7 @@ include_once './DB_connector.php';
                 <?php
 
                 
-                $sql = "SELECT * from m_item where listtype = 'HEL'";
+                $sql = "SELECT * from m_item where listtype = 'TOY'";
               
 
               
@@ -93,19 +93,36 @@ include_once './DB_connector.php';
 
                     $category_name = "";
 
-                    if ($row['category_name'] == "SPOR") {
-                        $category_name = "Sports Equipment";
+
+                    if ($row['category_name'] == "BIRT") {
+                        $category_name = "Birthday";
                     }
-                    if ($row['category_name'] == "CLOT") {
-                        $category_name = "Clothes";
+                    if ($row['category_name'] == "THAN") {
+                        $category_name = "Thank You";
                     }
-                    if ($row['category_name'] == "SHOE") {
-                        $category_name = "Shoes";
+                    if ($row['category_name'] == "ANNI") {
+                        $category_name = "Anniversary";
                     }
-                    if ($row['category_name'] == "ACCE") {
-                        $category_name = "Accessories";
+                    if ($row['category_name'] == "SPEC") {
+                        $category_name = "Special Days";
                     }
-            
+                    if ($row['category_name'] == "WRAP") {
+                        $category_name = "Wrapping Papers";
+                    }
+                    if ($row['category_name'] == "BOYS") {
+                        $category_name = "Boys";
+                    }
+                    if ($row['category_name'] == "GIRLS") {
+                        $category_name = "Girls";
+                    }
+                    if ($row['category_name'] == "KIDS") {
+                        $category_name = "Kids";
+                    }
+                    if ($row['category_name'] == "OTHE") {
+                        $category_name = "Other";
+                    }
+
+
                     echo "<tr>                
                               <td onclick=\"getForm('$REF','$IDF');\">" . $REF . "</a></td>
                               <td onclick=\"getForm('$REF','$IDF');\">" . $category_name . "</a></td>

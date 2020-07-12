@@ -276,7 +276,7 @@ function getFromValues()
         }
 
 
-        if (IDF === "ADD_UNIFORM") {
+        if (IDF === "ADD_HEALTH") {
           var rowCount = window.opener.document.getElementById("exampletable")
             .rows.length;
 
@@ -291,6 +291,7 @@ function getFromValues()
             }
           }
 
+          
           if (condition != 1) {
             var table = window.opener.document.getElementById("exampletable");
 

@@ -109,6 +109,19 @@ if (isset($_GET['url'])) {
     include 'm_uniform_allo.php';
   }
 
+  
+  if ($_GET['url'] == "health_and_sports_allo"){
+    include 'm_health_and_sports_allo.php';
+  }
+  if ($_GET['url'] == "snacks_and_deco_allo"){
+    include 'm_snacks_and_deco_allo.php';
+  }
+  if ($_GET['url'] == "toys_and_gifts_allo"){
+    include 'm_toys_and_gifts_allo.php';
+  }
+
+
+
 
 
 
