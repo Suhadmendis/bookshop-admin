@@ -6,7 +6,7 @@ var vue = new Vue({
   },
     mounted () {
         // axios
-        //   .get('m_health_and_sports_allo_data.php?Command=generate')
+        //   .get('m_snacks_and_deco_allo_data.php?Command=generate')
         //   .then(response => {
         //     this.en_name = response.data[1];
         //     this.REF = response.data[0];
@@ -175,7 +175,7 @@ function save_info()
   //     return false;
   // }
 
-  var url = "m_health_and_sports_allo_data.php";
+  var url = "m_snacks_and_deco_allo_data.php";
   url = url + "?Command=" + "item";
   url = url + "&store_ref=" + document.getElementById("store_ref").value;
   // url = url + "&player_ref=" + document.getElementById("player_ref").value;
@@ -238,7 +238,7 @@ function getForm(REF, IDF)
         alert("Browser does not support HTTP Request");
         return;
     }
-    var url = "m_health_and_sports_allo_data.php";
+    var url = "m_snacks_and_deco_allo_data.php";
     url = url + "?Command=" + "getForm";
     url = url + "&REF=" + REF;
     url = url + "&IDF=" + IDF;
@@ -407,7 +407,7 @@ function setApprove(ref, ele){
         return false;
     }
 
-    var url = "m_health_and_sports_allo_data.php";
+    var url = "m_snacks_and_deco_allo_data.php";
     url = url + "?Command=" + "setapprove";
     url = url + "&REF=" + ref;
     if (ele.checked){
@@ -454,7 +454,7 @@ function approve() {
         return false;
     }
 
-    var url = "m_health_and_sports_allo_data.php";
+    var url = "m_snacks_and_deco_allo_data.php";
     url = url + "?Command=" + "approve";
     url = url + "&REF=" + document.getElementById("REF").value;
 

@@ -82,6 +82,8 @@ include_once './DB_connector.php';
                     $sql = "SELECT * from m_store where listing_type = 'AC'";
                 }else if($IDF == "health_allo"){
                     $sql = "SELECT * from m_store where listing_type = 'HS'";
+                }else if($IDF == "snacks_allo"){
+                    $sql = "SELECT * from m_store where listing_type = 'ES'";
                 }else{
                     $sql = "SELECT * from m_store";
                 }
