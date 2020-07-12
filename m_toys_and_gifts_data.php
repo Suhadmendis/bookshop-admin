@@ -23,7 +23,7 @@ if ($_GET["Command"] == "generate") {
     $no = trim("ITEM/") . substr($tmpinvno, $lenth - 7);
 
 
-    $en_name = "Health and Sports";
+    $en_name = "Toys and Gifts";
 
     $objArray = Array();
     array_push($objArray,$no,$en_name);
@@ -56,7 +56,7 @@ if ($_GET["Command"] == "save_item") {
 
 
         $sql = "Insert into m_item(REF, category_name, school_ref, school_name, item_name, des, user, listtype,img)values
-                        ('" . $no1 . "' ,'" . $_GET['category_name'] . "' ,'" . $_GET['school_ref'] . "' ,'" . $_GET['school_name'] . "'  ,'" . $_GET['item_name'] . "' ,'" . $_GET['des'] . "', '" . $_SESSION['UserName'] . "','HEL','" . $_GET['img_logo'] . "')";
+                        ('" . $no1 . "' ,'" . $_GET['category_name'] . "' ,'" . $_GET['school_ref'] . "' ,'" . $_GET['school_name'] . "'  ,'" . $_GET['item_name'] . "' ,'" . $_GET['des'] . "', '" . $_SESSION['UserName'] . "','TOY','" . $_GET['img_logo'] . "')";
         $result = $conn->query($sql);
        
         $no2 = $no + 1;
@@ -134,7 +134,7 @@ if ($_GET["Command"] == "upload") {
     
     
     // print_r($_FILES);
-    $target_dir = "uploads/item/health/";
+    $target_dir = "uploads/item/toy/";
     $filename = explode(".",$_FILES["fileToUpload"]["name"]);
     
     $uniq = uniqid();

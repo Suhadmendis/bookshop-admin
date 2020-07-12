@@ -7,41 +7,65 @@ var vue = new Vue({
     SUBTYPES: "",
     TYPES: [
       {
-        value: "HEAL",
-        name: "Health",
+        value: "CARD",
+        name: "Cards",
+        sub: [
+          {
+            value: "BIRT",
+            name: "Birthday",
+          },
+          {
+            value: "THAN",
+            name: "Thank You",
+          },
+          {
+            value: "ANNI",
+            name: "Anniversary",
+          },
+          {
+            value: "SPEC",
+            name: "Special Days",
+          },
+          {
+            value: "WRAP",
+            name: "Wrapping Papers",
+          },
+        ],
+      },
+      {
+        value: "FLOW",
+        name: "Flowers",
         sub: [],
       },
       {
-        value: "SPOR",
-        name: "Sports",
+        value: "TOYS",
+        name: "Toys",
         sub: [
           {
-            value: "SPOR",
-            name: "Sports Equipment",
+            value: "BOYS",
+            name: "Boys",
           },
           {
-            value: "CLOT",
-            name: "Clothes",
+            value: "GIRLS",
+            name: "Girls",
           },
           {
-            value: "SHOE",
-            name: "Shoes",
+            value: "KIDS",
+            name: "Kids",
           },
           {
-            value: "ACCE",
-            name: "Accessories",
+            value: "OTHE",
+            name: "Other",
           },
         ],
-      }
+      },
     ],
   },
   mounted() {
-    axios
-      .get("m_health_and_sports_data.php?Command=generate")
-      .then((response) => {
-        this.en_name = response.data[1];
-        this.REF = response.data[0];
-      });
+    axios.get("m_toys_and_gifts_data.php?Command=generate").then((response) => {
+      this.en_name = response.data[1];
+      this.REF = response.data[0];
+    });
   },
   methods: {
     setSubTypes: function () {
@@ -96,7 +120,7 @@ function lost_focus(key) {
 //         return;
 //     }
 
-//     var url = "m_health_and_sports_data.php";
+//     var url = "m_toys_and_gifts_data.php";
 //     url = url + "?Command=" + "getdt";
 //     url = url + "&ls=" + "new";
 
@@ -138,7 +162,7 @@ function save_info()
         return false;
     }
 
-    var url = "m_health_and_sports_data.php";
+    var url = "m_toys_and_gifts_data.php";
     url = url + "?Command=" + "save_item";
     url = url + "&REF=" + document.getElementById("REF").value;
     url = url + "&category_name=" + document.getElementById("category_name").value;
@@ -188,7 +212,7 @@ function approve() {
         return false;
     }
 
-    var url = "m_health_and_sports_data.php";
+    var url = "m_toys_and_gifts_data.php";
     url = url + "?Command=" + "approve";
     url = url + "&REF=" + document.getElementById("REF").value;
    
@@ -227,7 +251,7 @@ function getForm(REF, IDF)
         alert("Browser does not support HTTP Request");
         return;
     }
-    var url = "m_health_and_sports_data.php";
+    var url = "m_toys_and_gifts_data.php";
     url = url + "?Command=" + "getForm";
     url = url + "&REF=" + REF;
     url = url + "&IDF=" + IDF;
@@ -269,7 +293,7 @@ function getFromValues()
 
 
             opener.document.getElementById("img_path").innerHTML =
-              '<img src="uploads/item/health/' +
+              '<img src="uploads/item/toy/' +
               objSup.img +
               '" alt="" width="400" >';
             
@@ -368,7 +392,7 @@ $("#img_file").on("change", function () {
   form_data.append("fileToUpload", file_data);
 
   $.ajax({
-    url: "m_health_and_sports_data.php?Command=upload",
+    url: "m_toys_and_gifts_data.php?Command=upload",
     dataType: "script",
     cache: false,
     contentType: false,
@@ -380,7 +404,7 @@ $("#img_file").on("change", function () {
 
       // <img src="uploads/store/logo/5ef4ee67d7328.PNG" alt="" width="400" >
       document.getElementById("img_path").innerHTML =
-        '<img src="uploads/item/health/' + res + '" alt="" width="400" >';
+        '<img src="uploads/item/toy/' + res + '" alt="" width="400" >';
       document.getElementById("img_logo").value = res;
     },
   });
