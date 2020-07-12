@@ -84,6 +84,8 @@ include_once './DB_connector.php';
                     $sql = "SELECT * from m_store where listing_type = 'HS'";
                 }else if($IDF == "snacks_allo"){
                     $sql = "SELECT * from m_store where listing_type = 'ES'";
+                }else if($IDF == "toys_allo"){
+                    $sql = "SELECT * from m_store where listing_type = 'TG'";
                 }else{
                     $sql = "SELECT * from m_store";
                 }
@@ -111,6 +113,21 @@ include_once './DB_connector.php';
                     if ($row['listing_type'] == "AC") {
                         $listing_type = "Arts and Crafts";
                     }
+
+                    if ($row['listing_type'] == "HS") {
+                        $listing_type = "Health and Sports";
+                    }
+
+                    if ($row['listing_type'] == "ES") {
+                        $listing_type = "Snacks and Deco";
+                    }
+
+                    if ($row['listing_type'] == "TG") {
+                        $listing_type = "Toys and Gifts";
+                    }
+
+
+
 
 
                     echo "<tr>                

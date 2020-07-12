@@ -300,7 +300,7 @@ function getFromValues()
         }
 
 
-        if (IDF === "ADD_UNIFORM") {
+        if (IDF === "ADD_TOYS") {
           var rowCount = window.opener.document.getElementById("exampletable")
             .rows.length;
 
