@@ -133,6 +133,23 @@ if (isset($_GET['url'])) {
 
 
 
+  if ($_GET['url'] == "product_upload"){
+    include 'm_product_upload.php';
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

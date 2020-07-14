@@ -21,7 +21,6 @@ var vue = new Vue({
     changeStatus: function (ref ,flag) {
     //   alert(agepoint);
         axios.get("m_order_data.php?Command=changeStatus&REF=" + ref + "&flag=" + flag).then((response) => {
-            
             this.onStartUp();
         });
     },

@@ -29,7 +29,7 @@ if ($_GET["Command"] == "generate") {
     array_push($objArray,$no,$en_name);
 
 
-    $sql = "SELECT * FROM m_order where status = '0' or status = '1'";
+    $sql = "SELECT * FROM m_order where status = 'PLACE' or status = '1'";
     $result = $conn->query($sql);
     $row = $result->fetchAll();
     
