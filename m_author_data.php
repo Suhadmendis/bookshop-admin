@@ -57,6 +57,8 @@ if ($_GET["Command"] == "save_item") {
         $sql    = "SELECT  `REF` FROM `m_author`  WHERE REF = '" . $REF_GET . "'";
         $result = $conn->query($sql);
         $row    = $result->fetchall();
+
+        
         if (isset($REF_GET) && count($row) >= 1) {
 
 
