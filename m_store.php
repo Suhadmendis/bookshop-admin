@@ -150,6 +150,17 @@
                 <div class="col-sm-5">
                   <input type="text" class="form-control" id="address" placeholder="Address">
                 </div>
+                
+                </div><br><br>
+                <div class="form-group"></div>
+                <div class="form-group">
+                <div class="col-sm-2">
+                  <label for="first_name">Location Map</label>
+                </div>
+                
+                <div class="col-sm-5">
+                  <a id="search_info" class="btn btn-primary" onclick="window.open('map_store_location.php?IDF=LOCATION', 'mywin', 'width=800, height=700');" class="btn btn-info btn-sm">Map</a>
+                </div>
                 </div><br><br>
 
 
