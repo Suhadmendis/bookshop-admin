@@ -74,10 +74,10 @@
                         <label for="first_name" >School </label>
                     </div>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control" id="school_ref" placeholder="School Ref">
+                        <input type="text" class="form-control" id="school_ref" placeholder="School Ref" disabled>
                     </div>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control" id="school_name" placeholder="School Name">
+                        <input type="text" class="form-control" id="school_name" placeholder="School Name" disabled>
                     </div>
                     <div class="col-md-2">
                     <a class="btn btn-default" onclick="window.open('search_m_school.php?IDF=item', 'mywin', 'width=800, height=700');" class="btn btn-info btn-sm">...</a>
@@ -90,10 +90,10 @@
                         <label for="first_name" >Level</label>
                     </div>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control" id="level_ref" placeholder="Level Ref">
+                        <input type="text" class="form-control" id="level_ref" placeholder="Level Ref" disabled>
                     </div>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control" id="level_name" placeholder="Level Name">
+                        <input type="text" class="form-control" id="level_name" placeholder="Level Name" disabled>
                     </div>
                     <div class="col-md-2">
                     <a class="btn btn-default" onclick="window.open('search_m_level.php?IDF=item', 'mywin', 'width=800, height=700');" class="btn btn-info btn-sm">...</a>
@@ -108,10 +108,10 @@
                         <label for="first_name" >Author</label>
                     </div>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control" id="author_ref" placeholder="Author Ref">
+                        <input type="text" class="form-control" id="author_ref" placeholder="Author Ref" disabled>
                     </div>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control" id="author_name" placeholder="Author Name">
+                        <input type="text" class="form-control" id="author_name" placeholder="Author Name" disabled>
                     </div>
                     <div class="col-md-2">
                     <a class="btn btn-default" onclick="window.open('search_m_author.php?IDF=item', 'mywin', 'width=800, height=700');" class="btn btn-info btn-sm">...</a>
@@ -124,10 +124,10 @@
                         <label for="first_name" >Publisher </label>
                     </div>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control" id="publisher_ref" placeholder="Publisher Ref">
+                        <input type="text" class="form-control" id="publisher_ref" placeholder="Publisher Ref" disabled>
                     </div>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control" id="publisher_name" placeholder="Publisher Name">
+                        <input type="text" class="form-control" id="publisher_name" placeholder="Publisher Name" disabled>
                     </div>
                     <div class="col-md-2">
                     <a class="btn btn-default" onclick="window.open('search_m_publisher.php?IDF=item', 'mywin', 'width=800, height=700');" class="btn btn-info btn-sm">...</a>

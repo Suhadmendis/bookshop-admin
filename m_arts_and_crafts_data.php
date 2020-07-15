@@ -53,22 +53,44 @@ if ($_GET["Command"] == "save_item") {
         $no1 = trim("ITEM/") . substr($tmpinvno, $lenth - 7);
 
 
-        $sql = "Insert into m_item(REF, category_name, item_name , des, user, listtype,img)values
-                        ('" . $no1 . "' ,'" . $_GET['category_name'] . "' ,'" . $_GET['item_name'] . "','" . $_GET['des'] . "' ,'" . $_SESSION['UserName'] . "','AC','" . $_GET['img_logo'] . "')";
+        $ARTS_CRAF_REF = $_GET['REF'];
+        $sql    = "SELECT  `REF`,`img` FROM `m_item`  WHERE REF = '" . $ARTS_CRAF_REF . "'";
         $result = $conn->query($sql);
+        $row    = $result->fetchall();
 
-        $no2 = $no + 1;
-        $sql = "update sys_info set item_ref = $no2 where item_ref = $no";
-        $result = $conn->query($sql);
+         
+        if (isset($ARTS_CRAF_REF) && count($row) >= 1) {
 
-        $sql = "Insert into sys_log(REF, entry, operation, user, ip)values
+            if($_GET['img_logo']!==''){
+
+                $img = $_GET['img_logo'];
+            }else{
+                $img= $row[0]['img'];
+            }
+            $sql    = "UPDATE `m_item` SET `category_name`='" .$_GET['category_name'] . "',`item_name`='" . $_GET['item_name'] . "',`des`='" . $_GET['des'] . "',`user`='" . $_SESSION['UserName'] . "',`listtype`='AC',`img`='" .$img . "' WHERE REF = '" . $ARTS_CRAF_REF . "'";
+            $result = $conn->query($sql);
+            $conn->commit();
+            echo 'Updated Item successfully';
+        }else{
+            $sql = "Insert into m_item(REF, category_name, item_name , des, user, listtype,img)values
+            ('" . $no1 . "' ,'" . $_GET['category_name'] . "' ,'" . $_GET['item_name'] . "','" . $_GET['des'] . "' ,'" . $_SESSION['UserName'] . "','AC','" . $_GET['img_logo'] . "')";
+            $result = $conn->query($sql);
+
+            $no2 = $no + 1;
+            $sql = "update sys_info set item_ref = $no2 where item_ref = $no";
+            $result = $conn->query($sql);
+
+            $sql = "Insert into sys_log(REF, entry, operation, user, ip)values
                         ('" . $no1 . "' ,'entry' ,'SAVE'  ,'" . $_SESSION['UserName'] . "' ,'ip')";
-        $result = $conn->query($sql);
+            $result = $conn->query($sql);
 
 
 
-        $conn->commit();
-        echo "Saved";
+            $conn->commit();
+            echo "Saved";
+        }
+
+
     } catch (Exception $e) {
         $conn->rollBack();
         echo $e;

@@ -22,7 +22,7 @@ if ($_GET["Command"] == "generate") {
     $lenth = strlen($tmpinvno);
     $no = trim("ITEM/") . substr($tmpinvno, $lenth - 7);
 
-
+    
     $en_name = "Book";
 
     $objArray = Array();
@@ -51,22 +51,49 @@ if ($_GET["Command"] == "save_item") {
         $lenth = strlen($tmpinvno);
         $no1 = trim("ITEM/") . substr($tmpinvno, $lenth - 7);
 
-        $sql = "Insert into m_item(REF, category_name, school_ref, school_name,level_ref,level_name,author_ref, author_name,publisher_ref, publisher_name, item_name, des,isbn, user, listtype, img)values
-                        ('" . $no1 . "' ,'" . $_GET['category_name'] . "' ,'" . $_GET['school_ref'] . "' ,'" . $_GET['school_name'] . "' ,'" . $_GET['level_ref'] . "' ,'" . $_GET['level_name'] . "' ,'" . $_GET['author_ref'] . "' ,'" . $_GET['author_name'] . "' ,'" . $_GET['publisher_ref'] . "' ,'" . $_GET['publisher_name'] . "' ,'" . $_GET['item_name'] . "' ,'" . $_GET['des'] . "' ,'" . $_GET['isbn'] . "' ,'" . $_SESSION['UserName'] . "','BKS','" . $_GET['img_logo'] . "')";
+        $book_REF = $_GET['REF'];
+        $sql    = "SELECT  `REF`,`img` FROM `m_item`  WHERE REF = '" . $book_REF . "'";
         $result = $conn->query($sql);
-       
-        $no2 = $no + 1;
-        $sql = "update sys_info set item_ref = $no2 where item_ref = $no";
-        $result = $conn->query($sql);
+        $row    = $result->fetchall();
 
-        $sql = "Insert into sys_log(REF, entry, operation, user, ip)values
+
+        if (isset($book_REF) && count($row) >= 1) {
+
+           
+            if($_GET['img_logo']!==''){
+
+                $img = $_GET['img_logo'];
+
+                
+            }else{
+                $img= $row[0]['img'];
+               
+            }
+            $sql    = "UPDATE `m_item` SET `category_name`='" .$_GET['category_name'] . "',`school_ref`='" . $_GET['school_ref'] . "',`school_name`='" . $_GET['school_name'] . "',`level_ref`='" . $_GET['level_ref'] . "',`level_name`='" . $_GET['level_name'] . "',`author_ref`='" . $_GET['author_ref'] . "',`author_name`='" . $_GET['author_name'] . "',`publisher_ref`='" . $_GET['publisher_ref'] . "',`publisher_name`='" . $_GET['publisher_name'] . "',`item_name`='" . $_GET['item_name'] . "',`des`='" . $_GET['des'] . "',`isbn`='" . $_GET['isbn'] . "',`user`='" . $_SESSION['UserName'] . "',`listtype`='BKS',`img`='" . $img . "' WHERE REF = '" . $book_REF . "'";
+            $result = $conn->query($sql);
+            $conn->commit();
+            echo 'Updated Item successfully';
+        }else{
+
+            $sql = "Insert into m_item(REF, category_name, school_ref, school_name,level_ref,level_name,author_ref, author_name,publisher_ref, publisher_name, item_name, des,isbn, user, listtype, img)values
+            ('" . $no1 . "' ,'" . $_GET['category_name'] . "' ,'" . $_GET['school_ref'] . "' ,'" . $_GET['school_name'] . "' ,'" . $_GET['level_ref'] . "' ,'" . $_GET['level_name'] . "' ,'" . $_GET['author_ref'] . "' ,'" . $_GET['author_name'] . "' ,'" . $_GET['publisher_ref'] . "' ,'" . $_GET['publisher_name'] . "' ,'" . $_GET['item_name'] . "' ,'" . $_GET['des'] . "' ,'" . $_GET['isbn'] . "' ,'" . $_SESSION['UserName'] . "','BKS','" . $_GET['img_logo'] . "')";
+            $result = $conn->query($sql);
+
+            $no2 = $no + 1;
+            $sql = "update sys_info set item_ref = $no2 where item_ref = $no";
+            $result = $conn->query($sql);
+
+            $sql = "Insert into sys_log(REF, entry, operation, user, ip)values
                         ('" . $no1 . "' ,'entry' ,'SAVE'  ,'" . $_SESSION['UserName'] . "' ,'ip')";
-        $result = $conn->query($sql);
+            $result = $conn->query($sql);
 
 
 
-        $conn->commit();
-        echo "Saved";
+            $conn->commit();
+            echo "Saved";
+        }
+
+
     } catch (Exception $e) {
         $conn->rollBack();
         echo $e;
