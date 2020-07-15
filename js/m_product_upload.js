@@ -1,17 +1,47 @@
 var vue = new Vue({
-  el: '#app',
+  el: "#app",
   data: {
-    en_name: '',
-    REF: ''    
+    en_name: "",
+    REF: "",
+    DATA: ""
   },
-    mounted () {
-        axios
-          .get('m_author_data.php?Command=generate')
-          .then(response => {
-            this.en_name = response.data[1]
-            this.REF = response.data[0]
-        })
-    }
+  mounted() {
+    axios.get("m_author_data.php?Command=generate").then((response) => {
+      this.en_name = response.data[1];
+      this.REF = response.data[0];
+    });
+  },
+  methods: {
+    upfile: function () {
+      var files = $("#file-3")[0].files; //where files would be the id of your multi file input
+      //or use document.getElementById('files').files;
+
+      for (var i = 0, f; (f = files[i]); i++) {
+        var name = document.getElementById("file-3");
+        var alpha = name.files[i];
+
+        var data = new FormData();
+        
+        data.append("file-3", alpha);
+        console.log(alpha);
+
+        $.ajax({
+          url: "read_excel.php",
+          data: data,
+          processData: false,
+          contentType: false,
+          type: "POST",
+          success: function (msg) {
+            // alert(msg);
+
+            vue.DATA = msg;
+            // alert("fsdfs");
+            // var xmlDoc = msg;
+          },
+        });
+      }
+    },
+  },
 });
 
 function GetXmlHttpObject() {
@@ -125,35 +155,4 @@ function salessaveresult() {
             // document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>" + xmlHttp.responseText + "</span></div>";
         }
     }
-}
-
-
-
-function upfile() {
-  var files = $("#file-3")[0].files; //where files would be the id of your multi file input
-  //or use document.getElementById('files').files;
-
-  for (var i = 0, f; (f = files[i]); i++) {
-    var name = document.getElementById("file-3");
-    var alpha = name.files[i];
-    
-    var data = new FormData();
-
-   data.append("file-3", alpha);
-    $.ajax({
-      url: "read_excel.php",
-      data: data,
-      processData: false,
-      contentType: false,
-      type: "POST",
-      success: function (msg) {
-        // alert(msg);
-
-        console.log(msg);
-        alert("fsdfs");
-        var xmlDoc = msg;
-
-      },
-    });
-  }
 }
