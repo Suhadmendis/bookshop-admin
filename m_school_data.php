@@ -52,23 +52,42 @@ if ($_GET["Command"] == "save_item") {
         $lenth = strlen($tmpinvno);
         $no1 = trim("SCL/") . substr($tmpinvno, $lenth - 7);
 
-        $sql = "Insert into m_school(REF, name, user)values
-                        ('" . $no1 . "' ,'" . $_GET['name'] . "','" . $_SESSION['UserName'] . "')";
+        $REF_GET = $_GET['REF'];
+        $name =$_GET['name'];
+        $sql    = "SELECT  `REF` FROM `m_school`  WHERE REF = '" . $REF_GET . "'";
         $result = $conn->query($sql);
-        
-        
+        $row    = $result->fetchall();
+
+
+        if (isset($REF_GET) && count($row) >= 1) {
+
+
+            $sql    = "UPDATE `m_school` SET `name`='" . $name . "' WHERE REF = '" . $REF_GET . "'";
+            $result = $conn->query($sql);
+            $conn->commit();
+            echo 'Updated School successfully';
+            
+        }else{
+                    
+        $sql = "Insert into m_school(REF, name, user)values
+                ('" . $no1 . "' ,'" . $_GET['name'] . "','" . $_SESSION['UserName'] . "')";
+        $result = $conn->query($sql);
+
+
         $no2 = $no + 1;
         $sql = "update sys_info set school_ref = $no2 where school_ref = $no";
         $result = $conn->query($sql);
 
         $sql = "Insert into sys_log(REF, entry, operation, user, ip)values
-                        ('" . $no1 . "' ,'entry' ,'SAVE'  ,'" . $_SESSION['UserName'] . "' ,'ip')";
+                ('" . $no1 . "' ,'entry' ,'SAVE'  ,'" . $_SESSION['UserName'] . "' ,'ip')";
         $result = $conn->query($sql);
 
 
 
         $conn->commit();
         echo "Saved";
+        }
+
     } catch (Exception $e) {
         $conn->rollBack();
         echo $e;
