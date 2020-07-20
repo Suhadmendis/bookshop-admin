@@ -109,7 +109,7 @@ if ($_GET["Command"] == "approve") {
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $conn->beginTransaction();
 
-       $no1 = $_GET['REF'];
+        $no1 = $_GET['REF'];
         $sql = "update m_item set approve = '1' where REF = '" . $no1 . "'";
         $result = $conn->query($sql);
 
