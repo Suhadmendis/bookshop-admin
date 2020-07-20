@@ -19,22 +19,37 @@
         <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
-                <th>REF</th>
-                <th>listtype</th>
-                <th>Category</th>
-                <th>Item Name</th>
+
+                <th>ContactName</th>
+                <th>EmailAddress</th>
+                <th>POAddressLine1</th>
+                <th>POAddressLine2</th>
+                <th>POAddressLine3</th>
+                <th>POAddressLine4</th>
+                <th>POCity</th>
+                <th>PORegion</th>
+                <th>POPostalCode</th>
+                <th>POCountry</th>
+                <th>InvoiceNumber</th>
+                <th>Reference</th>
+                <th>InvoiceDate</th>
+                <th>DueDate</th>
+                <th>Total</th>
+                <th>InventoryItemCode</th>
                 <th>Description</th>
-                <th>School</th>
-                <th>Level Name</th>
-                <th>Author Name</th>
-                <th>Publisher Name</th>
-                <th>ISBN</th>
-                <th>Shop</th>
                 <th>Quantity</th>
-                <th>Price Range</th>
-                <th>Value</th>
-                <th>Entered at</th>
-                <th>Entered by</th>
+                <th>UnitAmount</th>
+                <th>Discount</th>
+                <th>AccountCode</th>
+                <th>TaxType</th>
+                <th>TaxAmount</th>
+                <th>TrackingName1</th>
+                <th>TrackingOption1</th>
+                <th>TrackingName2</th>
+                <th>TrackingOption2</th>
+                <th>Currency</th>
+                <th>BrandingTheme</th>
+
                 
             </tr>
         </thead>
@@ -42,30 +57,6 @@
 
 
 
-
-<!-- id
-REF
-category_ref
-category_name
-school_ref
-school_name
-level_ref
-level_name
-item_name
-author_ref
-author_name
-publisher_ref
-publisher_name
-des
-isbn
-selling_price
-img
-cancel
-user
-sys_time
-quantity
-approve
-listtype -->
 
 
            <?php 
@@ -119,6 +110,19 @@ listtype -->
                     <td><?php echo $row[$i]['item_name']; ?></td>
                     <td><?php echo $row[$i]['des']; ?></td>
                     <td><?php echo $row[$i]['school_name']; ?></td>
+                    <td><?php echo $row[$i]['REF']; ?></td>
+                    <td><?php echo $row[$i]['listtype']; ?></td>
+                    <td><?php echo $row[$i]['category_name']; ?></td>
+                    <td><?php echo $row[$i]['item_name']; ?></td>
+                    <td><?php echo $row[$i]['des']; ?></td>
+                    <td><?php echo $row[$i]['school_name']; ?></td>
+                    <td><?php echo $row[$i]['REF']; ?></td>
+                    <td><?php echo $row[$i]['listtype']; ?></td>
+                    <td><?php echo $row[$i]['category_name']; ?></td>
+                    <td><?php echo $row[$i]['item_name']; ?></td>
+                    <td><?php echo $row[$i]['des']; ?></td>
+                    <td><?php echo $row[$i]['school_name']; ?></td>
+                    <td><?php echo $row[$i]['school_name']; ?></td>
 
                     <td><?php echo $row[$i]['level_name']; ?></td>
                     <td><?php echo $row[$i]['author_name']; ?></td>
@@ -153,22 +157,35 @@ listtype -->
         </tbody>
         <tfoot>
             <tr>
-                <th>REF</th>
-                <th>listtype</th>
-                <th>Category</th>
-                <th>Item Name</th>
+                <th>ContactName</th>
+                <th>EmailAddress</th>
+                <th>POAddressLine1</th>
+                <th>POAddressLine2</th>
+                <th>POAddressLine3</th>
+                <th>POAddressLine4</th>
+                <th>POCity</th>
+                <th>PORegion</th>
+                <th>POPostalCode</th>
+                <th>POCountry</th>
+                <th>InvoiceNumber</th>
+                <th>Reference</th>
+                <th>InvoiceDate</th>
+                <th>DueDate</th>
+                <th>Total</th>
+                <th>InventoryItemCode</th>
                 <th>Description</th>
-                <th>School</th>
-                <th>Level Name</th>
-                <th>Author Name</th>
-                <th>Publisher Name</th>
-                <th>ISBN</th>
-                <th>Shop</th>
                 <th>Quantity</th>
-                <th>Price Range</th>
-                <th>Value</th>
-                <th>Entered at</th>
-                <th>Entered by</th>
+                <th>UnitAmount</th>
+                <th>Discount</th>
+                <th>AccountCode</th>
+                <th>TaxType</th>
+                <th>TaxAmount</th>
+                <th>TrackingName1</th>
+                <th>TrackingOption1</th>
+                <th>TrackingName2</th>
+                <th>TrackingOption2</th>
+                <th>Currency</th>
+                <th>BrandingTheme</th>
             </tr>
         </tfoot>
     </table>

@@ -73,7 +73,15 @@ if ($_GET["Command"] == "save_item") {
     ('" . $no1 . "' ,'" . $_GET['name'] . "','" . $_SESSION['UserName'] . "')";
             $result = $conn->query($sql);
             
+<<<<<<< HEAD
+            
+            $sql    = "Insert into m_author(REF, name, user)values
+    ('" . $no1 . "' ,'" . $_GET['name'] . "','" . $_SESSION['UserName'] . "')";
+            $result = $conn->query($sql);
+            
+=======
   
+>>>>>>> master
             
             $no2    = $no + 1;
             $sql    = "update sys_info set author_ref = $no2 where author_ref = $no";

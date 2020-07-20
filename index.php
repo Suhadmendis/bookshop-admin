@@ -169,6 +169,9 @@ if (isset($_GET['url'])) {
   if ($_GET['url'] == "item_a_report"){
     include 'r_item_a_report.php';
   }
+  if ($_GET['url'] == "xero_report"){
+    include 'r_xero_report.php';
+  }
   
   
   if ($_GET['url'] == ""){
