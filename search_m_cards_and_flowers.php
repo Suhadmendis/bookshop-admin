@@ -9,7 +9,7 @@ include_once './DB_connector.php';
         <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
 
 
-        <title>Search Payments</title>
+        <title>Search Shops</title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
 
 
@@ -29,7 +29,7 @@ include_once './DB_connector.php';
             <script language="JavaScript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
             <script language="JavaScript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
-            <script language="JavaScript" src="js/m_store.js"></script>
+            <script language="JavaScript" src="js/m_cards_and_flowers.js"></script>
 
 
 
@@ -63,82 +63,73 @@ include_once './DB_connector.php';
 
                     <tr>
                         <th>Reference</th>
-                        <th>Shop Name</th>
-                        <th>Listing Type</th>
-                        <th>Address</th>
-                        <th>Phone Number</th>
+                        <th>Category</th>
+                        <th>Name</th>
+                        <th>Selling Price</th>
                         <th>Approve</th>
+                        <!-- not approve -->
                     </tr>
                 </thead>
 
                 <tbody>
                 <?php
 
-                if ($IDF == "book_allo") {
-                    $sql = "SELECT * from m_store where listing_type = 'BKS'";
-                }else if($IDF == "uniform_allo"){
-                    $sql = "SELECT * from m_store where listing_type = 'UC'";
-                }else if($IDF == "arts_allo"){
-                    $sql = "SELECT * from m_store where listing_type = 'AC'";
-                }else if($IDF == "health_allo"){
-                    $sql = "SELECT * from m_store where listing_type = 'HS'";
-                }else if($IDF == "snacks_allo"){
-                    $sql = "SELECT * from m_store where listing_type = 'ES'";
-                }else if($IDF == "toys_allo"){
-                    $sql = "SELECT * from m_store where listing_type = 'TG'";
-                }else if($IDF == "card_allo"){
-                    $sql = "SELECT * from m_store where listing_type = 'CF'";
-                }else{
-                    $sql = "SELECT * from m_store";
-                }
+                
+                $sql = "SELECT * from m_item where listtype = 'CAR'";
+              
+
               
 
                 foreach ($conn->query($sql) as $row) {
                 
                     $REF = $row['REF'];
-
+                      
                     if($row['approve'] == "1"){
                         $app = "Approved";
                     }else{
                         $app = "Not Approved";
                     }
-                    
-                    $listing_type = "";
-                    if ($row['listing_type'] == "BKS") {
-                        $listing_type = "Books and Stationeries";
+
+
+                    $category_name = "";
+
+
+                    if ($row['category_name'] == "BIRT") {
+                        $category_name = "Birthday";
                     }
-
-                    if ($row['listing_type'] == "UC") {
-                        $listing_type = "Uniforms and Costumes";
+                    if ($row['category_name'] == "THAN") {
+                        $category_name = "Thank You";
                     }
-
-                    if ($row['listing_type'] == "AC") {
-                        $listing_type = "Arts and Crafts";
+                    if ($row['category_name'] == "ANNI") {
+                        $category_name = "Anniversary";
                     }
-
-                    if ($row['listing_type'] == "HS") {
-                        $listing_type = "Health and Sports";
+                    if ($row['category_name'] == "SPEC") {
+                        $category_name = "Special Days";
                     }
-
-                    if ($row['listing_type'] == "ES") {
-                        $listing_type = "Snacks and Deco";
+                    if ($row['category_name'] == "WRAP") {
+                        $category_name = "Wrapping Papers";
                     }
-
-                    if ($row['listing_type'] == "TG") {
-                        $listing_type = "Toys and Gifts";
+                    if ($row['category_name'] == "BOYS") {
+                        $category_name = "Boys";
                     }
-
-
-
+                    if ($row['category_name'] == "GIRLS") {
+                        $category_name = "Girls";
+                    }
+                    if ($row['category_name'] == "KIDS") {
+                        $category_name = "Kids";
+                    }
+                    if ($row['category_name'] == "OTHE") {
+                        $category_name = "Other";
+                    }
 
 
                     echo "<tr>                
                               <td onclick=\"getForm('$REF','$IDF');\">" . $REF . "</a></td>
-                              <td onclick=\"getForm('$REF','$IDF');\">" . $row['shop_name'] . "</a></td>
-                              <td onclick=\"getForm('$REF','$IDF');\">" . $listing_type . "</a></td>
-                              <td onclick=\"getForm('$REF','$IDF');\">" . $row['address'] . "</a></td>
-                              <td onclick=\"getForm('$REF','$IDF');\">" . $row['phone_number_1'] . "</a></td>
-                               <td onclick=\"getForm('$REF','$IDF');\">" . $app . "</a></td>
+                              <td onclick=\"getForm('$REF','$IDF');\">" . $category_name . "</a></td>
+                              <td onclick=\"getForm('$REF','$IDF');\">" . $row['item_name'] . "</a></td>
+                              <td onclick=\"getForm('$REF','$IDF');\">" . $row['selling_price'] . "</a></td>
+
+                              <td onclick=\"getForm('$REF','$IDF');\">" . $app . "</a></td>
                              </tr>";
                 }
                 ?>

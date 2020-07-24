@@ -95,9 +95,15 @@ if (isset($_GET['url'])) {
   if ($_GET['url'] == "toys_and_gifts"){
     include 'm_toys_and_gifts.php';
   }
+  if ($_GET['url'] == "cards_and_flowers"){
+    include 'm_cards_and_flowers.php';
+  }
+  if ($_GET['url'] == "pre_owned"){
+    include 'm_pre_owned.php';
+  }
 
 
-
+  
 
   if ($_GET['url'] == "book_allo"){
     include 'm_book_allo.php';
@@ -120,6 +126,10 @@ if (isset($_GET['url'])) {
     include 'm_toys_and_gifts_allo.php';
   }
 
+  if ($_GET['url'] == "cards_and_flowers_allo"){
+    include 'm_cards_and_flowers_allo.php';
+  }
+
 
 
 
@@ -135,6 +145,10 @@ if (isset($_GET['url'])) {
 
   if ($_GET['url'] == "product_upload"){
     include 'm_product_upload.php';
+  }
+
+  if ($_GET['url'] == "manage_syllabus"){
+    include 'm_manage_syllabus.php';
   }
 
 

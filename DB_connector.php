@@ -12,18 +12,18 @@
 // $port = 3306;
 // $dbname = 'bookshop';
 
-// $servername = 'localhost';
-// $username = 'root';
-// $password = '';
-// $port = 3306;
-// $dbname = 'bnb';
-
-
-$servername = '162.252.83.203';
-$username = 'quotrolk';
-$password = ':8s7DLa5Wd3B!u';
+$servername = 'localhost';
+$username = 'root';
+$password = '';
 $port = 3306;
-$dbname = 'quotrolk_bookshop';
+$dbname = 'bnb';
+
+
+// $servername = '162.252.83.203';
+// $username = 'quotrolk';
+// $password = ':8s7DLa5Wd3B!u';
+// $port = 3306;
+// $dbname = 'quotrolk_bookshop';
 
 $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 

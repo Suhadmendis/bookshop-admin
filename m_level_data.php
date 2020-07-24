@@ -68,10 +68,6 @@ if ($_GET["Command"] == "save_item") {
             echo 'Updated LEVEL successfully';
             
         }else{
-<<<<<<< HEAD
-=======
-            
->>>>>>> master
             $sql = "Insert into m_level(REF, name, user)values
                         ('" . $no1 . "' ,'" . $_GET['name'] . "','" . $_SESSION['UserName'] . "')";
             $result = $conn->query($sql);

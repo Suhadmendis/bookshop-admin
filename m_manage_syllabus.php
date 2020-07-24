@@ -1,8 +1,3 @@
-<script src="js/jquery.min.js"></script>
-
-<!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"> -->
-<link rel="stylesheet" href="css/jquery-ui.css">
-<link rel="stylesheet" href="css/dataTables.jqueryui.min.css">
 
 <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
 <link rel="stylesheet" href="plugins/timepicker/bootstrap-timepicker.min.css">
@@ -13,32 +8,82 @@
           <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">{{ en_name }}Book Allocation</h3>
+              <h3 class="box-title">{{ en_name }}</h3>
             </div>
             <!-- /.box-header -->
-             <div class="btn-group" style="padding: 10px;">
-              <a class="btn btn-success" onclick="save_info();">Save</a>
-              <a class="btn btn-primary" onclick="window.open('search_m_store.php?IDF=book_allo', 'mywin', 'width=1200, height=700');" class="btn btn-info btn-sm">Search Store</a>
-              <a id="app_info" class="btn btn-success" onclick="approve();">Approve</a>
-              <a class="btn btn-danger" onclick="">Cancel</a>
+            <div class="btn-group" style="padding: 10px;">
+              <!-- <a class="btn btn-success" onclick="save_info();">Save</a>
+              <a class="btn btn-success" @click="upfile();">Re Upload</a> -->
+              <!-- <a class="btn btn-primary" onclick="window.open('search_m_author.php?IDF=Master', 'mywin', 'width=800, height=700');" class="btn btn-info btn-sm">Search</a>
+              <a class="btn btn-danger" onclick="">Cancel</a> -->
               
               
               
             </div>
+
+
+                
             <!-- form start -->
             <form role="form">
               <div class="box-body col-md-12">
 
+
+                
+                <div class="form-group" ></div>
+               <div class="form-group" hidden>
+                <div class="col-sm-2">
+                  <label for="exampleInputEmail1" >Reference No</label>
+                  </div>
+                  <div class="col-sm-2">
+                  <input type="text" class="form-control" id="REF" v-model="REF" placeholder="Reference No">
+                  </div>
+                </div>
+                <!-- <br><br> -->
+
+
+
+
+
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>School Name</th>
+                          <th>Level</th>
+                          <th>View</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr v-for="syll in syllabus">
+                          <td>{{ syll[0].name }}</td>
+                          <td>{{ syll[1].name }}</td>
+                          <td><a class="btn btn-success btn-sm" @click="goto(syll[0].REF,syll[1].REF,syll[0].name,syll[1].name);">View</a></td>
+                         
+                        </tr>
+                        
+                      </tbody>
+                    </table>
+
+                
+
+
+                <br><br><br>
+
+
                 <div class="form-group"></div>
                 <div class="form-group">
                 <div class="col-sm-2">
-                  <label for="first_name">Store</label>
+                  <label for="first_name">School Name</label>
                 </div>
                 <div class="col-sm-2">
-                  <input type="text" class="form-control" id="store_ref" placeholder="Store Ref">
+                  <input type="text" class="form-control" id="school_name" v-model="school_name" placeholder="School Name">
+                  <input type="hidden" class="form-control" id="school_ref" v-model="school_ref" placeholder="School Ref">
                 </div>
                 <div class="col-sm-2">
-                  <input type="text" class="form-control" id="store_name" placeholder="Store Name">
+                  <label for="first_name">Level</label>
+                </div>
+                <div class="col-sm-2">
+                  <input type="text" class="form-control" id="level" v-model="level" placeholder="Level">
+                  <input type="hidden" class="form-control" id="level_ref" v-model="level_ref" placeholder="Level Ref">
                 </div>
                <!-- <div class="col-md-2">
                     <a class="btn btn-default" onclick="window.open('search_m_registration.php?IDF=store', 'mywin', 'width=800, height=700');" class="btn btn-info btn-sm">...</a>
@@ -46,49 +91,30 @@
                 </div><br><br>
 
 
-                <div class="form-group"></div>
+
+               <div class="form-group"></div>
                 <div class="form-group">
                 <div class="col-sm-2">
                   <label for="first_name">Book</label>
                 </div>
                 
                <div class="col-md-2">
-                    <a class="btn btn-default" onclick="window.open('search_m_book.php?IDF=ADD_BOOK', 'mywin', 'width=800, height=700');" class="btn btn-info btn-sm">Add Book</a>
+                    <a class="btn btn-default" onclick="window.open('search_m_book.php?IDF=Syll_add_book', 'mywin', 'width=800, height=700');" class="btn btn-info btn-sm">Add Book</a>
                   </div>
                 </div><br><br>
 
 
+<br><br>
+<br><br>
+<a class="btn btn-success" onclick="save_info();">Save</a>
 
-
-
-              <div class="box-body col-md-12">
-
-               <!--  <table id="myTable" class="table table-bordered">
-                  <thead>
-                    <tr>
-                      <th scope="col">Session Ref</th>
-                      <th scope="col">Name</th>
-                      <th scope="col">Slots</th>
-                      <th scope="col">Select</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  
-                  </tbody>
-                </table> -->
-                
                 <table id="exampletable"  class='table table-bordered' style="width:100%">
                 <thead>
                     <tr>
                         <th>Reference</th>
                         <th>Name</th>
                         <th>Description</th>
-                        <th>Selling Price</th>
-                        <th>Discount (Rs.)</th>
-                        <th>Discount (%)</th>
-                        <th>Selling Price with Discount</th>
                         <th>Quantity</th>
-                        <th>Approve</th>
                         <th>Remove</th>
                     </tr>
                 </thead>
@@ -96,11 +122,12 @@
                    
                 </tfoot>
             </table>
-              
-              </div>
- 
-                  
-                
+
+
+
+
+
+
 
 
               </div>
@@ -110,27 +137,22 @@
 
               </div>
             </form>
-
-
           </div>
           <!-- /.box -->
-
-
         </div>
         <!--/.col (left) -->
+       
        
 
 
       </div>
 
-     
-
 </section>
+<script src="js/m_manage_syllabus.js"></script>
+<!-- <script>getdt();</script> -->
 
-<script>
 
-</script>
-<script src="js/m_book_allo.js"></script>
+
 <script src="js/jquery-3.3.1.js"></script>
 <script src="js/jquery.dataTables.min.js"></script>
 <script src="js/dataTables.jqueryui.min.js"></script>
@@ -338,5 +360,4 @@
 })( jQuery );
 
 </script>
-
 

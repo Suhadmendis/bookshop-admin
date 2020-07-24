@@ -13,12 +13,12 @@
           <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">{{ en_name }}Book Allocation</h3>
+              <h3 class="box-title">{{ en_name }}Cards and Flowers Allocation</h3>
             </div>
             <!-- /.box-header -->
              <div class="btn-group" style="padding: 10px;">
               <a class="btn btn-success" onclick="save_info();">Save</a>
-              <a class="btn btn-primary" onclick="window.open('search_m_store.php?IDF=book_allo', 'mywin', 'width=1200, height=700');" class="btn btn-info btn-sm">Search Store</a>
+              <a class="btn btn-primary" onclick="window.open('search_m_store.php?IDF=card_allo', 'mywin', 'width=1200, height=700');" class="btn btn-info btn-sm">Search Store</a>
               <a id="app_info" class="btn btn-success" onclick="approve();">Approve</a>
               <a class="btn btn-danger" onclick="">Cancel</a>
               
@@ -53,7 +53,7 @@
                 </div>
                 
                <div class="col-md-2">
-                    <a class="btn btn-default" onclick="window.open('search_m_book.php?IDF=ADD_BOOK', 'mywin', 'width=800, height=700');" class="btn btn-info btn-sm">Add Book</a>
+                    <a class="btn btn-default" onclick="window.open('search_m_cards_and_flowers.php?IDF=ADD_CARDS', 'mywin', 'width=800, height=700');" class="btn btn-info btn-sm">Add Cards and Flowers</a>
                   </div>
                 </div><br><br>
 
@@ -130,12 +130,12 @@
 <script>
 
 </script>
-<script src="js/m_book_allo.js"></script>
 <script src="js/jquery-3.3.1.js"></script>
 <script src="js/jquery.dataTables.min.js"></script>
 <script src="js/dataTables.jqueryui.min.js"></script>
 <!-- <script src="js/tableToJsonMini.js"></script>
 <script src="js/tableToJson.js"></script> -->
+<script src="js/m_cards_and_flowers_allo.js"></script>
 
 <script type="text/javascript">
 /*! table-to-json - v0.13.0 - Daniel White */
