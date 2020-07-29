@@ -77,6 +77,10 @@ if (isset($_GET['url'])) {
     include 'm_level.php';
   }
 
+  if ($_GET['url'] == "level_type"){
+    include 'm_level_type.php';
+  }
+
   if ($_GET['url'] == "book"){
     include 'm_book.php';
   }
@@ -103,7 +107,21 @@ if (isset($_GET['url'])) {
   }
 
 
-  
+
+  if ($_GET['url'] == "complaint"){
+    include 'm_complaint.php';
+  }
+  if ($_GET['url'] == "inquiry"){
+    include 'm_inquiry.php';
+  }
+  if ($_GET['url'] == "inquiry_type"){
+    include 'm_inquiry_type.php';
+  }
+
+
+
+
+
 
   if ($_GET['url'] == "book_allo"){
     include 'm_book_allo.php';
