@@ -1,17 +1,15 @@
 var vue = new Vue({
-  el: '#app',
-  data: {
-    en_name: '',
-    REF: ''    
-  },
-    mounted () {
-        axios
-          .get('m_level_data.php?Command=generate')
-          .then(response => {
-            this.en_name = response.data[1]
-            this.REF = response.data[0]
-        })
-    }
+    el: "#app",
+    data: {
+        en_name: "",
+        REF: "",
+    },
+    mounted() {
+        axios.get("m_level_type_data.php?Command=generate").then((response) => {
+            this.en_name = response.data[1];
+            this.REF = response.data[0];
+        });
+    },
 });
 
 function GetXmlHttpObject() {
@@ -20,7 +18,7 @@ function GetXmlHttpObject() {
         // Firefox, Opera 8.0+, Safari
         xmlHttp = new XMLHttpRequest();
     } catch (e) {
-// Internet Explorer
+        // Internet Explorer
         try {
             xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
         } catch (e) {
@@ -31,7 +29,6 @@ function GetXmlHttpObject() {
 }
 
 function keyset(key, e) {
-
     if (e.keyCode == 13) {
         document.getElementById(key).focus();
     }
@@ -45,10 +42,7 @@ function lost_focus(key) {
     document.getElementById(key).style.backgroundColor = "#000000";
 }
 
-
-
 // function getdt() {
-    
 
 //     xmlHttp = GetXmlHttpObject();
 //     if (xmlHttp == null) {
@@ -56,7 +50,7 @@ function lost_focus(key) {
 //         return;
 //     }
 
-//     var url = "m_level_data.php";
+//     var url = "m_author_data.php";
 //     url = url + "?Command=" + "getdt";
 //     url = url + "&ls=" + "new";
 
@@ -80,42 +74,34 @@ function lost_focus(key) {
 //     }
 // }
 
-
-
-
-
-function save_info()
-{
-
+function save_info() {
     xmlHttp = GetXmlHttpObject();
-    if (xmlHttp == null)
-    {
+    if (xmlHttp == null) {
         alert("Browser does not support HTTP Request");
         return;
     }
-     if (document.getElementById('REF').value == "") {
-        document.getElementById('REF').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'></span></div>";
+    if (document.getElementById("REF").value == "") {
+        document.getElementById("REF").innerHTML =
+            "<div class='alert alert-warning' role='alert'><span class='center-block'></span></div>";
         return false;
     }
 
-    var url = "m_level_data.php";
+    var url = "m_level_type_data.php";
     url = url + "?Command=" + "save_item";
     url = url + "&REF=" + document.getElementById("REF").value;
     url = url + "&name=" + document.getElementById("name").value;
-    
+
+
     xmlHttp.onreadystatechange = salessaveresult;
     xmlHttp.open("GET", url, true);
     xmlHttp.send(null);
-
 }
-
 
 function salessaveresult() {
     var XMLAddress1;
 
     if (xmlHttp.readyState == 4 || xmlHttp.readyState == "complete") {
-
-        if (xmlHttp.responseText == "Saved") {
+        if (xmlHttp.responseText == "Saved!!!") {
             alert(xmlHttp.responseText);
             // document.getElementById('msg_box').innerHTML = "<div class='alert alert-success' role='alert'><span class='center-block'>Saved</span></div>";
             // $("#msg_box").hide().slideDown(400).delay(2000);
@@ -127,17 +113,13 @@ function salessaveresult() {
     }
 }
 
-
-function getForm(REF, IDF)
-{
-   
+function getForm(REF, IDF) {
     xmlHttp = GetXmlHttpObject();
-    if (xmlHttp == null)
-    {
+    if (xmlHttp == null) {
         alert("Browser does not support HTTP Request");
         return;
     }
-    var url = "m_level_data.php";
+    var url = "m_level_type_data.php";
     url = url + "?Command=" + "getForm";
     url = url + "&REF=" + REF;
     url = url + "&IDF=" + IDF;
@@ -147,13 +129,10 @@ function getForm(REF, IDF)
     xmlHttp.send(null);
 }
 
-function getFromValues()
-{
+function getFromValues() {
     var XMLAddress1;
 
-    if (xmlHttp.readyState == 4 || xmlHttp.readyState == "complete")
-    {
-
+    if (xmlHttp.readyState == 4 || xmlHttp.readyState == "complete") {
         XMLAddress1 = xmlHttp.responseXML.getElementsByTagName("IDF");
         var IDF = XMLAddress1[0].childNodes[0].nodeValue;
 
@@ -161,18 +140,14 @@ function getFromValues()
         var objSup = JSON.parse(XMLAddress1[0].childNodes[0].nodeValue);
 
         if (IDF === "Master") {
-            opener.document.getElementById('REF').value = objSup.REF;
-            opener.document.getElementById('name').value = objSup.name;
-            
+            opener.document.getElementById("REF").value = objSup.REF;
+            opener.document.getElementById("name").value = objSup.name;
         }
         if (IDF === "item") {
-            opener.document.getElementById('level_ref').value = objSup.REF;
-            opener.document.getElementById('level_name').value = objSup.name;
+            opener.document.getElementById("level_ref").value = objSup.REF;
+            opener.document.getElementById("level_name").value = objSup.name;
         }
 
-      
         self.close();
-    
     }
-    
 }
