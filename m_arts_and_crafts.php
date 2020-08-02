@@ -189,7 +189,7 @@
                   <div class="form-group">
                     <div id=img_path></div>
                     
-                  </div>
+                </div>
                 </div>
                 </div><br><br>
 

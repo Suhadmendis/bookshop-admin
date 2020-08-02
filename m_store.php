@@ -249,11 +249,45 @@
                 </div>
                 <div class="col-sm-2">
                   <div class="form-group">
-                    <div id=img_path></div>
+                    <div id="img_path"></div>
                     
                   </div>
                 </div>
-                </div><br><br>
+                </div>
+                
+                
+                <br><br><br>
+                <br><br><br>
+                <br><br><br>
+
+
+                  <div class="form-group"></div>
+                  <div class="form-group">
+                      <div class="col-sm-2">
+                          <label for="first_name">Promotion</label>
+                      </div>
+                      <div class="col-sm-2">
+                          <div class="form-group">
+                              <input type="file" id="promotion_file">
+                              <input type="hidden" id="promotion_logo">
+
+
+                          </div>
+                      </div>
+                  </div><br><br>
+
+                  <div class="form-group"></div>
+                  <div class="form-group">
+                      <div class="col-sm-2">
+                          <label for="first_name">Preview</label>
+                      </div>
+                      <div class="col-sm-2">
+                          <div class="form-group">
+                              <div id="promotion_path"></div>
+
+                          </div>
+                      </div>
+                  </div><br><br>
 
 
                   

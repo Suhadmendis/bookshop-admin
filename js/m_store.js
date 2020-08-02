@@ -213,6 +213,7 @@ function save_info() {
   url = url + "&active=" + document.getElementById("active").value;
 
   url = url + "&img_logo=" + document.getElementById("img_logo").value;
+  url = url + "&promotion_logo=" + document.getElementById("promotion_logo").value;
 
 
   if (document.getElementById("verify").checked) {
@@ -364,7 +365,12 @@ function getFromValues() {
       opener.document.getElementById("img_path").innerHTML =
         '<img src="uploads/store/logo/' +
         objSup.img_logo +
-        '" alt="" width="400" >';
+        '" alt="" width="100" >';
+
+      opener.document.getElementById("promotion_path").innerHTML =
+            '<img src="uploads/store/promotion/' +
+            objSup.promotion_logo +
+            '" alt="" width="100" >';
 
 
 
@@ -975,10 +981,43 @@ $("#img_file").on("change", function () {
       // alert(res);
 
 
-      // <img src="uploads/store/logo/5ef4ee67d7328.PNG" alt="" width="400" >
+      // <img src="uploads/store/logo/5ef4ee67d7328.PNG" alt="" width="100" >
       document.getElementById("img_path").innerHTML =
-        '<img src="uploads/store/logo/' + res + '" alt="" width="400" >';
+        '<img src="uploads/store/logo/' + res + '" alt="" width="100" >';
       document.getElementById("img_logo").value = res;
+
+
     },
   });
 });
+
+$("#promotion_file").on("change", function () {
+
+    var file_data = $("#promotion_file").prop("files")[0];
+    var form_data = new FormData();
+    form_data.append("fileToUploads", file_data);
+// console.log("dfshgu");
+    $.ajax({
+        url: "m_store_data.php?Command=upload_pro",
+        dataType: "script",
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: form_data,
+        type: "post",
+        success: function (res) {
+            // alert(res);
+
+
+            // <img src="uploads/store/logo/5ef4ee67d7328.PNG" alt="" width="100" >
+            document.getElementById("promotion_path").innerHTML =
+                '<img src="uploads/store/promotion/' + res + '" alt="" width="100" >';
+            document.getElementById("promotion_logo").value = res;
+
+
+        },
+    });
+});
+
+
+

@@ -54,8 +54,8 @@ if ($_GET["Command"] == "save_item") {
         $lenth = strlen($tmpinvno);
         $no1 = trim("ST/") . substr($tmpinvno, $lenth - 7);
 
-        $sql = "Insert into m_store(REF, shop_name, tagline, listing_type, sub_listing_type, vendor_ref, vendor_name, address, loctaion_point_lat, loctaion_point_lng, phone_number_1, phone_number_2, email_address, img_logo, approve, user, active,verify)values
-                        ('" . $no1 . "' ,'" . $_GET['shop_name'] . "' ,'" . $_GET['tagline'] . "' ,'" . $_GET['listing_type'] . "','" . $_GET['sub_listing_type'] . "' ,'" . $_GET['vendor_ref'] . "' ,'" . $_GET['vendor_name'] . "' ,'" . $_GET['address'] . "' ,'" . $_GET['loctaion_point_lat'] . "' ,'" . $_GET['loctaion_point_lng'] . "' ,'" . $_GET['phone_number_1'] . "' ,'" . $_GET['phone_number_2'] . "' ,'" . $_GET['email_address'] . "' ,'" . $_GET['img_logo'] . "' ,'" . $_GET['approve'] . "' ,'" . $_SESSION['UserName'] . "','" . $_GET['active'] . "','" . $_GET['verify'] . "')";
+        $sql = "Insert into m_store(REF, shop_name, tagline, listing_type, sub_listing_type, vendor_ref, vendor_name, address, loctaion_point_lat, loctaion_point_lng, phone_number_1, phone_number_2, email_address, img_logo, approve, user, active,verify,promotion_logo)values
+                        ('" . $no1 . "' ,'" . $_GET['shop_name'] . "' ,'" . $_GET['tagline'] . "' ,'" . $_GET['listing_type'] . "','" . $_GET['sub_listing_type'] . "' ,'" . $_GET['vendor_ref'] . "' ,'" . $_GET['vendor_name'] . "' ,'" . $_GET['address'] . "' ,'" . $_GET['loctaion_point_lat'] . "' ,'" . $_GET['loctaion_point_lng'] . "' ,'" . $_GET['phone_number_1'] . "' ,'" . $_GET['phone_number_2'] . "' ,'" . $_GET['email_address'] . "' ,'" . $_GET['img_logo'] . "' ,'" . $_GET['approve'] . "' ,'" . $_SESSION['UserName'] . "','" . $_GET['active'] . "','" . $_GET['verify']. "','" . $_GET['promotion_logo'] . "')";
         $result = $conn->query($sql);
         
         
@@ -211,6 +211,71 @@ if ($_GET["Command"] == "upload") {
     } else {
         echo "Sorry, there was an error uploading your file.";
     }
+    }
+
+
+
+}
+
+if ($_GET["Command"] == "upload_pro") {
+
+
+    // print_r($_FILES);
+    $target_dir = "uploads/store/promotion/";
+    $filename = explode(".",$_FILES["fileToUploads"]["name"]);
+
+    $uniq = uniqid();
+
+    $filename =  $uniq.'.'.$filename[1];
+    // $_SESSION['store_logo'] = $filename;
+
+    $target_file = $target_dir . $filename;
+    // echo $target_file;
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+    // Check if image file is a actual image or fake image
+    if(isset($_POST["submit"])) {
+        $check = getimagesize($_FILES["fileToUploads"]["tmp_name"]);
+        if($check !== false) {
+            echo "File is an image - " . $check["mime"] . ".";
+            $uploadOk = 1;
+        } else {
+            echo "File is not an image.";
+            $uploadOk = 0;
+        }
+    }
+
+    // Check if file already exists
+    if (file_exists($target_file)) {
+        echo "Sorry, file already exists.";
+        $uploadOk = 0;
+    }
+
+    // Check file size
+    if ($_FILES["fileToUploads"]["size"] > 500000) {
+        echo "Sorry, your file is too large.";
+        $uploadOk = 0;
+    }
+
+    // Allow certain file formats
+    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+        && $imageFileType != "gif" ) {
+        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        $uploadOk = 0;
+    }
+
+    // Check if $uploadOk is set to 0 by an error
+    if ($uploadOk == 0) {
+        echo "Sorry, your file was not uploaded.";
+        // if everything is ok, try to upload file
+    } else {
+        if (move_uploaded_file($_FILES["fileToUploads"]["tmp_name"], $target_file)) {
+            // echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+            echo $filename;
+        } else {
+            echo "Sorry, there was an error uploading your file.";
+        }
     }
 
 
