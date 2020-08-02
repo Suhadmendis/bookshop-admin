@@ -114,6 +114,11 @@ if (isset($_GET['url'])) {
   if ($_GET['url'] == "inquiry"){
     include 'm_inquiry.php';
   }
+  if ($_GET['url'] == "feedback"){
+    include 'm_feedback.php';
+  }
+
+
   if ($_GET['url'] == "inquiry_type"){
     include 'm_inquiry_type.php';
   }
