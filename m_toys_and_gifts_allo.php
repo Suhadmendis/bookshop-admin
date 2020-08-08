@@ -13,7 +13,7 @@
           <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">{{ en_name }}Toys and Gifts Allocation</h3>
+              <h3 class="box-title">{{ en_name }}Music and Gifts Allocation</h3>
             </div>
             <!-- /.box-header -->
              <div class="btn-group" style="padding: 10px;">
@@ -21,8 +21,6 @@
               <a class="btn btn-primary" onclick="window.open('search_m_store.php?IDF=toys_allo', 'mywin', 'width=1200, height=700');" class="btn btn-info btn-sm">Search Store</a>
               <a id="app_info" class="btn btn-success" onclick="approve();">Approve</a>
               <a class="btn btn-danger" onclick="">Cancel</a>
-              
-              
               
             </div>
             <!-- form start -->
@@ -53,7 +51,7 @@
                 </div>
                 
                <div class="col-md-2">
-                    <a class="btn btn-default" onclick="window.open('search_m_toys_and_gifts.php?IDF=ADD_TOYS', 'mywin', 'width=800, height=700');" class="btn btn-info btn-sm">Add Snacks and Deco</a>
+                    <a class="btn btn-default" onclick="window.open('search_m_toys_and_gifts.php?IDF=ADD_TOYS', 'mywin', 'width=800, height=700');" class="btn btn-info btn-sm">Add Music and Gifts</a>
                   </div>
                 </div><br><br>
 

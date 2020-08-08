@@ -23,7 +23,7 @@ if ($_GET["Command"] == "generate") {
     $no = trim("ITEM/") . substr($tmpinvno, $lenth - 7);
 
 
-    $en_name = "Toys and Gifts";
+    $en_name = "Music and Gifts";
 
     $objArray = Array();
     array_push($objArray,$no,$en_name);

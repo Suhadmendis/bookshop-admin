@@ -58,7 +58,8 @@
 
         .invoice .invoice-details .invoice-id {
             margin-top: 0;
-            color: #3989c6
+            color: #ad1f23
+
         }
 
         .invoice main {
@@ -114,7 +115,7 @@
         .invoice table .no {
             color: #fff;
             font-size: 1.6em;
-            background: #3989c6
+            background: #ad1f23
         }
 
         .invoice table .unit {
@@ -187,11 +188,80 @@
 
 require_once ("DB_connector.php");
 
-    $sql = "SELECT * FROM m_registration";
-    $result = $conn->query($sql);
-    $row = $result->fetch();
 
-    
+
+
+$sql = "SELECT * FROM m_order where REF= '" . $_GET['REF'] . "'";
+$result = $conn->query($sql);
+$order = $result->fetch();
+//print_r($order);
+//echo '<br>';
+//echo $order['REF'];
+//echo '<br>';
+//echo '<br>';
+$sql = "SELECT * FROM m_registration where REF= '" . $order['user_ref'] . "'";
+$result = $conn->query($sql);
+$registration = $result->fetch();
+//print_r($registration);
+//echo '<br>';
+//echo $registration['REF'];
+//echo '<br>';
+//echo $registration['address_1'];
+//echo '<br>';
+$objArray = Array();
+$sql = "SELECT * FROM m_order_detail where REF= '" .  $_GET['REF'] . "'";
+$result = $conn->query($sql);
+$order_detail = $result->fetchAll();
+
+//print_r($order_detail);
+//echo '<br>';
+////echo $order_detail[0]['REF'];
+//echo '<br>';
+//echo '<br>';
+
+//echo '<h1>Hello</h1>';
+array_push($objArray, $order_detail);
+
+//echo json_encode($objArray);
+
+
+
+//for ($i=0; $i < sizeof($order_detail); $i++) {
+//
+//    $order_detail[$i]['REF'];
+//    $order_detail[$i]['user_ref'];
+//}
+
+$sql = "SELECT * FROM sys_info";
+$result = $conn->query($sql);
+$company = $result->fetch();
+//print_r($order);
+//echo '<br>';
+//echo $company['id'];
+//echo '<br>';
+//echo '<br>';
+
+
+
+
+
+//$sql = "SELECT * FROM m_registration";
+//$result = $conn->query($sql);
+//$row = $result->fetch();
+//
+//$sql = "SELECT * FROM m_registration";
+//$result = $conn->query($sql);
+//$row = $result->fetchAll();
+//
+//$sql = "SELECT * FROM m_registration";
+//$result = $conn->query($sql);
+//$row = $result->fetchAll();
+//
+//    print_r($row);
+//
+//for ($i=0; $i < sizeof($row); $i++) {
+//    $row[$i]['ugfy8u'];
+//}
 
 
 
@@ -203,7 +273,7 @@ require_once ("DB_connector.php");
 
         <div class="toolbar hidden-print">
             <div class="text-right">
-                <button id="printInvoice" class="btn btn-info"><i class="fa fa-print"></i> Print</button>
+                <!-- <button id="printInvoice" class="btn btn-info"><i class="fa fa-print"></i> Print</button> -->
                 <!-- <button class="btn btn-info"><i class="fa fa-file-pdf-o"></i> Export as PDF</button> -->
             </div>
             <hr>
@@ -219,13 +289,13 @@ require_once ("DB_connector.php");
                         </div>
                         <div class="col company-details">
                             <h2 class="name">
-                               
-                                BOOKS N BEYOND
+
+                                <?php echo $company['COM_NAME']; ?>
                               
                             </h2>
-                            <div>455 Foggy Heights, AZ 85004, US</div>
-                            <div>(123) 456-789</div>
-                            <div>company@example.com</div>
+                            <div><?php echo $company['COM_ADD1']; ?></div>
+                            <div><?php echo $company['COM_TEL1']; ?></div>
+                            <div><?php echo $company['COM_EMAIL']; ?></div>
                         </div>
                     </div>
                 </header>
@@ -233,92 +303,87 @@ require_once ("DB_connector.php");
                     <div class="row contacts">
                         <div class="col invoice-to">
                             <div class="text-gray-light">INVOICE TO:</div>
-                            <h2 class="to">John Doe</h2>
-                            <div class="address">796 Silver Harbour, TX 79273, US</div>
-                            <div class="email"><a href="mailto:john@example.com">john@example.com</a></div>
+                            <h2 class="to"><?php echo $registration['first_name'] . " " . $registration['middle_name'] . " " . $registration['last_name'];?></h2>
+                            <div class="address"><?php echo $registration['address_1'];?></div>
+                            <div class="email"><?php echo $registration['email'];?></div>
                         </div>
                         <div class="col invoice-details">
-                            <h1 class="invoice-id">INVOICE 3-2-1</h1>
-                            <div class="date">Date of Invoice: 01/10/2018</div>
-                            <div class="date">Due Date: 30/10/2018</div>
+                            <h1 class="invoice-id">INVOICE <?php echo $order['REF'];?></h1>
+                            <div class="date">Date of Invoice: <?php echo $order['date'];?></div>
+<!--                            <div class="date">Due Date: 30/10/2018</div>-->
                         </div>
                     </div>
                     <table border="0" cellspacing="0" cellpadding="0">
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th class="text-left">DESCRIPTION</th>
-                                <th class="text-right">HOUR PRICE</th>
-                                <th class="text-right">HOURS</th>
-                                <th class="text-right">TOTAL</th>
+                                <th class="text-left">NO</th>
+                                <th class="text-left">Name</th>
+                                <th class="text-left">Store</th>
+                                <th class="text-left">Unit Price</th>
+                                <th class="text-left">Quantity</th>
+                                <th class="text-left">Total</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="no">04</td>
-                                <td class="text-left"><h3>
-                                    <a target="_blank" href="https://www.youtube.com/channel/UC_UMEcP_kF0z4E6KbxCpV1w">
-                                    Youtube channel
-                                    </a>
-                                    </h3>
-                                <a target="_blank" href="https://www.youtube.com/channel/UC_UMEcP_kF0z4E6KbxCpV1w">
-                                    Useful videos
-                                </a> 
-                                to improve your Javascript skills. Subscribe and stay tuned :)
-                                </td>
-                                <td class="unit">$0.00</td>
-                                <td class="qty">100</td>
-                                <td class="total">$0.00</td>
-                            </tr>
-                            <tr>
-                                <td class="no">01</td>
-                                <td class="text-left"><h3>Website Design</h3>Creating a recognizable design solution based on the company's existing visual identity</td>
-                                <td class="unit">$40.00</td>
-                                <td class="qty">30</td>
-                                <td class="total">$1,200.00</td>
-                            </tr>
-                            <tr>
-                                <td class="no">02</td>
-                                <td class="text-left"><h3>Website Development</h3>Developing a Content Management System-based Website</td>
-                                <td class="unit">$40.00</td>
-                                <td class="qty">80</td>
-                                <td class="total">$3,200.00</td>
-                            </tr>
-                            <tr>
-                                <td class="no">03</td>
-                                <td class="text-left"><h3>Search Engines Optimization</h3>Optimize the site for search engines (SEO)</td>
-                                <td class="unit">$40.00</td>
-                                <td class="qty">20</td>
-                                <td class="total">$800.00</td>
-                            </tr>
+                        <?php
+                        $no=0;
+                        $total=0.00;
+                       for ($i=0; $i < sizeof($order_detail); $i++) {
+                           $no++;
+                           $unit_price=$order_detail[$i]['price'];
+                           $total+=$order_detail[$i]['price'] * $order_detail[$i]['quantity'];
+                           $sql = "SELECT * FROM m_store where REF= '" . $order_detail[$i]['store_ref'] . "'";
+//                           echo $sql;
+                           $result = $conn->query($sql);
+                           $store = $result->fetch();
+//                           echo $store['REF'];
+//                           echo $store['id'];
+//                           print_r($registration);
+                           ?>
+                           <tr>
+                               <td class="no text-right"><?php  echo $no ?></td>
+                               <td class="text-left"><?php echo $order_detail[$i]['Item_name']; ?></td>
+                               <td class="text-left"><?php echo $store['shop_name']; ?></td>
+                               <td class="text-right"><?php echo number_format($unit_price,2); ?></td>
+                               <td class="text-right"><?php echo $order_detail[$i]['quantity']; ?></td>
+                               <td class="text-right"><?php echo number_format($order_detail[$i]['price'] * $order_detail[$i]['quantity'],2); ?></td>
+                           </tr>
+                           <?php
+                        }?>
+
                         </tbody>
                         <tfoot>
+
                             <tr>
+                                <td></td>
+
                                 <td colspan="2"></td>
                                 <td colspan="2">SUBTOTAL</td>
-                                <td>$5,200.00</td>
+                                <td><?php echo $total?></td>
                             </tr>
                             <tr>
+                                <td></td>
                                 <td colspan="2"></td>
-                                <td colspan="2">TAX 25%</td>
-                                <td>$1,300.00</td>
+                                <td colspan="2">TAX</td>
+                                <td>---------</td>
                             </tr>
                             <tr>
+                               <td></td>
                                 <td colspan="2"></td>
                                 <td colspan="2">GRAND TOTAL</td>
-                                <td>$6,500.00</td>
+                                <td><?php echo $total?></td>
                             </tr>
                         </tfoot>
                     </table>
-                    <div class="thanks">Thank you!</div>
-                    <div class="notices">
-                        <div>NOTICE:</div>
-                        <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>
-                    </div>
+<!--                    <div class="thanks">Thank you!</div>-->
+<!--                    <div class="notices">-->
+<!--                        <div>NOTICE:</div>-->
+<!--                        <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>-->
+<!--                    </div>-->
                 </main>
-                <footer>
-                    Invoice was created on a computer and is valid without the signature and seal.
-                </footer>
+<!--                <footer>-->
+<!--                    Invoice was created on a computer and is valid without the signature and seal.-->
+<!--                </footer>-->
             </div>
             <!--DO NOT DELETE THIS div. IT is responsible for showing footer always at the bottom-->
             <div></div>

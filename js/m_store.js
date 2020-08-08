@@ -366,11 +366,15 @@ function getFromValues() {
         '<img src="uploads/store/logo/' +
         objSup.img_logo +
         '" alt="" width="100" >';
+        opener.document.getElementById("img_logo").value =
+          objSup.img_logo;
 
       opener.document.getElementById("promotion_path").innerHTML =
             '<img src="uploads/store/promotion/' +
             objSup.promotion_logo +
             '" alt="" width="100" >';
+            opener.document.getElementById("promotion_logo").value =
+              objSup.promotion_logo;
 
 
 

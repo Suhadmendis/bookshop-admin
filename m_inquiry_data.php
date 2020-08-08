@@ -74,7 +74,7 @@ if ($_GET["Command"] == "save_item") {
         } else {
 
             $sql    = "Insert into m_inquiry(REF, name,tel,email,inquiry,status, user)values
-    ('" . $no1 . "' ,'" . $_GET['name'] . "','". $_GET['tel'] . "','". $_GET['email'] . "','". $_GET['inquiry'] . "','". $_GET['status'] . "','" . $_SESSION['UserName'] . "')";
+            ('" . $no1 . "' ,'" . $_GET['name'] . "','". $_GET['tel'] . "','". $_GET['email'] . "','". $_GET['inquiry'] . "','". $_GET['status'] . "','" . $_SESSION['UserName'] . "')";
             $result = $conn->query($sql);
 
 

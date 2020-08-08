@@ -54,23 +54,62 @@ if ($_GET["Command"] == "save_item") {
         $lenth = strlen($tmpinvno);
         $no1 = trim("ST/") . substr($tmpinvno, $lenth - 7);
 
-        $sql = "Insert into m_store(REF, shop_name, tagline, listing_type, sub_listing_type, vendor_ref, vendor_name, address, loctaion_point_lat, loctaion_point_lng, phone_number_1, phone_number_2, email_address, img_logo, approve, user, active,verify,promotion_logo)values
-                        ('" . $no1 . "' ,'" . $_GET['shop_name'] . "' ,'" . $_GET['tagline'] . "' ,'" . $_GET['listing_type'] . "','" . $_GET['sub_listing_type'] . "' ,'" . $_GET['vendor_ref'] . "' ,'" . $_GET['vendor_name'] . "' ,'" . $_GET['address'] . "' ,'" . $_GET['loctaion_point_lat'] . "' ,'" . $_GET['loctaion_point_lng'] . "' ,'" . $_GET['phone_number_1'] . "' ,'" . $_GET['phone_number_2'] . "' ,'" . $_GET['email_address'] . "' ,'" . $_GET['img_logo'] . "' ,'" . $_GET['approve'] . "' ,'" . $_SESSION['UserName'] . "','" . $_GET['active'] . "','" . $_GET['verify']. "','" . $_GET['promotion_logo'] . "')";
+
+        $REF_GET = $_GET['REF'];
+
+        $sql    = "SELECT  `REF` FROM `m_store`  WHERE REF = '" . $REF_GET . "'";
         $result = $conn->query($sql);
+        $row    = $result->fetchall();
+
+        if (isset($REF_GET) && count($row) >= 1) {
+
+
+            $sql    = "UPDATE `m_store` SET `shop_name`='" . $_GET['shop_name'] . "' WHERE REF = '" . $REF_GET . "'";
+            $result = $conn->query($sql);
+            $sql    = "UPDATE `m_store` SET `tagline`='" . $_GET['tagline'] . "' WHERE REF = '" . $REF_GET . "'";
+            $result = $conn->query($sql);
+            $sql    = "UPDATE `m_store` SET `address`='" . $_GET['address'] . "' WHERE REF = '" . $REF_GET . "'";
+            $result = $conn->query($sql);
+            $sql    = "UPDATE `m_store` SET `loctaion_point_lat`='" . $_GET['loctaion_point_lat'] . "' WHERE REF = '" . $REF_GET . "'";
+            $result = $conn->query($sql);
+            $sql    = "UPDATE `m_store` SET `loctaion_point_lng`='" . $_GET['loctaion_point_lng'] . "' WHERE REF = '" . $REF_GET . "'";
+            $result = $conn->query($sql);
+            $sql    = "UPDATE `m_store` SET `phone_number_1`='" . $_GET['phone_number_1'] . "' WHERE REF = '" . $REF_GET . "'";
+            $result = $conn->query($sql);
+            $sql    = "UPDATE `m_store` SET `phone_number_2`='" . $_GET['phone_number_2'] . "' WHERE REF = '" . $REF_GET . "'";
+            $result = $conn->query($sql);
+            $sql    = "UPDATE `m_store` SET `email_address`='" . $_GET['email_address'] . "' WHERE REF = '" . $REF_GET . "'";
+            $result = $conn->query($sql);
+            $sql    = "UPDATE `m_store` SET `img_logo`='" . $_GET['img_logo'] . "' WHERE REF = '" . $REF_GET . "'";
+            $result = $conn->query($sql);
+            $sql    = "UPDATE `m_store` SET `promotion_logo`='" . $_GET['promotion_logo'] . "' WHERE REF = '" . $REF_GET . "'";
+            $result = $conn->query($sql);
+            
+
+
+            $conn->commit();
+            echo 'Updated Store successfully';
+
+        } else {
+
+            $sql = "Insert into m_store(REF, shop_name, tagline, listing_type, sub_listing_type, vendor_ref, vendor_name, address, loctaion_point_lat, loctaion_point_lng, phone_number_1, phone_number_2, email_address, img_logo, approve, user, active,verify,promotion_logo)values
+                            ('" . $no1 . "' ,'" . $_GET['shop_name'] . "' ,'" . $_GET['tagline'] . "' ,'" . $_GET['listing_type'] . "','" . $_GET['sub_listing_type'] . "' ,'" . $_GET['vendor_ref'] . "' ,'" . $_GET['vendor_name'] . "' ,'" . $_GET['address'] . "' ,'" . $_GET['loctaion_point_lat'] . "' ,'" . $_GET['loctaion_point_lng'] . "' ,'" . $_GET['phone_number_1'] . "' ,'" . $_GET['phone_number_2'] . "' ,'" . $_GET['email_address'] . "' ,'" . $_GET['img_logo'] . "' ,'" . $_GET['approve'] . "' ,'" . $_SESSION['UserName'] . "','" . $_GET['active'] . "','" . $_GET['verify']. "','" . $_GET['promotion_logo'] . "')";
+            $result = $conn->query($sql);
+            
         
+            $no2 = $no + 1;
+            $sql = "update sys_info set store_ref = $no2 where store_ref = $no";
+            $result = $conn->query($sql);
+
+            $sql = "Insert into sys_log(REF, entry, operation, user, ip)values
+                            ('" . $no1 . "' ,'entry' ,'SAVE'  ,'" . $_SESSION['UserName'] . "' ,'ip')";
+            $result = $conn->query($sql);
+
+            $conn->commit();
+            echo "Saved";
+        }
+
         
-        $no2 = $no + 1;
-        $sql = "update sys_info set store_ref = $no2 where store_ref = $no";
-        $result = $conn->query($sql);
-
-        $sql = "Insert into sys_log(REF, entry, operation, user, ip)values
-                        ('" . $no1 . "' ,'entry' ,'SAVE'  ,'" . $_SESSION['UserName'] . "' ,'ip')";
-        $result = $conn->query($sql);
-
-
-
-        $conn->commit();
-        echo "Saved";
     } catch (Exception $e) {
         $conn->rollBack();
         echo $e;
