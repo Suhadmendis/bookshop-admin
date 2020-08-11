@@ -102,6 +102,53 @@ if ($_GET["Command"] == "save_item") {
     }
 }
 
+if ($_GET["Command"] == "cancel_imb") {
+    try {
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conn->beginTransaction();
+
+        $REF_GET = $_GET["REF"];
+        $cancel = 1;
+
+        $sql = "UPDATE `m_complaint` SET `cancel`='" . $cancel . "' WHERE REF = '" . $REF_GET . "'";
+        $result = $conn->query($sql);
+        $conn->commit();
+        echo "Cancel Complaint successfully";
+
+    } catch (Exception $e) {
+        $conn->rollBack();
+        echo $e;
+    }
+
+}
+
+if ($_GET["Command"] == "approve") {
+
+    try {
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conn->beginTransaction();
+
+        $no1 = $_GET['REF'];
+        $approve =1;
+        $sql = "UPDATE `m_complaint` SET `approve`='" . $approve . "' WHERE REF = '" . $no1 . "'";
+        echo $sql;
+        $result = $conn->query($sql);
+
+//        $sql = "Insert into sys_log(REF, entry, operation, user, ip)values
+//                        ('" . $no1 . "' ,'entry' ,'Approved'  ,'" . $_SESSION['UserName'] . "' ,'ip')";
+//        $result = $conn->query($sql);
+
+
+
+        $conn->commit();
+        echo "Approved";
+    } catch (Exception $e) {
+        $conn->rollBack();
+        echo $e;
+    }
+}
+
+
 if ($_GET["Command"] == "getForm") {
     header('Content-Type: text/xml');
     echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";

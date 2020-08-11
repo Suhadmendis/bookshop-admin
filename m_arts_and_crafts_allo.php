@@ -35,10 +35,10 @@
                   <label for="first_name">Store</label>
                 </div>
                 <div class="col-sm-2">
-                  <input type="text" class="form-control" id="store_ref" placeholder="Store Ref">
+                  <input type="text" class="form-control" id="store_ref" :disabled="true" placeholder="Store Ref">
                 </div>
                 <div class="col-sm-2">
-                  <input type="text" class="form-control" id="store_name" placeholder="Store Name">
+                  <input type="text" class="form-control" id="store_name" :disabled="true" placeholder="Store Name">
                 </div>
                <!-- <div class="col-md-2">
                     <a class="btn btn-default" onclick="window.open('search_m_registration.php?IDF=store', 'mywin', 'width=800, height=700');" class="btn btn-info btn-sm">...</a>

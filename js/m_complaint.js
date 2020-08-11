@@ -102,11 +102,88 @@ function save_info() {
     xmlHttp.send(null);
 }
 
+function approve() {
+
+    xmlHttp = GetXmlHttpObject();
+    if (xmlHttp == null) {
+        alert("Browser does not support HTTP Request");
+        return;
+    }
+    if (document.getElementById('REF').value == "") {
+        document.getElementById('REF').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'></span></div>";
+        return false;
+    }
+
+    var url = "m_complaint_data.php";
+    url = url + "?Command=" + "approve";
+    url = url + "&REF=" + document.getElementById("REF").value;
+
+
+    xmlHttp.onreadystatechange = approvesaveresult;
+    xmlHttp.open("GET", url, true);
+    xmlHttp.send(null);
+
+}
+
+function cancel_imb() {
+    xmlHttp = GetXmlHttpObject();
+    if (xmlHttp == null) {
+        alert("Browser does not support HTTP Request");
+        return;
+    }
+    if (document.getElementById("REF").value == "") {
+        document.getElementById("REF").innerHTML =
+            "<div class='alert alert-warning' role='alert'><span class='center-block'></span></div>";
+        return false;
+    }
+
+    var url = "m_complaint_data.php";
+    url = url + "?Command=" + "cancel_imb";
+    url = url + "&REF=" + document.getElementById("REF").value;
+
+    xmlHttp.onreadystatechange = cancelresult;
+    xmlHttp.open("GET", url, true);
+    xmlHttp.send(null);
+}
+
+function cancelresult() {
+    var XMLAddress1;
+
+    if (xmlHttp.readyState == 4 || xmlHttp.readyState == "complete") {
+        if (xmlHttp.responseText == "Canceled!!!") {
+            alert(xmlHttp.responseText);
+            // document.getElementById('msg_box').innerHTML = "<div class='alert alert-success' role='alert'><span class='center-block'>Saved</span></div>";
+            // $("#msg_box").hide().slideDown(400).delay(2000);
+            // $("#msg_box").slideUp(400);
+        } else {
+            alert(xmlHttp.responseText);
+            // document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>" + xmlHttp.responseText + "</span></div>";
+        }
+    }
+}
+
 function salessaveresult() {
     var XMLAddress1;
 
     if (xmlHttp.readyState == 4 || xmlHttp.readyState == "complete") {
         if (xmlHttp.responseText == "Saved!!!") {
+            alert(xmlHttp.responseText);
+            // document.getElementById('msg_box').innerHTML = "<div class='alert alert-success' role='alert'><span class='center-block'>Saved</span></div>";
+            // $("#msg_box").hide().slideDown(400).delay(2000);
+            // $("#msg_box").slideUp(400);
+        } else {
+            alert(xmlHttp.responseText);
+            // document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>" + xmlHttp.responseText + "</span></div>";
+        }
+    }
+}
+
+function approvesaveresult() {
+    var XMLAddress1;
+
+    if (xmlHttp.readyState == 4 || xmlHttp.readyState == "complete") {
+
+        if (xmlHttp.responseText == "Approved") {
             alert(xmlHttp.responseText);
             // document.getElementById('msg_box').innerHTML = "<div class='alert alert-success' role='alert'><span class='center-block'>Saved</span></div>";
             // $("#msg_box").hide().slideDown(400).delay(2000);

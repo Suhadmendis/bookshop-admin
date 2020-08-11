@@ -31,7 +31,7 @@
                     <label for="exampleInputEmail1" >Reference No</label>
                     </div>
                     <div class="col-sm-2">
-                    <input type="text" class="form-control" id="REF" v-model="REF" placeholder="Reference No">
+                    <input type="text" class="form-control" id="REF" v-model="REF" :disabled="true" placeholder="Reference No">
                     </div>
                   </div><br><br>
 

@@ -59,30 +59,30 @@ if ($_GET["Command"] == "save_item") {
 
         if (isset($REF_UNI) && count($row) >= 1) {
 
-            // $sql    = "UPDATE `m_school` SET `category_name`='" . $_GET['category_name'] . "',`school_ref`='" . $_GET['school_ref'] . "',`school_name`='" . $_GET['school_name'] . "',`item_name`='" . $_GET['item_name'] . "',`des`='" . $_GET['des'] . "',`user`='" . $_SESSION['UserName'] . "',`listtype`='UN',`img`='" . $_GET['img_logo'] . "' WHERE REF = '" . $REF_UNI . "'";
-            // $result = $conn->query($sql);
-            // $conn->commit();
-            echo 'hi';
+             $sql    = "UPDATE `m_item` SET `category_name`='" . $_GET['category_name'] . "',`school_ref`='" . $_GET['school_ref'] . "',`school_name`='" . $_GET['school_name'] . "',`item_name`='" . $_GET['item_name'] . "',`des`='" . $_GET['des'] . "',`user`='" . $_SESSION['UserName'] . "',`listtype`='UN',`img`='" . $_GET['img_logo'] . "' WHERE REF = '" . $REF_UNI . "'";
+             $result = $conn->query($sql);
+             $conn->commit();
+            echo "Update Successfully";
         }
-        // else{
+         else{
 
-        //     $sql = "Insert into m_item(REF, category_name, school_ref, school_name, item_name, des, user, listtype,img)values
-        //     ('" . $no1 . "' ,'" . $_GET['category_name'] . "' ,'" . $_GET['school_ref'] . "' ,'" . $_GET['school_name'] . "'  ,'" . $_GET['item_name'] . "' ,'" . $_GET['des'] . "', '" . $_SESSION['UserName'] . "','UN','" . $_GET['img_logo'] . "')";
-        //     $result = $conn->query($sql);
+             $sql = "Insert into m_item(REF, category_name, school_ref, school_name, item_name, des, user, listtype,img)values
+             ('" . $no1 . "' ,'" . $_GET['category_name'] . "' ,'" . $_GET['school_ref'] . "' ,'" . $_GET['school_name'] . "'  ,'" . $_GET['item_name'] . "' ,'" . $_GET['des'] . "', '" . $_SESSION['UserName'] . "','UN','" . $_GET['img_logo'] . "')";
+             $result = $conn->query($sql);
 
-        //     $no2 = $no + 1;
-        //     $sql = "update sys_info set item_ref = $no2 where item_ref = $no";
-        //     $result = $conn->query($sql);
+             $no2 = $no + 1;
+             $sql = "update sys_info set item_ref = $no2 where item_ref = $no";
+             $result = $conn->query($sql);
 
-        //     $sql = "Insert into sys_log(REF, entry, operation, user, ip)values
-        //                 ('" . $no1 . "' ,'entry' ,'SAVE'  ,'" . $_SESSION['UserName'] . "' ,'ip')";
-        //     $result = $conn->query($sql);
+             $sql = "Insert into sys_log(REF, entry, operation, user, ip)values
+                         ('" . $no1 . "' ,'entry' ,'SAVE'  ,'" . $_SESSION['UserName'] . "' ,'ip')";
+             $result = $conn->query($sql);
 
 
 
-        //     $conn->commit();
-        //     echo "Saved";
-        // }
+             $conn->commit();
+             echo "Saved";
+         }
         
 
 
@@ -91,6 +91,29 @@ if ($_GET["Command"] == "save_item") {
         $conn->rollBack();
         echo $e;
     }
+}
+
+
+
+if ($_GET["Command"] == "cancel_imb") {
+    try {
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conn->beginTransaction();
+
+        $REF_GET = $_GET["REF"];
+        $cancel = 1;
+
+        $sql = "UPDATE `m_item` SET `cancel`='" . $cancel . "' WHERE REF = '" . $REF_GET . "'";
+        echo $sql;
+        $result = $conn->query($sql);
+        $conn->commit();
+        echo "Cancel Uniform successfully";
+
+    } catch (Exception $e) {
+        $conn->rollBack();
+        echo $e;
+    }
+
 }
 
 

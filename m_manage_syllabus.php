@@ -35,7 +35,7 @@
                   <label for="exampleInputEmail1" >Reference No</label>
                   </div>
                   <div class="col-sm-2">
-                  <input type="text" class="form-control" id="REF" v-model="REF" placeholder="Reference No">
+                  <input type="text" class="form-control" id="REF" v-model="REF"  placeholder="Reference No">
                   </div>
                 </div>
                 <!-- <br><br> -->
@@ -75,14 +75,14 @@
                   <label for="first_name">School Name</label>
                 </div>
                 <div class="col-sm-2">
-                  <input type="text" class="form-control" id="school_name" v-model="school_name" placeholder="School Name">
+                  <input type="text" class="form-control" id="school_name" v-model="school_name" :disabled="true" placeholder="School Name">
                   <input type="hidden" class="form-control" id="school_ref" v-model="school_ref" placeholder="School Ref">
                 </div>
                 <div class="col-sm-2">
                   <label for="first_name">Level</label>
                 </div>
                 <div class="col-sm-2">
-                  <input type="text" class="form-control" id="level" v-model="level" placeholder="Level">
+                  <input type="text" class="form-control" id="level" v-model="level" :disabled="true" placeholder="Level">
                   <input type="hidden" class="form-control" id="level_ref" v-model="level_ref" placeholder="Level Ref">
                 </div>
                <!-- <div class="col-md-2">

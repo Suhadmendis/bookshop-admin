@@ -100,6 +100,26 @@ if ($_GET["Command"] == "save_item") {
     }
 }
 
+if ($_GET["Command"] == "cancel_imb") {
+    try {
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conn->beginTransaction();
+
+        $REF_GET = $_GET["REF"];
+        $cancel = 1;
+
+        $sql = "UPDATE `m_item` SET `cancel`='" . $cancel . "' WHERE REF = '" . $REF_GET . "'";
+        $result = $conn->query($sql);
+        $conn->commit();
+        echo 'Cancel successfully';
+
+    } catch (Exception $e) {
+        $conn->rollBack();
+        echo $e;
+    }
+
+}
+
 
 
 
