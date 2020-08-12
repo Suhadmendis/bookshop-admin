@@ -11,7 +11,7 @@
  Target Server Version : 100131
  File Encoding         : 65001
 
- Date: 02/08/2020 20:53:51
+ Date: 12/08/2020 14:50:38
 */
 
 SET NAMES utf8mb4;
@@ -28,16 +28,18 @@ CREATE TABLE `m_author`  (
   `des` varchar(500) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `user` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `sys_time` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0),
+  `approve` varchar(1) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT '0',
+  `cancel` varchar(1) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT '0',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 46 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of m_author
 -- ----------------------------
-INSERT INTO `m_author` VALUES (42, 'AU/0000004', 'Nick Lake', NULL, 'admin', '2020-06-14 16:29:52');
-INSERT INTO `m_author` VALUES (43, 'AU/0000005', 'Charles Perrault', NULL, 'admin', '2020-06-14 16:29:58');
-INSERT INTO `m_author` VALUES (44, 'AU/0000006', 'Gabrielle Kent', NULL, 'admin', '2020-06-14 16:30:06');
-INSERT INTO `m_author` VALUES (45, 'AU/0000007', 'Patrick Ness', NULL, 'admin', '2020-06-14 16:30:12');
+INSERT INTO `m_author` VALUES (42, 'AU/0000004', 'Nick Lake', NULL, 'admin', '2020-06-14 16:29:52', '0', '0');
+INSERT INTO `m_author` VALUES (43, 'AU/0000005', 'Charles Perrault', NULL, 'admin', '2020-06-14 16:29:58', '0', '0');
+INSERT INTO `m_author` VALUES (44, 'AU/0000006', 'Gabrielle Kent', NULL, 'admin', '2020-06-14 16:30:06', '0', '0');
+INSERT INTO `m_author` VALUES (45, 'AU/0000007', 'Patrick Ness', NULL, 'admin', '2020-06-14 16:30:12', '0', '0');
 
 -- ----------------------------
 -- Table structure for m_cart
@@ -63,15 +65,19 @@ CREATE TABLE `m_cart`  (
   `user` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `update_qty`(`REF`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 261 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 373 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of m_cart
 -- ----------------------------
-INSERT INTO `m_cart` VALUES (96, 'CART/0001381', '', '', 'ST/0000178', '', 'ITEM/0003759', 'THERE WILL BE LIES', '2020-07-16', 900.00, 1, '0', '0', '0', '0', '2020-07-16 21:44:23', '');
-INSERT INTO `m_cart` VALUES (97, 'CART/0001398', '', 'admin', 'ST/0000189', '', 'ITEM/0003783', 'CAR', '2020-07-23', 230.00, 1, '0', '0', '0', '0', '2020-07-23 10:02:19', 'admin');
-INSERT INTO `m_cart` VALUES (98, 'CART/0001404', '', 'admin', 'ST/0000189', '', 'ITEM/0003782', 'BIR', '2020-07-23', 450.00, 1, '0', '0', '0', '0', '2020-07-23 10:02:29', 'admin');
-INSERT INTO `m_cart` VALUES (260, 'CART/0001655', '::1', '', 'ST/0000178', '', 'ITEM/0003759', 'THERE WILL BE LIES', '2020-08-02', 900.00, 2, '0', '0', '0', '0', '2020-08-02 12:56:48', '');
+INSERT INTO `m_cart` VALUES (364, 'CART/0001791', 'REG/0000067', '', 'ST/0000182', '', 'ITEM/0003775', 'FOOT M 1', '2020-08-07', 4500.00, 2, '0', '0', '0', '0', '2020-08-07 12:59:03', '');
+INSERT INTO `m_cart` VALUES (365, 'CART/0001792', 'REG/0000067', '', 'ST/0000182', '', 'ITEM/0003776', 'FOOT FM 1', '2020-08-07', 1500.00, 4, '0', '0', '0', '0', '2020-08-07 12:59:06', '');
+INSERT INTO `m_cart` VALUES (366, 'CART/0001793', 'REG/0000067', '', 'ST/0000182', '', 'ITEM/0003777', 'FOOT ACC 1', '2020-08-07', 1750.00, 5, '0', '0', '0', '0', '2020-08-07 12:59:22', '');
+INSERT INTO `m_cart` VALUES (367, 'CART/0001794', '::1', '', 'ST/0000182', '', 'ITEM/0003776', 'FOOT FM 1', '2020-08-07', 1500.00, 1, '0', '0', '0', '0', '2020-08-07 14:48:40', '');
+INSERT INTO `m_cart` VALUES (369, 'CART/0001796', 'REG/0000043', 'Akila Mendis', 'ST/0000019', '', 'ITEM/0000078', '1912 Manuscript on the Special Theory of Relativity', '2020-07-09', 2400.00, 3, '0', '0', '0', '0', '2020-08-07 16:05:52', 'Akila Mendis');
+INSERT INTO `m_cart` VALUES (370, 'CART/0001797', 'REG/0000043', 'Akila Mendis', 'ST/0000019', '', 'ITEM/0000080', '1968', '2020-07-09', 560.00, 2, '0', '0', '0', '0', '2020-08-07 16:05:52', 'Akila Mendis');
+INSERT INTO `m_cart` VALUES (371, 'CART/0001798', 'REG/0000043', 'Akila Mendis', 'ST/0000021', '', 'ITEM/0000491', 'Atonement', '2020-07-09', 1360.00, 3, '0', '0', '0', '0', '2020-08-07 16:05:52', 'Akila Mendis');
+INSERT INTO `m_cart` VALUES (372, 'CART/0001799', 'REG/0000043', 'Akila Mendis', 'ST/0000021', '', 'ITEM/0000492', 'Augustine', '2020-07-09', 2520.00, 3, '0', '0', '0', '0', '2020-08-07 16:05:52', 'Akila Mendis');
 
 -- ----------------------------
 -- Table structure for m_category
@@ -123,17 +129,29 @@ CREATE TABLE `m_complaint`  (
   `REF` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `user` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `sys_time` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0),
+  `approve` varchar(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0',
+  `cancel` varchar(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of m_complaint
 -- ----------------------------
-INSERT INTO `m_complaint` VALUES (1, 'gdfgdf', 'gfd', 'gfdg', '', '', '', '', 'COM/0000001', 'admin', '2020-07-28 22:09:16');
-INSERT INTO `m_complaint` VALUES (2, 'gdfgdfgd', '', '', '', '', '', '', 'COM/0000002', 'admin', '2020-07-28 22:09:25');
-INSERT INTO `m_complaint` VALUES (3, '534', 'INQT/0000001', 'Type 1', 'Suhad Akila Mendis', '', 'suhad.a.mendis@gmail.com', 'dffgh', 'COM/0000003', 'admin', '2020-07-28 23:40:51');
-INSERT INTO `m_complaint` VALUES (4, '5345', 'INQT/0000002', 'Type 2', 'Suhad Akila Mendis', '', 'suhad.a.mendis@gmail.com', 'yhfdhfg', 'COM/0000003', 'admin', '2020-07-28 23:48:46');
-INSERT INTO `m_complaint` VALUES (5, '5345', 'INQT/0000002', 'Type 2', 'Suhad Akila Mendis', '', 'suhad.a.mendis@gmail.com', 'yhfdhfg', 'COM/0000003', 'admin', '2020-07-28 23:48:54');
+INSERT INTO `m_complaint` VALUES (1, 'gdfgdf', 'gfd', 'gfdg', '', '', '', '', 'COM/0000001', 'admin', '2020-07-28 22:09:16', '0', '0');
+INSERT INTO `m_complaint` VALUES (2, 'gdfgdfgd', '', '', '', '', '', '', 'COM/0000002', 'admin', '2020-07-28 22:09:25', '0', '0');
+INSERT INTO `m_complaint` VALUES (3, '534', 'INQT/0000001', 'Type 1', 'Suhad Akila Mendis', '', 'suhad.a.mendis@gmail.com', 'dffgh', 'COM/0000003', 'admin', '2020-07-28 23:40:51', '0', '0');
+INSERT INTO `m_complaint` VALUES (4, '5345', 'INQT/0000002', 'Type 2', 'Suhad Akila Mendis', '', 'suhad.a.mendis@gmail.com', 'yhfdhfg', 'COM/0000003', 'admin', '2020-07-28 23:48:46', '0', '0');
+INSERT INTO `m_complaint` VALUES (5, '5345', 'INQT/0000002', 'Type 2', 'Suhad Akila Mendis', '', 'suhad.a.mendis@gmail.com', 'yhfdhfg', 'COM/0000003', 'admin', '2020-07-28 23:48:54', '0', '0');
+INSERT INTO `m_complaint` VALUES (6, 'OR/0000034', 'INQT/0000001', 'Type 1', 'Suhad Akila Mendis', '', 'suhad.a.mendis@gmail.com', 'dsgdf', 'COM/0000003', '', '2020-08-03 22:14:17', '0', '0');
+INSERT INTO `m_complaint` VALUES (7, 'dfg', 'INQT/0000002', 'Type 2', 'gdf', '', 'dgf', 'dgfd', 'COM/0000003', '', '2020-08-03 22:25:51', '0', '0');
+INSERT INTO `m_complaint` VALUES (8, '', 'INQT/0000002', 'Type 2', '', '', '', '', 'COM/0000004', '', '2020-08-03 22:25:57', '0', '0');
+INSERT INTO `m_complaint` VALUES (9, 'fgdg', 'INQT/0000001', 'Type 1', 'Suhad Akila Mendis', '', 'suhad.a.mendis@gmail.com', 'dfgd', 'COM/0000005', '', '2020-08-03 22:26:12', '0', '0');
+INSERT INTO `m_complaint` VALUES (10, 'fsdf', 'INQT/0000002', 'Type 2', 'fdsf', '', 'sdf', 'fsdf', 'COM/0000006', '', '2020-08-03 22:27:53', '0', '0');
+INSERT INTO `m_complaint` VALUES (11, 'gdf', 'INQT/0000001', 'Type 1', 'gfdgdf', '', 'gdf', 'gdfg', 'COM/0000007', '', '2020-08-03 22:29:47', '0', '0');
+INSERT INTO `m_complaint` VALUES (12, 'dfgd', 'INQT/0000001', 'Type 1', 'gdfg', '[object HTMLInputElement]', 'gdfg', 'gdf', 'COM/0000008', 'Akila Mendis', '2020-08-03 22:31:16', '0', '0');
+INSERT INTO `m_complaint` VALUES (13, 'dfgd', 'INQT/0000001', 'Type 1', 'gdfg', '[object HTMLInputElement]', 'gdfg', 'gdf', '12', 'Akila Mendis', '2020-08-03 22:32:04', '0', '0');
+INSERT INTO `m_complaint` VALUES (14, 'dfgd', 'INQT/0000001', 'Type 1', 'gdfg', '[object HTMLInputElement]', 'gdfg', 'gdf', 'COM/0000010', 'Akila Mendis', '2020-08-03 22:32:56', '0', '0');
+INSERT INTO `m_complaint` VALUES (15, '450', 'INQT/0000002', 'Type 2', 'Suhad Akila Mendis', '07', 'suhad.a.mendis@gmail.com', 'a', 'COM/0000011', 'Akila Mendis', '2020-08-03 22:33:48', '0', '0');
 
 -- ----------------------------
 -- Table structure for m_feedback
@@ -147,13 +165,17 @@ CREATE TABLE `m_feedback`  (
   `feedback` varchar(3000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `user` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `sys_time` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0),
+  `approve` varchar(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0',
+  `cancel` varchar(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of m_feedback
 -- ----------------------------
-INSERT INTO `m_feedback` VALUES (3, 'FB/0000001', 'gdfg', 'gfdg', 'gdfg', 'admin', '2020-08-02 18:55:08');
+INSERT INTO `m_feedback` VALUES (3, 'FB/0000001', 'gdfg', 'gfdg', 'gdfg', 'admin', '2020-08-02 18:55:08', '0', '0');
+INSERT INTO `m_feedback` VALUES (4, 'FB/0000002', 'gdfg', 'dfg', 'gdfg', 'Akila Mendis', '2020-08-03 22:46:29', '0', '0');
+INSERT INTO `m_feedback` VALUES (5, 'FB/0000003', 'gfdg', 'dfg', 'dfgdf', 'Akila Mendis', '2020-08-03 22:47:00', '0', '0');
 
 -- ----------------------------
 -- Table structure for m_inquiry
@@ -169,16 +191,20 @@ CREATE TABLE `m_inquiry`  (
   `status` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `user` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `sys_time` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0),
+  `approve` varchar(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0',
+  `cancel` varchar(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of m_inquiry
 -- ----------------------------
-INSERT INTO `m_inquiry` VALUES (3, 'INQ/0000002', 'gfdgdfg', 'gjg', 'gjj', 'hk', 'hk', 'admin', '2020-07-28 16:30:11');
-INSERT INTO `m_inquiry` VALUES (4, 'INQ/0000003', 'gfdgdfg', '', '', '', '', 'admin', '2020-07-28 22:09:59');
-INSERT INTO `m_inquiry` VALUES (5, 'INQ/0000004', 'gdfgdf', '', '', '', '', 'admin', '2020-07-28 22:10:03');
-INSERT INTO `m_inquiry` VALUES (6, 'INQ/0000005', 'gdfgdf', 'gdfg', 'dfgdf', 'gdf', 'gfdg', 'admin', '2020-07-28 22:10:09');
+INSERT INTO `m_inquiry` VALUES (3, 'INQ/0000002', 'gfdgdfg', 'gjg', 'gjj', 'hk', 'hk', 'admin', '2020-07-28 16:30:11', '0', '0');
+INSERT INTO `m_inquiry` VALUES (4, 'INQ/0000003', 'gfdgdfg', '', '', '', '', 'admin', '2020-07-28 22:09:59', '0', '0');
+INSERT INTO `m_inquiry` VALUES (5, 'INQ/0000004', 'gdfgdf', '', '', '', '', 'admin', '2020-07-28 22:10:03', '0', '0');
+INSERT INTO `m_inquiry` VALUES (6, 'INQ/0000005', 'gdfgdf', 'gdfg', 'dfgdf', 'gdf', 'gfdg', 'admin', '2020-07-28 22:10:09', '0', '0');
+INSERT INTO `m_inquiry` VALUES (7, 'INQ/0000006', 'gfdgd', 'fgdf', 'gdf', 'gdfg', 'WEB', 'Akila Mendis', '2020-08-03 22:39:25', '0', '0');
+INSERT INTO `m_inquiry` VALUES (8, 'INQ/0000007', 'fdgdfg', 'dfgdfg', 'dfgd', 'fg', 'WEB', 'Akila Mendis', '2020-08-03 22:39:41', '0', '0');
 
 -- ----------------------------
 -- Table structure for m_inquiry_type
@@ -190,14 +216,18 @@ CREATE TABLE `m_inquiry_type`  (
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `user` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `sys_time` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0),
+  `approve` varchar(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0',
+  `cancel` varchar(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of m_inquiry_type
 -- ----------------------------
-INSERT INTO `m_inquiry_type` VALUES (1, 'INQT/0000001', 'Type 1', 'admin', '2020-07-28 16:04:18');
-INSERT INTO `m_inquiry_type` VALUES (2, 'INQT/0000002', 'Type 2', 'admin', '2020-07-28 16:23:30');
+INSERT INTO `m_inquiry_type` VALUES (1, 'INQT/0000001', 'Not up to standard', 'admin', '2020-07-28 16:04:18', '0', '0');
+INSERT INTO `m_inquiry_type` VALUES (2, 'INQT/0000002', 'Not what I ordered', 'admin', '2020-07-28 16:23:30', '0', '0');
+INSERT INTO `m_inquiry_type` VALUES (3, 'INQT/0000003', 'Incomplete order', 'admin', '2020-08-12 13:10:56', '0', '0');
+INSERT INTO `m_inquiry_type` VALUES (4, 'INQT/0000004', 'Not received on time / delay in order', 'admin', '2020-08-12 13:11:00', '0', '0');
 
 -- ----------------------------
 -- Table structure for m_item
@@ -229,7 +259,7 @@ CREATE TABLE `m_item`  (
   `listtype` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `items`(`REF`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3767 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 3770 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of m_item
@@ -238,7 +268,7 @@ INSERT INTO `m_item` VALUES (0, 'ITEM/0003781', NULL, 'SWEE', '', '', NULL, NULL
 INSERT INTO `m_item` VALUES (3739, 'ITEM/0003759', NULL, 'SYL', 'SCL/0000001', 'AIS', 'LVL/0000003', 'Grade 3', 'THERE WILL BE LIES', 'AU/0000004', 'Nick Lake', 'PUB/0000005', 'Bloomsbury Publishing', 'THERE WILL BE LIES ', '9781781129111', NULL, '', '0', 'admin', '2020-07-09 21:37:56', 0, '0', 'BKS');
 INSERT INTO `m_item` VALUES (3740, 'ITEM/0003760', NULL, 'SYL', 'SCL/0000001', 'AIS', 'LVL/0000003', 'Grade 3', 'Puss in Boots', '', '', 'PUB/0000006', 'Barbin', 'Puss in Boots Puss in Boots', '9781781129112', NULL, '', '0', 'admin', '2020-07-09 21:38:43', 0, '0', 'BKS');
 INSERT INTO `m_item` VALUES (3741, 'ITEM/0003761', NULL, 'SYL', 'SCL/0000001', 'AIS', 'LVL/0000003', 'Grade 3', 'Knights and Bikes', 'AU/0000006', 'Gabrielle Kent', 'PUB/0000007', 'Ladybird', 'Knights and Bikes Knights and Bikes', '9781781129113', NULL, '', '0', 'admin', '2020-07-09 21:40:35', 0, '0', 'BKS');
-INSERT INTO `m_item` VALUES (3742, 'ITEM/0003762', NULL, 'SYL', 'SCL/0000001', 'AIS', 'LVL/0000003', 'Grade 3', 'Burn', 'AU/0000007', 'Patrick Ness', 'PUB/0000008', 'Walker Books Ltd', 'Burn Burn Burn Burn Burn Burn', '9781781129114', NULL, '', '0', 'admin', '2020-07-09 21:43:19', 0, '0', 'BKS');
+INSERT INTO `m_item` VALUES (3742, 'ITEM/0003762', NULL, 'SYL', 'SCL/0000001', 'AIS', 'LVL/0000003', 'Grade 3', 'Burn', 'AU/0000007', 'Patrick Ness', 'PUB/0000008', 'Walker Books Ltd', 'Burn Burn Burn Burn', '9781781129114', NULL, '', '0', 'admin', '2020-07-09 21:43:19', 0, '0', 'BKS');
 INSERT INTO `m_item` VALUES (3743, 'ITEM/0003763', NULL, 'SYL', 'SCL/0000001', 'AIS', 'LVL/0000003', 'Grade 3', 'JASPER VIKING DOG', '', '', 'PUB/0000009', 'Strauss House Productions', 'JASPER VIKING DOG JASPER VIKING DOG', '9781406375503', NULL, '', '0', 'admin', '2020-07-09 21:43:58', 0, '0', 'BKS');
 INSERT INTO `m_item` VALUES (3744, 'ITEM/0003764', NULL, 'PAI', NULL, NULL, NULL, NULL, 'gdfg', NULL, NULL, NULL, NULL, 'dfgd', NULL, 534.00, '', '0', 'admin', '2020-07-09 22:05:00', 3, '0', 'AC');
 INSERT INTO `m_item` VALUES (3745, 'ITEM/0003765', NULL, 'PAP', NULL, NULL, NULL, NULL, 'sample AC 1', NULL, NULL, NULL, NULL, '', NULL, NULL, '', '0', 'admin', '2020-07-10 07:49:58', 0, '0', 'AC');
@@ -260,6 +290,45 @@ INSERT INTO `m_item` VALUES (3763, 'ITEM/0003784', NULL, 'FLOW', '', '', NULL, N
 INSERT INTO `m_item` VALUES (3764, 'ITEM/0003785', NULL, 'FLOW', '', '', NULL, NULL, '', NULL, NULL, NULL, NULL, '', NULL, NULL, '', '0', 'admin', '2020-07-23 00:49:47', 0, '0', 'CAR');
 INSERT INTO `m_item` VALUES (3765, 'ITEM/0003786', NULL, '', '', '', NULL, NULL, '', NULL, NULL, NULL, NULL, '', NULL, NULL, '', '0', 'admin', '2020-07-23 00:50:34', 0, '0', 'CAR');
 INSERT INTO `m_item` VALUES (3766, 'ITEM/0003787', NULL, 'BIRT', '', '', NULL, NULL, 'dfgdfg', NULL, NULL, NULL, NULL, '', NULL, NULL, '5f19159eb52d8.jpg', '0', 'admin', '2020-07-23 10:14:19', 0, '0', 'CAR');
+INSERT INTO `m_item` VALUES (3767, 'ITEM/0003788', NULL, 'SYL', '', '', '', '', 'fsdf', 'AU/0000007', 'Patrick Ness', 'PUB/0000007', 'Ladybird', 'fds', 'fsd324', NULL, '', '0', 'admin', '2020-08-12 14:41:39', 0, '0', 'BKS');
+INSERT INTO `m_item` VALUES (3769, 'ITEM/0003789', NULL, 'SYL', '', '', '', '', 'sdf', '', '', '', '', 'sdfsdfff', '523525', NULL, '', '0', 'admin', '2020-08-12 14:45:23', 0, '0', 'BKS');
+
+-- ----------------------------
+-- Table structure for m_item_level
+-- ----------------------------
+DROP TABLE IF EXISTS `m_item_level`;
+CREATE TABLE `m_item_level`  (
+  `id` int(12) NOT NULL AUTO_INCREMENT,
+  `ITEM_REF` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `LEVEL_REF` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `user` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of m_item_level
+-- ----------------------------
+INSERT INTO `m_item_level` VALUES (3, 'ITEM/0003790', 'LVL/0000001', 'admin');
+INSERT INTO `m_item_level` VALUES (4, 'ITEM/0003790', 'LVL/0000002', 'admin');
+INSERT INTO `m_item_level` VALUES (5, 'ITEM/0003790', 'LVL/0000003', 'admin');
+
+-- ----------------------------
+-- Table structure for m_item_school
+-- ----------------------------
+DROP TABLE IF EXISTS `m_item_school`;
+CREATE TABLE `m_item_school`  (
+  `id` int(12) NOT NULL AUTO_INCREMENT,
+  `ITEM_REF` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `SCHOOL_REF` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `user` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of m_item_school
+-- ----------------------------
+INSERT INTO `m_item_school` VALUES (3, 'ITEM/0003790', 'SCL/0000001', 'admin');
+INSERT INTO `m_item_school` VALUES (4, 'ITEM/0003790', 'SCL/0000002', 'admin');
 
 -- ----------------------------
 -- Table structure for m_job
@@ -330,23 +399,25 @@ CREATE TABLE `m_level`  (
   `des` varchar(500) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `user` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `sys_time` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0),
+  `approve` varchar(1) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT '0',
+  `cancel` varchar(1) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT '0',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 106 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of m_level
 -- ----------------------------
-INSERT INTO `m_level` VALUES (94, 'LVL/0000001', 'Grade 1', NULL, 'admin', '2020-06-19 16:25:49');
-INSERT INTO `m_level` VALUES (95, 'LVL/0000002', 'Grade 2', NULL, 'admin', '2020-06-20 15:06:38');
-INSERT INTO `m_level` VALUES (96, 'LVL/0000003', 'Grade 3', NULL, 'admin', '2020-06-20 15:06:48');
-INSERT INTO `m_level` VALUES (97, 'LVL/0000004', 'Grade 4', NULL, 'admin', '2020-06-20 15:06:55');
-INSERT INTO `m_level` VALUES (98, 'LVL/0000005', 'Grade 5', NULL, 'admin', '2020-06-20 15:06:56');
-INSERT INTO `m_level` VALUES (99, 'LVL/0000006', 'Grade 6', NULL, 'admin', '2020-06-20 15:06:57');
-INSERT INTO `m_level` VALUES (100, 'LVL/0000007', 'Grade 7', NULL, 'admin', '2020-06-20 15:06:58');
-INSERT INTO `m_level` VALUES (101, 'LVL/0000008', 'Grade 8', NULL, 'admin', '2020-06-20 15:06:59');
-INSERT INTO `m_level` VALUES (102, 'LVL/0000009', 'Grade 9', NULL, 'admin', '2020-06-20 15:07:00');
-INSERT INTO `m_level` VALUES (103, 'LVL/0000010', 'Grade 11', NULL, 'admin', '2020-06-20 15:07:01');
-INSERT INTO `m_level` VALUES (105, 'LVL/0000012', 'Grade 12', NULL, 'admin', '2020-06-20 15:07:03');
+INSERT INTO `m_level` VALUES (94, 'LVL/0000001', 'Grade 1', NULL, 'admin', '2020-06-19 16:25:49', '0', '0');
+INSERT INTO `m_level` VALUES (95, 'LVL/0000002', 'Grade 2', NULL, 'admin', '2020-06-20 15:06:38', '0', '0');
+INSERT INTO `m_level` VALUES (96, 'LVL/0000003', 'Grade 3', NULL, 'admin', '2020-06-20 15:06:48', '0', '0');
+INSERT INTO `m_level` VALUES (97, 'LVL/0000004', 'Grade 4', NULL, 'admin', '2020-06-20 15:06:55', '0', '0');
+INSERT INTO `m_level` VALUES (98, 'LVL/0000005', 'Grade 5', NULL, 'admin', '2020-06-20 15:06:56', '0', '0');
+INSERT INTO `m_level` VALUES (99, 'LVL/0000006', 'Grade 6', NULL, 'admin', '2020-06-20 15:06:57', '0', '0');
+INSERT INTO `m_level` VALUES (100, 'LVL/0000007', 'Grade 7', NULL, 'admin', '2020-06-20 15:06:58', '0', '0');
+INSERT INTO `m_level` VALUES (101, 'LVL/0000008', 'Grade 8', NULL, 'admin', '2020-06-20 15:06:59', '0', '0');
+INSERT INTO `m_level` VALUES (102, 'LVL/0000009', 'Grade 9', NULL, 'admin', '2020-06-20 15:07:00', '0', '0');
+INSERT INTO `m_level` VALUES (103, 'LVL/0000010', 'Grade 11', NULL, 'admin', '2020-06-20 15:07:01', '0', '0');
+INSERT INTO `m_level` VALUES (105, 'LVL/0000012', 'Grade 12', NULL, 'admin', '2020-06-20 15:07:03', '0', '0');
 
 -- ----------------------------
 -- Table structure for m_order
@@ -378,7 +449,7 @@ CREATE TABLE `m_order`  (
   `city` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `phone` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 301 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 302 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of m_order
@@ -398,6 +469,7 @@ INSERT INTO `m_order` VALUES (297, 'OR/0000081', 'REG/0000043', 'Akila Mendis', 
 INSERT INTO `m_order` VALUES (298, 'OR/0000082', 'REG/0000043', 'Akila Mendis', NULL, NULL, NULL, NULL, '2020-07-15', 1551860.00, NULL, '0', 'PLACE', '0', '0', '2020-07-15 10:54:33', 'Akila Mendis', NULL, NULL, '6.8605787', '79.873031', '700 Oak Street, Brockton MA 2301', '', '0778182596');
 INSERT INTO `m_order` VALUES (299, 'OR/0000083', 'REG/0000043', 'Akila Mendis', NULL, NULL, NULL, NULL, '2020-07-15', 50060.00, NULL, '0', 'PLACE', '0', '0', '2020-07-15 10:58:10', 'Akila Mendis', NULL, NULL, '6.8605909', '79.8730325', '700 Oak Street, Brockton MA 2301', '', '0778182596');
 INSERT INTO `m_order` VALUES (300, 'OR/0000084', 'REG/0000043', 'Akila Mendis', NULL, NULL, NULL, NULL, '2020-07-30', 81450.00, NULL, '0', 'PLACE', '0', '0', '2020-08-02 14:03:54', 'Akila Mendis', NULL, NULL, '6.8606199000000005', '79.87302869999999', '700 Oak Street, Brockton MA 2301', '', '0778182599');
+INSERT INTO `m_order` VALUES (301, 'OR/0000085', 'REG/0000043', 'Akila Mendis', NULL, NULL, NULL, NULL, '2020-08-07', 9000.00, NULL, '0', 'PLACE', '0', '0', '2020-08-07 16:05:44', 'Akila Mendis', NULL, NULL, '6.860633099999999', '79.8730363', '700 Oak Street, Brockton MA 2301', '', '0778182599');
 
 -- ----------------------------
 -- Table structure for m_order_detail
@@ -423,7 +495,7 @@ CREATE TABLE `m_order_detail`  (
   `user` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `rider_name` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 713 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 714 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of m_order_detail
@@ -484,6 +556,7 @@ INSERT INTO `m_order_detail` VALUES (709, 'OR/0000084', 'REG/0000043', 'Akila Me
 INSERT INTO `m_order_detail` VALUES (710, 'OR/0000084', 'REG/0000043', 'Akila Mendis', 'ST/0000183', '', 'ITEM/0003778', 'dfsdfsd', '2020-08-02', 4500.00, 4, '0', '0', '0', '0', '2020-08-02 14:03:54', 'Akila Mendis', NULL);
 INSERT INTO `m_order_detail` VALUES (711, 'OR/0000084', 'REG/0000043', 'Akila Mendis', 'ST/0000179', '', 'ITEM/0003764', 'gdfg', '2020-08-02', 534.00, 10, '0', '0', '0', '0', '2020-08-02 14:03:54', 'Akila Mendis', NULL);
 INSERT INTO `m_order_detail` VALUES (712, 'OR/0000084', 'REG/0000043', 'Akila Mendis', 'ST/0000178', '', 'ITEM/0003761', 'Knights and Bikes', '2020-08-02', 4500.00, 5, '0', '0', '0', '0', '2020-08-02 14:03:54', 'Akila Mendis', NULL);
+INSERT INTO `m_order_detail` VALUES (713, 'OR/0000085', 'REG/0000043', 'Akila Mendis', 'ST/0000182', '', 'ITEM/0003775', 'FOOT M 1', '2020-08-07', 4500.00, 2, '0', '0', '0', '0', '2020-08-07 16:05:44', 'Akila Mendis', NULL);
 
 -- ----------------------------
 -- Table structure for m_order_store
@@ -511,7 +584,7 @@ CREATE TABLE `m_order_store`  (
   `lng` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `rider_name` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 314 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 315 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of m_order_store
@@ -550,6 +623,7 @@ INSERT INTO `m_order_store` VALUES (310, 'OR/0000084', '2020-07-30', 'REG/000004
 INSERT INTO `m_order_store` VALUES (311, 'OR/0000084', '2020-08-02', 'REG/0000043', 'Akila Mendis', 'ST/0000179', 'No: 32D, Robert garden, Robert road, Dehiwala', '', ' 94778182596', 5340.00, 5340.00, 5340.00, 'PLACE', '0', '2020-08-02 14:03:54', 'Akila Mendis', NULL, '6.854857', '79.873494', NULL);
 INSERT INTO `m_order_store` VALUES (312, 'OR/0000084', '2020-08-02', 'REG/0000043', 'Akila Mendis', 'ST/0000183', 'No: 32D, Robert garden, Robert road, Dehiwala', '', ' 94778182596', 18000.00, 18000.00, 18000.00, 'PLACE', '0', '2020-08-02 14:03:54', 'Akila Mendis', NULL, '6.854857', '79.873494', NULL);
 INSERT INTO `m_order_store` VALUES (313, 'OR/0000084', '2020-08-02', 'REG/0000043', 'Akila Mendis', 'ST/0000185', '', '', '', 27360.00, 27360.00, 27360.00, 'PLACE', '0', '2020-08-02 14:03:54', 'Akila Mendis', NULL, '6.852221', '79.882726', NULL);
+INSERT INTO `m_order_store` VALUES (314, 'OR/0000085', '2020-08-07', 'REG/0000043', 'Akila Mendis', 'ST/0000182', 'No: 32D, Robert garden, Robert road, Dehiwala', '', ' 94778182596', 9000.00, 9000.00, 9000.00, 'PLACE', '0', '2020-08-07 16:05:44', 'Akila Mendis', NULL, '6.854857', '79.873494', NULL);
 
 -- ----------------------------
 -- Table structure for m_publisher
@@ -562,17 +636,19 @@ CREATE TABLE `m_publisher`  (
   `des` varchar(500) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `user` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `sys_time` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0),
+  `approve` varchar(1) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT '0',
+  `cancel` varchar(1) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT '0',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 48 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of m_publisher
 -- ----------------------------
-INSERT INTO `m_publisher` VALUES (43, 'PUB/0000005', 'Bloomsbury Publishing', NULL, 'admin', '2020-06-14 16:42:51');
-INSERT INTO `m_publisher` VALUES (44, 'PUB/0000006', 'Barbin', NULL, 'admin', '2020-06-17 00:04:09');
-INSERT INTO `m_publisher` VALUES (45, 'PUB/0000007', 'Ladybird', NULL, 'admin', '2020-06-17 00:04:18');
-INSERT INTO `m_publisher` VALUES (46, 'PUB/0000008', 'Walker Books Ltd', NULL, 'admin', '2020-06-17 00:04:24');
-INSERT INTO `m_publisher` VALUES (47, 'PUB/0000009', 'Strauss House Productions', NULL, 'admin', '2020-06-17 00:04:25');
+INSERT INTO `m_publisher` VALUES (43, 'PUB/0000005', 'Bloomsbury Publishing', NULL, 'admin', '2020-06-14 16:42:51', '0', '0');
+INSERT INTO `m_publisher` VALUES (44, 'PUB/0000006', 'Barbin', NULL, 'admin', '2020-06-17 00:04:09', '0', '0');
+INSERT INTO `m_publisher` VALUES (45, 'PUB/0000007', 'Ladybird', NULL, 'admin', '2020-06-17 00:04:18', '0', '0');
+INSERT INTO `m_publisher` VALUES (46, 'PUB/0000008', 'Walker Books Ltd', NULL, 'admin', '2020-06-17 00:04:24', '0', '0');
+INSERT INTO `m_publisher` VALUES (47, 'PUB/0000009', 'Strauss House Productions', NULL, 'admin', '2020-06-17 00:04:25', '0', '0');
 
 -- ----------------------------
 -- Table structure for m_registration
@@ -619,27 +695,38 @@ CREATE TABLE `m_registration`  (
   `school3` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `std_id3` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `s3_approve` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT '0',
+  `middle_name` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `city` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 109 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 118 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of m_registration
 -- ----------------------------
-INSERT INTO `m_registration` VALUES (94, 'REG/0000043', 'Akila', 'Mendis', '700 Oak Street, Brockton MA 2301', NULL, '0778182599', '4156087', NULL, NULL, 'akila@gmail.com', '456', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-06-14 22:20:28', NULL, 'fsdfs', 'gfdgdf', 'SCL/0000006', '645645', '0', 'fghfgh', 'ghfgjfgjf', '', '6373', '0', 'rhzh', 'gtrsd', '', '534', '0');
-INSERT INTO `m_registration` VALUES (95, 'REG/0000048', 'Suhad Akila Mendis', '', 'est addressfsfds', NULL, '548798', '0785412', NULL, NULL, 'suhad.a.mendis@gmail.com', '123', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-07-01 11:22:29', NULL, 'paper', 'weave', 'SCL/0000006', '645645', '0', 'pacify', 'learning', 'SCL/0000009', '6373', '0', 'lumpy', 'boring', 'SCL/0000009', '534', '0');
-INSERT INTO `m_registration` VALUES (96, 'REG/0000049', 'fdsf', '', NULL, NULL, NULL, NULL, NULL, NULL, 'fsdf', '123', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-07-20 21:37:27', NULL, '', '', '', '', '0', '', '', '', '', '0', '', '', '', '', '0');
-INSERT INTO `m_registration` VALUES (97, 'REG/0000050', 'fsdfsd', '', NULL, NULL, NULL, NULL, NULL, NULL, 'fds', 'fsdf', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-07-20 21:49:28', NULL, '', '', '', '', '0', '', '', '', '', '0', '', '', '', '', '0');
-INSERT INTO `m_registration` VALUES (98, 'REG/0000051', 'fsd', '', NULL, NULL, NULL, NULL, NULL, NULL, 'fsd', 'fsdf', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-07-20 21:49:44', NULL, '', '', '', '', '0', '', '', '', '', '0', '', '', '', '', '0');
-INSERT INTO `m_registration` VALUES (99, 'REG/0000052', 'fsdf', '', NULL, NULL, NULL, NULL, NULL, NULL, 'sdf', 'sdfsd', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-07-20 21:50:17', NULL, '', '', '', '', '0', '', '', '', '', '0', '', '', '', '', '0');
-INSERT INTO `m_registration` VALUES (100, 'REG/0000053', 'gdsfg', '', NULL, NULL, NULL, NULL, NULL, NULL, 'fgd', 'fgdf', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-07-20 21:53:23', NULL, '', '', '', '', '0', '', '', '', '', '0', '', '', '', '', '0');
-INSERT INTO `m_registration` VALUES (101, 'REG/0000054', 'fgdg', '', NULL, NULL, NULL, NULL, NULL, NULL, 'dfg', 'dfg', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-07-20 22:03:00', NULL, '', '', '', '', '0', '', '', '', '', '0', '', '', '', '', '0');
-INSERT INTO `m_registration` VALUES (102, 'REG/0000055', 'Suhad', '', NULL, NULL, NULL, NULL, NULL, NULL, 'ssuhad.a.mendis@gmail.com', '123', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-08-02 11:45:19', NULL, '', '', '', '', '0', '', '', '', '', '0', '', '', '', '', '0');
-INSERT INTO `m_registration` VALUES (103, 'REG/0000056', 'Suhad', '', NULL, NULL, NULL, NULL, NULL, NULL, 'sssuhad.a.mendis@gmail.com', '123', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-08-02 11:49:39', NULL, '', '', '', '', '0', '', '', '', '', '0', '', '', '', '', '0');
-INSERT INTO `m_registration` VALUES (104, 'REG/0000057', 'Suhad', '', NULL, NULL, NULL, NULL, NULL, NULL, 'asuhad.a.mendis@gmail.com', '123', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-08-02 11:53:23', NULL, '', '', '', '', '0', '', '', '', '', '0', '', '', '', '', '0');
-INSERT INTO `m_registration` VALUES (105, 'REG/0000058', 'Suhad', '', NULL, NULL, NULL, NULL, NULL, NULL, 'bsuhad.a.mendis@gmail.com', '123', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-08-02 11:53:54', NULL, '', '', '', '', '0', '', '', '', '', '0', '', '', '', '', '0');
-INSERT INTO `m_registration` VALUES (106, 'REG/0000059', 'Suhad', '', NULL, NULL, NULL, NULL, NULL, NULL, 'csuhad.a.mendis@gmail.com', '123', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-08-02 12:01:36', NULL, '', '', '', '', '0', '', '', '', '', '0', '', '', '', '', '0');
-INSERT INTO `m_registration` VALUES (107, 'REG/0000060', 'Suhad', '', NULL, NULL, NULL, NULL, NULL, NULL, 'qsuhad.a.mendis@gmail.com', '123', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-08-02 12:01:57', NULL, '', '', '', '', '0', '', '', '', '', '0', '', '', '', '', '0');
-INSERT INTO `m_registration` VALUES (108, 'REG/0000061', 'Suhad', '', NULL, NULL, NULL, NULL, NULL, NULL, 'wsuhad.a.mendis@gmail.com', '123', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-08-02 12:03:08', NULL, '', '', '', '', '0', '', '', '', '', '0', '', '', '', '', '0');
+INSERT INTO `m_registration` VALUES (94, 'REG/0000043', 'Akila', 'Mendis', '700 Oak Street, Brockton MA 2301', NULL, '0778182599', '4156087', NULL, NULL, 'akila@gmail.com', '456', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-06-14 22:20:28', NULL, 'fsdfs', 'gfdgdf', 'SCL/0000006', '645645', '0', 'fghfgh', 'ghfgjfgjf', '', '6373', '0', 'rhzh', 'gtrsd', '', '534', '0', 'Suhad', 'Dehiwala');
+INSERT INTO `m_registration` VALUES (95, 'REG/0000048', 'Suhad Akila Mendis', '', 'est addressfsfds', NULL, '548798', '0785412', NULL, NULL, 'suhad.a.mendis@gmail.com', '123', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-07-01 11:22:29', '', 'paper', 'weave', 'SCL/0000006', '645645', '0', 'pacify', 'learning', 'SCL/0000009', '6373', '0', 'lumpy', 'boring', 'SCL/0000009', '534', '0', 'm Name', 'C name');
+INSERT INTO `m_registration` VALUES (96, 'REG/0000049', 'fdsf', '', NULL, NULL, NULL, NULL, NULL, NULL, 'fsdf', '123', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-07-20 21:37:27', NULL, '', '', '', '', '0', '', '', '', '', '0', '', '', '', '', '0', 'm Name', 'C name');
+INSERT INTO `m_registration` VALUES (97, 'REG/0000050', 'fsdfsd', '', NULL, NULL, NULL, NULL, NULL, NULL, 'fds', 'fsdf', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-07-20 21:49:28', NULL, '', '', '', '', '0', '', '', '', '', '0', '', '', '', '', '0', 'm Name', 'C name');
+INSERT INTO `m_registration` VALUES (98, 'REG/0000051', 'fsd', '', NULL, NULL, NULL, NULL, NULL, NULL, 'fsd', 'fsdf', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-07-20 21:49:44', NULL, '', '', '', '', '0', '', '', '', '', '0', '', '', '', '', '0', 'm Name', 'C name');
+INSERT INTO `m_registration` VALUES (99, 'REG/0000052', 'fsdf', '', NULL, NULL, NULL, NULL, NULL, NULL, 'sdf', 'sdfsd', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-07-20 21:50:17', NULL, '', '', '', '', '0', '', '', '', '', '0', '', '', '', '', '0', 'm Name', 'C name');
+INSERT INTO `m_registration` VALUES (100, 'REG/0000053', 'gdsfg', '', NULL, NULL, NULL, NULL, NULL, NULL, 'fgd', 'fgdf', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-07-20 21:53:23', NULL, '', '', '', '', '0', '', '', '', '', '0', '', '', '', '', '0', 'm Name', 'C name');
+INSERT INTO `m_registration` VALUES (101, 'REG/0000054', 'fgdg', '', NULL, NULL, NULL, NULL, NULL, NULL, 'dfg', 'dfg', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-07-20 22:03:00', NULL, '', '', '', '', '0', '', '', '', '', '0', '', '', '', '', '0', 'm Name', 'C name');
+INSERT INTO `m_registration` VALUES (102, 'REG/0000055', 'Suhad', '', NULL, NULL, NULL, NULL, NULL, NULL, 'ssuhad.a.mendis@gmail.com', '123', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-08-02 11:45:19', NULL, '', '', '', '', '0', '', '', '', '', '0', '', '', '', '', '0', 'm Name', 'C name');
+INSERT INTO `m_registration` VALUES (103, 'REG/0000056', 'Suhad', '', NULL, NULL, NULL, NULL, NULL, NULL, 'sssuhad.a.mendis@gmail.com', '123', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-08-02 11:49:39', NULL, '', '', '', '', '0', '', '', '', '', '0', '', '', '', '', '0', 'm Name', 'C name');
+INSERT INTO `m_registration` VALUES (104, 'REG/0000057', 'Suhad', '', NULL, NULL, NULL, NULL, NULL, NULL, 'asuhad.a.mendis@gmail.com', '123', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-08-02 11:53:23', NULL, '', '', '', '', '0', '', '', '', '', '0', '', '', '', '', '0', 'm Name', 'C name');
+INSERT INTO `m_registration` VALUES (105, 'REG/0000058', 'Suhad', '', NULL, NULL, NULL, NULL, NULL, NULL, 'bsuhad.a.mendis@gmail.com', '123', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-08-02 11:53:54', NULL, '', '', '', '', '0', '', '', '', '', '0', '', '', '', '', '0', 'm Name', 'C name');
+INSERT INTO `m_registration` VALUES (106, 'REG/0000059', 'Suhad', '', NULL, NULL, NULL, NULL, NULL, NULL, 'csuhad.a.mendis@gmail.com', '123', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-08-02 12:01:36', NULL, '', '', '', '', '0', '', '', '', '', '0', '', '', '', '', '0', 'm Name', 'C name');
+INSERT INTO `m_registration` VALUES (107, 'REG/0000060', 'Suhad', '', NULL, NULL, NULL, NULL, NULL, NULL, 'qsuhad.a.mendis@gmail.com', '123', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-08-02 12:01:57', NULL, '', '', '', '', '0', '', '', '', '', '0', '', '', '', '', '0', 'm Name', 'C name');
+INSERT INTO `m_registration` VALUES (108, 'REG/0000061', 'Suhad', '', NULL, NULL, NULL, NULL, NULL, NULL, 'wsuhad.a.mendis@gmail.com', '123', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-08-02 12:03:08', NULL, '', '', '', '', '0', '', '', '', '', '0', '', '', '', '', '0', 'm Name', 'C name');
+INSERT INTO `m_registration` VALUES (109, 'REG/0000062', 'fname', '', NULL, NULL, NULL, NULL, NULL, NULL, 'assuhad.a.mendis@gmail.com', '123', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-08-07 12:47:45', NULL, '', '', '', '', '0', '', '', '', '', '0', '', '', '', '', '0', '', NULL);
+INSERT INTO `m_registration` VALUES (110, 'REG/0000063', 'fname', '', NULL, NULL, NULL, NULL, NULL, NULL, 'aasuhad.a.mendis@gmail.com', '123', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-08-07 12:48:51', NULL, '', '', '', '', '0', '', '', '', '', '0', '', '', '', '', '0', 'mname', NULL);
+INSERT INTO `m_registration` VALUES (111, 'REG/0000064', 'Suhad', '', NULL, NULL, NULL, NULL, NULL, NULL, 'qqqsuhad.a.mendis@gmail.com', '123', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-08-07 12:50:37', NULL, '', '', '', '', '0', '', '', '', '', '0', '', '', '', '', '0', 'Akila', NULL);
+INSERT INTO `m_registration` VALUES (112, 'REG/0000065', 'Suhad', '', NULL, NULL, NULL, NULL, NULL, NULL, 'fasuhad.a.mendis@gmail.com', '123', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-08-07 12:52:34', NULL, '', '', '', '', '0', '', '', '', '', '0', '', '', '', '', '0', 'Akila', NULL);
+INSERT INTO `m_registration` VALUES (113, 'REG/0000066', 'Suhad', 'Mendis', NULL, NULL, NULL, NULL, NULL, NULL, 'aaasuhad.a.mendis@gmail.com', '123', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-08-07 12:54:05', NULL, '', '', '', '', '0', '', '', '', '', '0', '', '', '', '', '0', 'Akila', NULL);
+INSERT INTO `m_registration` VALUES (114, 'REG/0000067', 'jayantha', 'lname', NULL, NULL, NULL, NULL, NULL, NULL, 'jasuhad.a.mendis@gmail.com', '123', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-08-07 12:59:59', NULL, '', '', '', '', '0', '', '', '', '', '0', '', '', '', '', '0', 'mname', NULL);
+INSERT INTO `m_registration` VALUES (115, 'REG/0000068', 'Suhad', 'Mendis', NULL, NULL, ' 94778182596', NULL, NULL, NULL, 'suhad.a.mendis@gmail.coma', '123', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-08-07 13:06:08', NULL, '', '', '', '', '0', '', '', '', '', '0', '', '', '', '', '0', 'Akila', NULL);
+INSERT INTO `m_registration` VALUES (116, 'REG/0000069', 'Suhad', 'Mendis', NULL, NULL, ' 94778182596', NULL, NULL, NULL, 'suhad.a.mendis@gmail.com12', '123', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-08-07 13:07:37', NULL, '', '', '', '', '0', '', '', '', '', '0', '', '', '', '', '0', 'Akila', NULL);
+INSERT INTO `m_registration` VALUES (117, 'REG/0000070', 'Suhad', 'Mendis', 'No: 32D, Robert garden, Robert road, Dehiwala', NULL, ' 94778182596', NULL, NULL, NULL, 'suhad.a.mendis@gmail.com14', '123', NULL, NULL, NULL, NULL, NULL, '0', '0', '0', '0', NULL, NULL, '2020-08-07 13:11:41', NULL, '', '', '', '', '0', '', '', '', '', '0', '', '', '', '', '0', 'Akila', 'Dehiwala');
 
 -- ----------------------------
 -- Table structure for m_school
@@ -652,20 +739,41 @@ CREATE TABLE `m_school`  (
   `des` varchar(500) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `user` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `sys_time` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0),
+  `approve` varchar(1) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT '0',
+  `cancel` varchar(1) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT '0',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 102 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 104 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of m_school
 -- ----------------------------
-INSERT INTO `m_school` VALUES (94, 'SCL/0000001', 'AIS', NULL, 'admin', '2020-06-19 16:10:14');
-INSERT INTO `m_school` VALUES (95, 'SCL/0000002', 'MOIR', NULL, 'admin', '2020-06-20 14:44:16');
-INSERT INTO `m_school` VALUES (96, 'SCL/0000003', 'Lyceum', NULL, 'admin', '2020-06-20 14:44:27');
-INSERT INTO `m_school` VALUES (97, 'SCL/0000004', 'CIS', NULL, 'admin', '2020-06-20 14:44:34');
-INSERT INTO `m_school` VALUES (98, 'SCL/0000005', 'British', NULL, 'admin', '2020-06-20 14:44:36');
-INSERT INTO `m_school` VALUES (99, 'SCL/0000006', 'Staford', NULL, 'admin', '2020-06-20 14:44:38');
-INSERT INTO `m_school` VALUES (100, 'SCL/0000007', 'Wycherley', NULL, 'admin', '2020-06-20 14:44:40');
-INSERT INTO `m_school` VALUES (101, 'SCL/0000008', 'Royal Institute', NULL, 'admin', '2020-06-20 14:44:42');
+INSERT INTO `m_school` VALUES (94, 'SCL/0000001', 'AIS', NULL, 'admin', '2020-06-19 16:10:14', '0', '0');
+INSERT INTO `m_school` VALUES (95, 'SCL/0000002', 'MOIR', NULL, 'admin', '2020-06-20 14:44:16', '0', '0');
+INSERT INTO `m_school` VALUES (96, 'SCL/0000003', 'Lyceum', NULL, 'admin', '2020-06-20 14:44:27', '0', '0');
+INSERT INTO `m_school` VALUES (97, 'SCL/0000004', 'CIS', NULL, 'admin', '2020-06-20 14:44:34', '0', '0');
+INSERT INTO `m_school` VALUES (98, 'SCL/0000005', 'British', NULL, 'admin', '2020-06-20 14:44:36', '0', '0');
+INSERT INTO `m_school` VALUES (99, 'SCL/0000006', 'Staford', NULL, 'admin', '2020-06-20 14:44:38', '0', '0');
+INSERT INTO `m_school` VALUES (100, 'SCL/0000007', 'Wycherley', NULL, 'admin', '2020-06-20 14:44:40', '0', '0');
+INSERT INTO `m_school` VALUES (101, 'SCL/0000008', 'Royal Institute', NULL, 'admin', '2020-06-20 14:44:42', '0', '0');
+
+-- ----------------------------
+-- Table structure for m_school_level
+-- ----------------------------
+DROP TABLE IF EXISTS `m_school_level`;
+CREATE TABLE `m_school_level`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `SCHOOL_REF` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `LEVEL_REF` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `user` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of m_school_level
+-- ----------------------------
+INSERT INTO `m_school_level` VALUES (4, 'SCL/0000019', 'LVL/0000001', 'admin');
+INSERT INTO `m_school_level` VALUES (5, 'SCL/0000019', 'LVL/0000003', 'admin');
+INSERT INTO `m_school_level` VALUES (6, 'SCL/0000019', 'LVL/0000009', 'admin');
 
 -- ----------------------------
 -- Table structure for m_selection
@@ -676,7 +784,7 @@ CREATE TABLE `m_selection`  (
   `REG_REF` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `ITEM_REF` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4807 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 4920 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of m_selection
@@ -685,11 +793,11 @@ INSERT INTO `m_selection` VALUES (4760, '::1', 'ITEM/0003760');
 INSERT INTO `m_selection` VALUES (4761, '::1', 'ITEM/0003761');
 INSERT INTO `m_selection` VALUES (4762, '::1', 'ITEM/0003762');
 INSERT INTO `m_selection` VALUES (4763, '::1', 'ITEM/0003763');
-INSERT INTO `m_selection` VALUES (4802, 'REG/0000043', 'ITEM/0003759');
-INSERT INTO `m_selection` VALUES (4803, 'REG/0000043', 'ITEM/0003760');
-INSERT INTO `m_selection` VALUES (4804, 'REG/0000043', 'ITEM/0003761');
-INSERT INTO `m_selection` VALUES (4805, 'REG/0000043', 'ITEM/0003762');
-INSERT INTO `m_selection` VALUES (4806, 'REG/0000043', 'ITEM/0003763');
+INSERT INTO `m_selection` VALUES (4915, 'REG/0000043', 'ITEM/0003759');
+INSERT INTO `m_selection` VALUES (4916, 'REG/0000043', 'ITEM/0003760');
+INSERT INTO `m_selection` VALUES (4917, 'REG/0000043', 'ITEM/0003761');
+INSERT INTO `m_selection` VALUES (4918, 'REG/0000043', 'ITEM/0003762');
+INSERT INTO `m_selection` VALUES (4919, 'REG/0000043', 'ITEM/0003763');
 
 -- ----------------------------
 -- Table structure for m_store
@@ -720,26 +828,28 @@ CREATE TABLE `m_store`  (
   `min_order_value` int(12) NULL DEFAULT 0,
   `verify` varchar(1) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT '0',
   `promotion_logo` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `cancel` varchar(1) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT '0',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `stores`(`REF`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 177 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 178 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of m_store
 -- ----------------------------
-INSERT INTO `m_store` VALUES (164, 'ST/0000178', 'Sample Books Store 1', '', 'BKS', '', 'No: 32D, Robert garden, Robert road, Dehiwala', NULL, '', '', '6.852221', '79.882726', ' 94778182596', '', 'suhad.a.mendis@gmail.com', '', NULL, '1', 'admin', '1', '2020-07-09 21:48:04', 0, '0', NULL);
-INSERT INTO `m_store` VALUES (165, 'ST/0000179', 'Sample AC Store 1 ', '', 'AC', '', 'No: 32D, Robert garden, Robert road, Dehiwala', NULL, '', '', '6.854857', '79.873494', ' 94778182596', '', 'suhad.a.mendis@gmail.com', '', NULL, '1', 'admin', '1', '2020-07-10 07:52:29', 0, '0', NULL);
-INSERT INTO `m_store` VALUES (166, 'ST/0000180', 'Uniform shop 1', '', 'UC', 'UNI', 'No: 32D, Robert garden, Robert road, Dehiwala', NULL, '', '', '6.854857', '79.873494', ' 94778182596', '', 'suhad.a.mendis@gmail.com', '', NULL, '1', 'admin', '1', '2020-07-10 08:23:37', 0, '0', NULL);
-INSERT INTO `m_store` VALUES (167, 'ST/0000181', 'Uniform shop 2', '', 'UC', 'COS', 'No: 32D, Robert garden, Robert road, Dehiwala', NULL, '', '', '6.875922', '79.884886', ' 94778182596', '', 'suhad.a.mendis@gmail.com', '', NULL, '1', 'admin', '1', '2020-07-10 08:54:20', 0, '0', NULL);
-INSERT INTO `m_store` VALUES (168, 'ST/0000182', 'Sample uniform store 3', '', 'UC', 'FOO', 'No: 32D, Robert garden, Robert road, Dehiwala', NULL, '', '', '6.854857', '79.873494', ' 94778182596', '', 'suhad.a.mendis@gmail.com', '', NULL, '1', 'admin', '1', '2020-07-10 09:27:58', 0, '0', NULL);
-INSERT INTO `m_store` VALUES (169, 'ST/0000183', 'hdfhdfh', 'dhdfhd', 'HS', 'HEA', 'No: 32D, Robert garden, Robert road, Dehiwala', NULL, '', '', '6.854857', '79.873494', ' 94778182596', '', 'suhad.a.mendis@gmail.com', '', NULL, '1', 'admin', '1', '2020-07-12 16:10:39', 0, '0', NULL);
-INSERT INTO `m_store` VALUES (170, 'ST/0000184', 'fsdfsdfs', 'dfsdfsdfs', 'ES', 'SNA', 'No: 32D, Robert garden, Robert road, Dehiwala', NULL, '', '', '6.875922', '79.884886', ' 94778182596', '', 'suhad.a.mendis@gmail.com', '', NULL, '1', 'admin', '1', '2020-07-12 18:10:00', 0, '0', NULL);
-INSERT INTO `m_store` VALUES (171, 'ST/0000185', 'Music', '', 'TG', 'FLO', '', NULL, '', '', '6.852221', '79.882726', '', '', '', '', NULL, '1', 'admin', '1', '2020-07-12 18:20:57', 0, '0', NULL);
-INSERT INTO `m_store` VALUES (172, 'ST/0000186', 'fsdf', '', 'CF', '', '', NULL, '', '', '', '', '', '', '', '', NULL, '1', 'admin', '1', '2020-07-20 14:29:45', 0, '0', NULL);
-INSERT INTO `m_store` VALUES (173, 'ST/0000187', 'fdsfsf', '', 'PRE', '', '', NULL, '', '', '', '', '', '', '', '', NULL, '1', 'admin', '1', '2020-07-20 14:30:01', 0, '0', NULL);
-INSERT INTO `m_store` VALUES (174, 'ST/0000188', 'fdsfsffffff', '', 'PRE', '', '', NULL, '', '', '', '', '', '', '', '', NULL, '1', 'admin', '1', '2020-07-20 14:30:10', 0, '0', NULL);
-INSERT INTO `m_store` VALUES (175, 'ST/0000189', '', '', 'CF', 'CAR', '', NULL, '', '', '', '', '', '', '', '', NULL, '1', 'admin', '1', '2020-07-23 01:01:48', 0, '0', NULL);
-INSERT INTO `m_store` VALUES (176, 'ST/0000190', 'fsdfsdf', '', 'CF', 'FLO', '', NULL, '', '', '', '', '', '', '', '', NULL, '1', 'admin', '1', '2020-07-23 01:02:21', 0, '0', NULL);
+INSERT INTO `m_store` VALUES (164, 'ST/0000178', 'Sample Books Store 1', '', 'BKS', '', 'No: 32D, Robert garden, Robert road, Dehiwala', NULL, '', '', '6.852221', '79.882726', ' 9477818259', '', 'suhad.a.mendis@gmail.com', '5f2bb7e8c3be2.jpg', NULL, '1', 'admin', '1', '2020-07-09 21:48:04', 0, '0', '5f2bb7529a36a.jpg', '0');
+INSERT INTO `m_store` VALUES (165, 'ST/0000179', 'Sample AC Store 1 ', '', 'AC', '', 'No: 32D, Robert garden, Robert road, Dehiwala', NULL, '', '', '6.854857', '79.873494', ' 94778182596', '', 'suhad.a.mendis@gmail.com', '', NULL, '1', 'admin', '1', '2020-07-10 07:52:29', 0, '0', NULL, '0');
+INSERT INTO `m_store` VALUES (166, 'ST/0000180', 'Uniform shop 1', '', 'UC', 'UNI', 'No: 32D, Robert garden, Robert road, Dehiwala', NULL, '', '', '6.854857', '79.873494', ' 94778182596', '', 'suhad.a.mendis@gmail.com', '', NULL, '1', 'admin', '1', '2020-07-10 08:23:37', 0, '0', NULL, '0');
+INSERT INTO `m_store` VALUES (167, 'ST/0000181', 'Uniform shop 2', '', 'UC', 'COS', 'No: 32D, Robert garden, Robert road, Dehiwala', NULL, '', '', '6.875922', '79.884886', ' 94778182596', '', 'suhad.a.mendis@gmail.com', '', NULL, '1', 'admin', '1', '2020-07-10 08:54:20', 0, '0', NULL, '0');
+INSERT INTO `m_store` VALUES (168, 'ST/0000182', 'Sample uniform store 3', '', 'UC', 'FOO', 'No: 32D, Robert garden, Robert road, Dehiwala', NULL, '', '', '6.854857', '79.873494', ' 94778182596', '', 'suhad.a.mendis@gmail.com', '', NULL, '1', 'admin', '1', '2020-07-10 09:27:58', 0, '0', NULL, '0');
+INSERT INTO `m_store` VALUES (169, 'ST/0000183', 'hdfhdfh', 'dhdfhd', 'HS', 'HEA', 'No: 32D, Robert garden, Robert road, Dehiwala', NULL, '', '', '6.854857', '79.873494', ' 94778182596', '', 'suhad.a.mendis@gmail.com', '', NULL, '1', 'admin', '1', '2020-07-12 16:10:39', 0, '0', NULL, '0');
+INSERT INTO `m_store` VALUES (170, 'ST/0000184', 'fsdfsdfs', 'dfsdfsdfs', 'ES', 'SNA', 'No: 32D, Robert garden, Robert road, Dehiwala', NULL, '', '', '6.875922', '79.884886', ' 94778182596', '', 'suhad.a.mendis@gmail.com', '', NULL, '1', 'admin', '1', '2020-07-12 18:10:00', 0, '0', NULL, '0');
+INSERT INTO `m_store` VALUES (171, 'ST/0000185', 'Music', '', 'TG', 'FLO', '', NULL, '', '', '6.852221', '79.882726', '', '', '', '', NULL, '1', 'admin', '1', '2020-07-12 18:20:57', 0, '0', NULL, '0');
+INSERT INTO `m_store` VALUES (172, 'ST/0000186', 'fsdf', '', 'CF', '', '', NULL, '', '', '', '', '', '', '', '', NULL, '1', 'admin', '1', '2020-07-20 14:29:45', 0, '0', NULL, '0');
+INSERT INTO `m_store` VALUES (173, 'ST/0000187', 'fdsfsf', '', 'PRE', '', '', NULL, '', '', '', '', '', '', '', '', NULL, '1', 'admin', '1', '2020-07-20 14:30:01', 0, '0', NULL, '0');
+INSERT INTO `m_store` VALUES (174, 'ST/0000188', 'fdsfsffffff', '', 'PRE', '', '', NULL, '', '', '', '', '', '', '', '', NULL, '1', 'admin', '1', '2020-07-20 14:30:10', 0, '0', NULL, '0');
+INSERT INTO `m_store` VALUES (175, 'ST/0000189', '', '', 'CF', 'CAR', '', NULL, '', '', '', '', '', '', '', '', NULL, '1', 'admin', '1', '2020-07-23 01:01:48', 0, '0', NULL, '0');
+INSERT INTO `m_store` VALUES (176, 'ST/0000190', 'fsdfsdf', '', 'CF', 'FLO', '', NULL, '', '', '', '', '', '', '', '', NULL, '1', 'admin', '1', '2020-07-23 01:02:21', 0, '0', NULL, '0');
+INSERT INTO `m_store` VALUES (177, 'ST/0000191', 'Sample Books Store 1', '', 'BKS', '', 'No: 32D, Robert garden, Robert road, Dehiwala', NULL, '', '', '6.852221', '79.882726', ' 9477818259', '', 'suhad.a.mendis@gmail.com', '', NULL, '1', 'admin', '1', '2020-08-06 13:03:39', 0, '0', '', '0');
 
 -- ----------------------------
 -- Table structure for m_syllabus
@@ -752,12 +862,16 @@ CREATE TABLE `m_syllabus`  (
   `item_ref` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `quantity` int(15) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of m_syllabus
 -- ----------------------------
-INSERT INTO `m_syllabus` VALUES (1, 'SCL/0000008', 'LVL/0000012', 'ITEM/0003761', 110);
+INSERT INTO `m_syllabus` VALUES (12, 'SCL/0000001', 'LVL/0000003', 'ITEM/0003759', 1);
+INSERT INTO `m_syllabus` VALUES (13, 'SCL/0000001', 'LVL/0000003', 'ITEM/0003760', 2);
+INSERT INTO `m_syllabus` VALUES (14, 'SCL/0000001', 'LVL/0000003', 'ITEM/0003761', 5);
+INSERT INTO `m_syllabus` VALUES (15, 'SCL/0000001', 'LVL/0000003', 'ITEM/0003762', 7);
+INSERT INTO `m_syllabus` VALUES (16, 'SCL/0000001', 'LVL/0000003', 'ITEM/0003763', 3);
 
 -- ----------------------------
 -- Table structure for rider_route
@@ -2161,7 +2275,7 @@ CREATE TABLE `store_item_allocation`  (
   `discount` decimal(15, 2) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `search_store`(`STORE_REF`, `ITEM_REF`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 35404 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 35405 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of store_item_allocation
@@ -14143,7 +14257,7 @@ INSERT INTO `store_item_allocation` VALUES (35369, 'ST/0000178', 'ITEM/0003760',
 INSERT INTO `store_item_allocation` VALUES (35370, 'ST/0000178', 'ITEM/0003761', 4500.00, 45, 200.00);
 INSERT INTO `store_item_allocation` VALUES (35371, 'ST/0000178', 'ITEM/0003762', 1650.00, 46, 650.00);
 INSERT INTO `store_item_allocation` VALUES (35372, 'ST/0000178', 'ITEM/0003763', 3200.00, 110, 400.00);
-INSERT INTO `store_item_allocation` VALUES (35379, 'ST/0000182', 'ITEM/0003775', 4500.00, 60, 200.00);
+INSERT INTO `store_item_allocation` VALUES (35379, 'ST/0000182', 'ITEM/0003775', 4500.00, 58, 200.00);
 INSERT INTO `store_item_allocation` VALUES (35380, 'ST/0000182', 'ITEM/0003776', 1500.00, 58, 300.00);
 INSERT INTO `store_item_allocation` VALUES (35381, 'ST/0000182', 'ITEM/0003777', 1750.00, 13, 400.00);
 INSERT INTO `store_item_allocation` VALUES (35382, 'ST/0000181', 'ITEM/0003772', 800.00, 79, 100.00);
@@ -14165,6 +14279,7 @@ INSERT INTO `store_item_allocation` VALUES (35400, 'ST/0000190', 'ITEM/0003785',
 INSERT INTO `store_item_allocation` VALUES (35401, 'ST/0000190', 'ITEM/0003786', 780.00, 0, 200.00);
 INSERT INTO `store_item_allocation` VALUES (35402, 'ST/0000189', 'ITEM/0003782', 450.00, 50, 20.00);
 INSERT INTO `store_item_allocation` VALUES (35403, 'ST/0000189', 'ITEM/0003783', 230.00, 60, 30.00);
+INSERT INTO `store_item_allocation` VALUES (35404, 'ST/0000191', 'ITEM/0003759', 120.00, 50, 20.00);
 
 -- ----------------------------
 -- Table structure for sys_entry
@@ -14210,10 +14325,10 @@ INSERT INTO `sys_entry` VALUES (28, 'Student Verification', 'student_verificatio
 INSERT INTO `sys_entry` VALUES (29, 'Orders', 'orders', NULL, 'Main', NULL, 'Main', NULL, NULL, NULL, NULL);
 INSERT INTO `sys_entry` VALUES (30, 'Health and Sports', 'health_and_sports', NULL, 'Main', NULL, 'Product Master Files', NULL, NULL, NULL, NULL);
 INSERT INTO `sys_entry` VALUES (31, 'Snacks and Deco', 'snacks_and_deco', NULL, 'Main', NULL, 'Product Master Files', NULL, NULL, NULL, NULL);
-INSERT INTO `sys_entry` VALUES (32, 'Toys and Gifts', 'toys_and_gifts', NULL, 'Main', NULL, 'Product Master Files', NULL, NULL, NULL, NULL);
+INSERT INTO `sys_entry` VALUES (32, 'Music and Gifts', 'toys_and_gifts', NULL, 'Main', NULL, 'Product Master Files', NULL, NULL, NULL, NULL);
 INSERT INTO `sys_entry` VALUES (33, 'Health and Sports Allocation', 'health_and_sports_allo', NULL, 'Main', NULL, 'Product Allocation', NULL, NULL, NULL, NULL);
 INSERT INTO `sys_entry` VALUES (34, 'Snacks and Deco Allocation', 'snacks_and_deco_allo', NULL, 'Main', NULL, 'Product Allocation', NULL, NULL, NULL, NULL);
-INSERT INTO `sys_entry` VALUES (35, 'Toys and Gifts Allocation', 'toys_and_gifts_allo', NULL, 'Main', NULL, 'Product Allocation', NULL, NULL, NULL, NULL);
+INSERT INTO `sys_entry` VALUES (35, 'Music and Gifts Allocation', 'toys_and_gifts_allo', NULL, 'Main', NULL, 'Product Allocation', NULL, NULL, NULL, NULL);
 INSERT INTO `sys_entry` VALUES (36, 'Product Upload', 'product_upload', NULL, 'Main', NULL, 'Main', NULL, NULL, NULL, NULL);
 INSERT INTO `sys_entry` VALUES (37, 'Xero Report', 'xero_report', NULL, 'Main', NULL, 'Management Reports', NULL, NULL, NULL, NULL);
 INSERT INTO `sys_entry` VALUES (38, '\r\nCards and Flowers', '\r\ncards_and_flowers', NULL, 'Main', NULL, 'Product Master Files', NULL, NULL, NULL, NULL);
@@ -14263,7 +14378,7 @@ CREATE TABLE `sys_info`  (
 -- ----------------------------
 -- Records of sys_info
 -- ----------------------------
-INSERT INTO `sys_info` VALUES (1, 'Books n Beyond', 'Email', 'Address 1', 'Address 2', 'Contact 1', 'Contact 2', 'FAX', 1200.00, 2, 191, 3788, 25, 62, 85, 1656, 6, 73, 76, 18, 20, 3, 3, 12, 1, 2);
+INSERT INTO `sys_info` VALUES (1, 'Books n Beyond', 'Email', 'Address 1', 'Address 2', 'Contact 1', 'Contact 2', 'FAX', 1200.00, 2, 192, 3790, 25, 71, 86, 1800, 8, 73, 76, 20, 20, 5, 12, 12, 1, 4);
 
 -- ----------------------------
 -- Table structure for sys_log
@@ -14278,7 +14393,7 @@ CREATE TABLE `sys_log`  (
   `user` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `ip` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5473 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 5613 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of sys_log
@@ -19755,6 +19870,146 @@ INSERT INTO `sys_log` VALUES (5469, 'CART/0001654', 'entry', 'SAVE', '2020-08-02
 INSERT INTO `sys_log` VALUES (5470, 'CART/0001655', 'entry', 'SAVE', '2020-08-02 12:56:48', '', 'ip');
 INSERT INTO `sys_log` VALUES (5471, 'OR/0000084', 'entry', 'SAVE', '2020-08-02 14:03:54', 'Akila Mendis', 'ip');
 INSERT INTO `sys_log` VALUES (5472, 'FB/0000001', 'entry', 'SAVE', '2020-08-02 18:55:08', 'admin', 'ip');
+INSERT INTO `sys_log` VALUES (5473, '5f28374bbd493', 'entry', 'Reorder', '2020-08-03 21:41:55', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5474, '5f28376389157', 'entry', 'Reorder', '2020-08-03 21:42:19', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5475, '5f2837c646896', 'entry', 'Reorder', '2020-08-03 21:43:58', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5476, 'COM/0000003', 'entry', 'complaint', '2020-08-03 22:25:51', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5477, 'COM/0000004', 'entry', 'complaint', '2020-08-03 22:25:57', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5478, 'COM/0000005', 'entry', 'complaint', '2020-08-03 22:26:12', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5479, 'COM/0000006', 'entry', 'complaint', '2020-08-03 22:27:53', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5480, 'COM/0000007', 'entry', 'complaint', '2020-08-03 22:29:47', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5481, 'COM/0000008', 'entry', 'complaint', '2020-08-03 22:31:16', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5482, 'COM/0000009', 'entry', 'complaint', '2020-08-03 22:32:04', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5483, 'COM/0000010', 'entry', 'complaint', '2020-08-03 22:32:56', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5484, 'COM/0000011', 'entry', 'complaint', '2020-08-03 22:33:48', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5485, 'INQ/0000006', 'entry', 'SAVE', '2020-08-03 22:39:25', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5486, 'INQ/0000007', 'entry', 'SAVE', '2020-08-03 22:39:41', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5487, 'FB/0000002', 'entry', 'SAVE', '2020-08-03 22:46:29', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5488, 'FB/0000003', 'entry', 'SAVE', '2020-08-03 22:47:00', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5489, '5f284aff70b98', 'entry', 'Reorder', '2020-08-03 23:05:59', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5490, '5f284b502d16c', 'entry', 'Reorder', '2020-08-03 23:07:20', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5491, '5f284b8e03095', 'entry', 'Reorder', '2020-08-03 23:08:22', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5492, '5f284ba39fda2', 'entry', 'Reorder', '2020-08-03 23:08:43', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5493, '5f284bad534e8', 'entry', 'Reorder', '2020-08-03 23:08:53', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5494, '5f284bbd25fd9', 'entry', 'Reorder', '2020-08-03 23:09:09', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5495, '5f284bc49f65a', 'entry', 'Reorder', '2020-08-03 23:09:16', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5496, '5f284bf3c1f14', 'entry', 'Reorder', '2020-08-03 23:10:03', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5497, '5f284bff6fa3b', 'entry', 'Reorder', '2020-08-03 23:10:15', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5498, '5f284c0134bc3', 'entry', 'Reorder', '2020-08-03 23:10:17', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5499, '5f284c0607cde', 'entry', 'Reorder', '2020-08-03 23:10:22', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5500, '5f284c0a5fc4a', 'entry', 'Reorder', '2020-08-03 23:10:26', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5501, '5f284c0c520c7', 'entry', 'Reorder', '2020-08-03 23:10:28', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5502, '5f284c0d96640', 'entry', 'Reorder', '2020-08-03 23:10:29', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5503, '5f284c0ea407e', 'entry', 'Reorder', '2020-08-03 23:10:30', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5504, '5f284c0fabd0f', 'entry', 'Reorder', '2020-08-03 23:10:31', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5505, '5f284c10b3c5b', 'entry', 'Reorder', '2020-08-03 23:10:32', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5506, '5f284c1849590', 'entry', 'Reorder', '2020-08-03 23:10:40', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5507, '5f284c1a89eac', 'entry', 'Reorder', '2020-08-03 23:10:42', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5508, '5f284c1bb5aa0', 'entry', 'Reorder', '2020-08-03 23:10:43', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5509, '5f284c1cd7e8f', 'entry', 'Reorder', '2020-08-03 23:10:44', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5510, '5f284c1ded65f', 'entry', 'Reorder', '2020-08-03 23:10:45', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5511, '5f284c1f0d3c8', 'entry', 'Reorder', '2020-08-03 23:10:47', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5512, '5f284c212527e', 'entry', 'Reorder', '2020-08-03 23:10:49', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5513, '5f284c2262540', 'entry', 'Reorder', '2020-08-03 23:10:50', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5514, '5f284c2360669', 'entry', 'Reorder', '2020-08-03 23:10:51', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5515, '5f284c24908a5', 'entry', 'Reorder', '2020-08-03 23:10:52', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5516, '5f284c25a09b9', 'entry', 'Reorder', '2020-08-03 23:10:53', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5517, '5f284cf7014d9', 'entry', 'Reorder', '2020-08-03 23:14:23', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5518, '5f284cfc003e8', 'entry', 'Reorder', '2020-08-03 23:14:28', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5519, '5f284d00be2d6', 'entry', 'Reorder', '2020-08-03 23:14:32', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5520, '5f284d62acd0c', 'entry', 'Edit', '2020-08-03 23:16:10', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5521, '5f284d92517f5', 'entry', 'Edit', '2020-08-03 23:16:58', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5522, '5f285019accb0', 'entry', 'Edit', '2020-08-03 23:27:45', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5523, '5f2850af5d393', 'entry', 'Edit', '2020-08-03 23:30:15', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5524, '5f2850bc8f989', 'entry', 'Edit', '2020-08-03 23:30:28', 'Akila Mendiss', 'ip');
+INSERT INTO `sys_log` VALUES (5525, '5f2854cacef48', 'entry', 'Reorder', '2020-08-03 23:47:46', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5526, 'CART/0001718', 'entry', 'SAVE', '2020-08-04 10:18:49', 'admin', 'ip');
+INSERT INTO `sys_log` VALUES (5527, 'CART/0001719', 'entry', 'SAVE', '2020-08-04 10:18:51', 'admin', 'ip');
+INSERT INTO `sys_log` VALUES (5528, 'CART/0001720', 'entry', 'SAVE', '2020-08-04 10:18:59', 'admin', 'ip');
+INSERT INTO `sys_log` VALUES (5529, 'CART/0001721', 'entry', 'SAVE', '2020-08-04 10:19:36', 'admin', 'ip');
+INSERT INTO `sys_log` VALUES (5530, 'CART/0001722', 'entry', 'SAVE', '2020-08-04 10:43:57', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5531, 'CART/0001723', 'entry', 'SAVE', '2020-08-04 10:44:50', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5532, 'CART/0001724', 'entry', 'SAVE', '2020-08-04 10:54:03', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5533, 'CART/0001725', 'entry', 'SAVE', '2020-08-04 11:05:53', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5534, 'CART/0001726', 'entry', 'SAVE', '2020-08-04 11:06:04', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5535, 'ST/0000191', 'entry', 'SAVE', '2020-08-06 13:03:39', 'admin', 'ip');
+INSERT INTO `sys_log` VALUES (5536, 'CART/0001727', 'entry', 'SAVE', '2020-08-07 10:40:15', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5537, 'CART/0001728', 'entry', 'SAVE', '2020-08-07 10:40:31', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5538, 'CART/0001729', 'entry', 'SAVE', '2020-08-07 10:40:53', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5539, 'CART/0001730', 'entry', 'SAVE', '2020-08-07 10:40:53', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5540, 'CART/0001731', 'entry', 'SAVE', '2020-08-07 10:43:53', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5541, 'CART/0001732', 'entry', 'SAVE', '2020-08-07 10:43:53', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5542, 'CART/0001733', 'entry', 'SAVE', '2020-08-07 10:43:56', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5543, 'CART/0001734', 'entry', 'SAVE', '2020-08-07 10:43:59', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5544, 'CART/0001735', 'entry', 'SAVE', '2020-08-07 10:44:01', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5545, 'CART/0001736', 'entry', 'SAVE', '2020-08-07 10:44:03', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5546, 'CART/0001737', 'entry', 'SAVE', '2020-08-07 10:50:19', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5547, 'CART/0001738', 'entry', 'SAVE', '2020-08-07 10:50:26', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5548, 'CART/0001739', 'entry', 'SAVE', '2020-08-07 10:50:32', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5549, 'CART/0001740', 'entry', 'SAVE', '2020-08-07 10:50:38', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5550, 'CART/0001741', 'entry', 'SAVE', '2020-08-07 10:51:16', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5551, 'CART/0001742', 'entry', 'SAVE', '2020-08-07 10:53:04', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5552, 'CART/0001743', 'entry', 'SAVE', '2020-08-07 10:53:09', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5553, 'CART/0001744', 'entry', 'SAVE', '2020-08-07 10:53:43', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5554, 'CART/0001745', 'entry', 'SAVE', '2020-08-07 10:54:18', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5555, 'CART/0001746', 'entry', 'SAVE', '2020-08-07 10:56:21', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5556, 'CART/0001747', 'entry', 'SAVE', '2020-08-07 10:56:40', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5557, 'CART/0001748', 'entry', 'SAVE', '2020-08-07 10:57:14', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5558, 'CART/0001749', 'entry', 'SAVE', '2020-08-07 10:57:49', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5559, 'CART/0001750', 'entry', 'SAVE', '2020-08-07 10:58:04', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5560, 'CART/0001751', 'entry', 'SAVE', '2020-08-07 10:59:20', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5561, 'CART/0001752', 'entry', 'SAVE', '2020-08-07 10:59:28', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5562, 'CART/0001753', 'entry', 'SAVE', '2020-08-07 11:00:03', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5563, 'CART/0001754', 'entry', 'SAVE', '2020-08-07 11:00:45', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5564, 'CART/0001755', 'entry', 'SAVE', '2020-08-07 11:01:22', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5565, 'CART/0001756', 'entry', 'SAVE', '2020-08-07 11:01:42', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5566, 'CART/0001757', 'entry', 'SAVE', '2020-08-07 11:01:54', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5567, 'CART/0001758', 'entry', 'SAVE', '2020-08-07 11:02:15', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5568, 'CART/0001759', 'entry', 'SAVE', '2020-08-07 11:02:48', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5569, 'CART/0001760', 'entry', 'SAVE', '2020-08-07 11:06:30', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5570, 'CART/0001761', 'entry', 'SAVE', '2020-08-07 11:06:40', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5571, 'CART/0001762', 'entry', 'SAVE', '2020-08-07 11:06:58', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5572, 'CART/0001763', 'entry', 'SAVE', '2020-08-07 11:07:25', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5573, 'CART/0001764', 'entry', 'SAVE', '2020-08-07 11:07:41', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5574, 'CART/0001765', 'entry', 'SAVE', '2020-08-07 11:08:16', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5575, 'CART/0001766', 'entry', 'SAVE', '2020-08-07 11:08:51', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5576, 'CART/0001767', 'entry', 'SAVE', '2020-08-07 11:09:01', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5577, 'CART/0001768', 'entry', 'SAVE', '2020-08-07 11:10:23', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5578, 'CART/0001769', 'entry', 'SAVE', '2020-08-07 11:10:40', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5579, 'CART/0001770', 'entry', 'SAVE', '2020-08-07 11:10:45', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5580, 'CART/0001771', 'entry', 'SAVE', '2020-08-07 11:12:19', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5581, 'CART/0001772', 'entry', 'SAVE', '2020-08-07 11:12:20', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5582, 'CART/0001773', 'entry', 'SAVE', '2020-08-07 11:12:44', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5583, 'CART/0001774', 'entry', 'SAVE', '2020-08-07 11:13:32', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5584, 'CART/0001775', 'entry', 'SAVE', '2020-08-07 11:13:37', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5585, 'CART/0001776', 'entry', 'SAVE', '2020-08-07 11:13:40', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5586, 'CART/0001777', 'entry', 'SAVE', '2020-08-07 11:13:42', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5587, 'CART/0001778', 'entry', 'SAVE', '2020-08-07 11:14:38', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5588, 'CART/0001779', 'entry', 'SAVE', '2020-08-07 11:14:55', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5589, 'CART/0001780', 'entry', 'SAVE', '2020-08-07 11:15:16', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5590, 'CART/0001781', 'entry', 'SAVE', '2020-08-07 11:15:29', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5591, 'CART/0001782', 'entry', 'SAVE', '2020-08-07 11:15:30', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5592, 'CART/0001783', 'entry', 'SAVE', '2020-08-07 11:45:34', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5593, 'CART/0001784', 'entry', 'SAVE', '2020-08-07 11:45:43', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5594, 'CART/0001785', 'entry', 'SAVE', '2020-08-07 11:50:09', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5595, 'CART/0001786', 'entry', 'SAVE', '2020-08-07 12:16:39', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5596, 'CART/0001787', 'entry', 'SAVE', '2020-08-07 12:25:27', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5597, 'CART/0001788', 'entry', 'SAVE', '2020-08-07 12:26:14', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5598, 'CART/0001789', 'entry', 'SAVE', '2020-08-07 12:41:14', '', 'ip');
+INSERT INTO `sys_log` VALUES (5599, 'CART/0001790', 'entry', 'SAVE', '2020-08-07 12:41:19', '', 'ip');
+INSERT INTO `sys_log` VALUES (5600, 'CART/0001791', 'entry', 'SAVE', '2020-08-07 12:59:03', '', 'ip');
+INSERT INTO `sys_log` VALUES (5601, 'CART/0001792', 'entry', 'SAVE', '2020-08-07 12:59:06', '', 'ip');
+INSERT INTO `sys_log` VALUES (5602, 'CART/0001793', 'entry', 'SAVE', '2020-08-07 12:59:22', '', 'ip');
+INSERT INTO `sys_log` VALUES (5603, 'CART/0001794', 'entry', 'SAVE', '2020-08-07 14:48:40', '', 'ip');
+INSERT INTO `sys_log` VALUES (5604, 'CART/0001795', 'entry', 'SAVE', '2020-08-07 15:47:17', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5605, 'OR/0000085', 'entry', 'SAVE', '2020-08-07 16:05:44', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5606, '5f2d2e88a5806', 'entry', 'Reorder', '2020-08-07 16:05:52', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5607, 'SCL/0000018', 'entry', 'SAVE', '2020-08-11 22:54:44', 'admin', 'ip');
+INSERT INTO `sys_log` VALUES (5608, 'SCL/0000019', 'entry', 'SAVE', '2020-08-11 22:55:28', 'admin', 'ip');
+INSERT INTO `sys_log` VALUES (5609, 'INQT/0000003', 'entry', 'SAVE', '2020-08-12 13:10:56', 'admin', 'ip');
+INSERT INTO `sys_log` VALUES (5610, 'INQT/0000004', 'entry', 'SAVE', '2020-08-12 13:11:00', 'admin', 'ip');
+INSERT INTO `sys_log` VALUES (5611, 'ITEM/0003788', 'entry', 'SAVE', '2020-08-12 14:41:39', 'admin', 'ip');
+INSERT INTO `sys_log` VALUES (5612, 'ITEM/0003789', 'entry', 'SAVE', '2020-08-12 14:45:23', 'admin', 'ip');
 
 -- ----------------------------
 -- Table structure for user_mast
