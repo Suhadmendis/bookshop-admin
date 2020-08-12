@@ -353,7 +353,7 @@ function getFromValues()
                    cell1.innerHTML = objlevel[i].LEVEL_REF;
                    cell2.innerHTML = objlevel[i].level_name;
                    cell10.innerHTML =
-                     '<input type="button" value="-" onclick="deleteRow(this)">';
+                     '<input type="button" value="-" onclick="deleteRow1(this)">';
                  }
 
 
@@ -553,6 +553,20 @@ function getFromValues()
     
     }
     
+}
+
+function deleteRow1(r) {
+  var i = r.parentNode.parentNode.rowIndex;
+  document.getElementById("exampletable1").deleteRow(i);
+
+  qtyTot();
+}
+
+function deleteRow(r) {
+  var i = r.parentNode.parentNode.rowIndex;
+  document.getElementById("exampletable").deleteRow(i);
+
+  qtyTot();
 }
 
 

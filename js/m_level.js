@@ -247,7 +247,7 @@ function getFromValues() {
         cell1.innerHTML = objSup.REF;
         cell2.innerHTML = objSup.name;
         cell10.innerHTML =
-          '<input type="button" value="-" onclick="deleteRow(this)">';
+          '<input type="button" value="-" onclick="deleteRow1(this)">';
       } else {
         alert("Already Selected");
       }

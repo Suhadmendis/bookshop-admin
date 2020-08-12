@@ -233,8 +233,8 @@ if ($_GET["Command"] == "getForm") {
         }
 
 
-        $ResponseXML .= "<objschool><![CDATA[" . json_encode($row) . "]]></objschool>";
     }
+    $ResponseXML .= "<objschool><![CDATA[" . json_encode($row) . "]]></objschool>";
 
     $sql = "select * from m_item_level where ITEM_REF= '" . $REF . "'";
 
@@ -251,8 +251,8 @@ if ($_GET["Command"] == "getForm") {
         }
 
 
-        $ResponseXML .= "<objlevel><![CDATA[" . json_encode($row) . "]]></objlevel>";
     }
+    $ResponseXML .= "<objlevel><![CDATA[" . json_encode($row) . "]]></objlevel>";
 
    $ResponseXML .= "<IDF><![CDATA[" . $_GET['IDF'] . "]]></IDF>";
 
