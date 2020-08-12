@@ -265,6 +265,11 @@ function getFromValues()
         XMLAddress1 = xmlHttp.responseXML.getElementsByTagName("objSup");
         var objSup = JSON.parse(XMLAddress1[0].childNodes[0].nodeValue);
 
+        XMLAddress1 = xmlHttp.responseXML.getElementsByTagName("objschool");
+        var objschool = JSON.parse(XMLAddress1[0].childNodes[0].nodeValue);
+        XMLAddress1 = xmlHttp.responseXML.getElementsByTagName("objlevel");
+        var objlevel = JSON.parse(XMLAddress1[0].childNodes[0].nodeValue);
+
         if (IDF === "Master") {
           opener.document.getElementById("REF").value = objSup.REF;
           // opener.document.getElementById('category_ref').value = objSup.category_ref;
@@ -282,6 +287,97 @@ function getFromValues()
           opener.document.getElementById("des").value = objSup.des;
           // opener.document.getElementById('selling_price').value = objSup.selling_price;
           // opener.document.getElementById('quantity').value = objSup.quantity;
+
+
+
+
+
+
+
+              var rowCount = window.opener.document.getElementById(
+                "exampletable"
+              ).rows.length;
+
+              var i;
+
+              for (i = 0; i < rowCount - 1; i++) {
+                window.opener.document
+                  .getElementById("exampletable")
+                  .deleteRow(1);
+              }
+
+              var table = window.opener.document.getElementById("exampletable");
+
+              var i;
+              for (i = 0; i < objschool.length; i++) {
+                var row = table.insertRow(table.length);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell10 = row.insertCell(2);
+
+                cell1.innerHTML = objschool[i].SCHOOL_REF;
+                cell2.innerHTML = objschool[i].school_name;
+                cell10.innerHTML =
+                  '<input type="button" value="-" onclick="deleteRow(this)">';
+              }
+
+
+
+
+
+
+
+                 var rowCount = window.opener.document.getElementById(
+                   "exampletable1"
+                 ).rows.length;
+
+                 var i;
+
+                 for (i = 0; i < rowCount - 1; i++) {
+                   window.opener.document
+                     .getElementById("exampletable1")
+                     .deleteRow(1);
+                 }
+
+                 var table = window.opener.document.getElementById(
+                   "exampletable1"
+                 );
+
+                 var i;
+                 for (i = 0; i < objlevel.length; i++) {
+                   var row = table.insertRow(table.length);
+                   var cell1 = row.insertCell(0);
+                   var cell2 = row.insertCell(1);
+                   var cell10 = row.insertCell(2);
+
+                   cell1.innerHTML = objlevel[i].LEVEL_REF;
+                   cell2.innerHTML = objlevel[i].level_name;
+                   cell10.innerHTML =
+                     '<input type="button" value="-" onclick="deleteRow(this)">';
+                 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
           if (objSup.approve == "1") {
             window.opener.document.getElementById("app_status").innerHTML =

@@ -84,7 +84,7 @@ if ($_GET["Command"] == "save_item") {
 
             for ($i=0; $i < sizeof($schools); $i++) { 
                 $sql = "Insert into m_item_school(ITEM_REF, SCHOOL_REF, user)values
-                        ('" . $no1 . "' ,'" . $schools[$i]->Reference . "','" . $_SESSION['UserName'] . "')";
+                        ('" . $book_REF . "' ,'" . $schools[$i]->Reference . "','" . $_SESSION['UserName'] . "')";
                 $result = $conn->query($sql);
 
             }
@@ -95,7 +95,7 @@ if ($_GET["Command"] == "save_item") {
 
             for ($i=0; $i < sizeof($levels); $i++) { 
                 $sql = "Insert into m_item_level(ITEM_REF, LEVEL_REF, user)values
-                        ('" . $no1 . "' ,'" . $levels[$i]->Reference . "','" . $_SESSION['UserName'] . "')";
+                        ('" . $book_REF . "' ,'" . $levels[$i]->Reference . "','" . $_SESSION['UserName'] . "')";
                 $result = $conn->query($sql);
 
             }
@@ -216,6 +216,42 @@ if ($_GET["Command"] == "getForm") {
     $sql = $conn->query($sql);
     if ($row = $sql->fetch()) {
         $ResponseXML .= "<objSup><![CDATA[" . json_encode($row) . "]]></objSup>";
+    }
+
+    $sql = "select * from m_item_school where ITEM_REF= '" . $REF . "'";
+
+    $sql = $conn->query($sql);
+    if ($row = $sql->fetchall()) {
+
+        for ($i=0; $i < sizeof($row); $i++) { 
+            $sqlss = "SELECT * FROM m_school where REF = '" . $row[$i]['SCHOOL_REF'] . "'";
+            $results = $conn->query($sqlss);
+            $rows = $results->fetch();
+
+            $row[$i]['school_name'] = $rows['name'];
+
+        }
+
+
+        $ResponseXML .= "<objschool><![CDATA[" . json_encode($row) . "]]></objschool>";
+    }
+
+    $sql = "select * from m_item_level where ITEM_REF= '" . $REF . "'";
+
+    $sql = $conn->query($sql);
+    if ($row = $sql->fetchall()) {
+
+        for ($i=0; $i < sizeof($row); $i++) { 
+            $sqlss = "SELECT * FROM m_level where REF = '" . $row[$i]['LEVEL_REF'] . "'";
+            $results = $conn->query($sqlss);
+            $rows = $results->fetch();
+
+            $row[$i]['level_name'] = $rows['name'];
+
+        }
+
+
+        $ResponseXML .= "<objlevel><![CDATA[" . json_encode($row) . "]]></objlevel>";
     }
 
    $ResponseXML .= "<IDF><![CDATA[" . $_GET['IDF'] . "]]></IDF>";
