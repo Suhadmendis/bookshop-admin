@@ -119,6 +119,15 @@ function save_info()
     // url = url + "&selling_price=" + document.getElementById("selling_price").value;
     // url = url + "&quantity=" + document.getElementById("quantity").value;
     
+    var table = $("#exampletable").tableToJSON();
+    url = url + "&schools=" + JSON.stringify(table);
+
+    var table = $("#exampletable1").tableToJSON();
+    url = url + "&levels=" + JSON.stringify(table);
+
+
+
+
     
     xmlHttp.onreadystatechange = salessaveresult;
     xmlHttp.open("GET", url, true);

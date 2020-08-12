@@ -59,8 +59,7 @@ include_once './DB_connector.php';
         </table>    
           <div id="filt_table" class="CSSTableGenerator container"> 
            <table id='example'  class='table table-bordered'>
-               <thead>
-
+                <thead>
                     <tr>
                         <th>Reference</th>
                         <th>Name</th>

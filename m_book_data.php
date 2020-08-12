@@ -57,6 +57,11 @@ if ($_GET["Command"] == "save_item") {
         $row    = $result->fetchall();
 
 
+
+        $schools = json_decode($_GET['schools']);
+        $levels = json_decode($_GET['levels']);
+
+
         if (isset($book_REF) && count($row) >= 1) {
 
            
@@ -71,6 +76,31 @@ if ($_GET["Command"] == "save_item") {
             }
             $sql    = "UPDATE `m_item` SET `category_name`='" .$_GET['category_name'] . "',`school_ref`='" . $_GET['school_ref'] . "',`school_name`='" . $_GET['school_name'] . "',`level_ref`='" . $_GET['level_ref'] . "',`level_name`='" . $_GET['level_name'] . "',`author_ref`='" . $_GET['author_ref'] . "',`author_name`='" . $_GET['author_name'] . "',`publisher_ref`='" . $_GET['publisher_ref'] . "',`publisher_name`='" . $_GET['publisher_name'] . "',`item_name`='" . $_GET['item_name'] . "',`des`='" . $_GET['des'] . "',`isbn`='" . $_GET['isbn'] . "',`user`='" . $_SESSION['UserName'] . "',`listtype`='BKS',`img`='" . $img . "' WHERE REF = '" . $book_REF . "'";
             $result = $conn->query($sql);
+
+
+
+            $sqldel = "delete from m_item_school where ITEM_REF='" . $book_REF . "'";
+            $result = $conn->query($sqldel);
+
+            for ($i=0; $i < sizeof($schools); $i++) { 
+                $sql = "Insert into m_item_school(ITEM_REF, SCHOOL_REF, user)values
+                        ('" . $no1 . "' ,'" . $schools[$i]->Reference . "','" . $_SESSION['UserName'] . "')";
+                $result = $conn->query($sql);
+
+            }
+
+            $sqldel = "delete from m_item_level where ITEM_REF='" . $book_REF . "'";
+            $result = $conn->query($sqldel);
+
+
+            for ($i=0; $i < sizeof($levels); $i++) { 
+                $sql = "Insert into m_item_level(ITEM_REF, LEVEL_REF, user)values
+                        ('" . $no1 . "' ,'" . $levels[$i]->Reference . "','" . $_SESSION['UserName'] . "')";
+                $result = $conn->query($sql);
+
+            }
+
+
             $conn->commit();
             echo 'Updated Item successfully';
         }else{
@@ -78,6 +108,30 @@ if ($_GET["Command"] == "save_item") {
             $sql = "Insert into m_item(REF, category_name, school_ref, school_name,level_ref,level_name,author_ref, author_name,publisher_ref, publisher_name, item_name, des,isbn, user, listtype, img)values
             ('" . $no1 . "' ,'" . $_GET['category_name'] . "' ,'" . $_GET['school_ref'] . "' ,'" . $_GET['school_name'] . "' ,'" . $_GET['level_ref'] . "' ,'" . $_GET['level_name'] . "' ,'" . $_GET['author_ref'] . "' ,'" . $_GET['author_name'] . "' ,'" . $_GET['publisher_ref'] . "' ,'" . $_GET['publisher_name'] . "' ,'" . $_GET['item_name'] . "' ,'" . $_GET['des'] . "' ,'" . $_GET['isbn'] . "' ,'" . $_SESSION['UserName'] . "','BKS','" . $_GET['img_logo'] . "')";
             $result = $conn->query($sql);
+
+
+
+            
+
+            for ($i=0; $i < sizeof($schools); $i++) { 
+                //    echo $items[$i]->Reference;
+                $sql = "Insert into m_item_school(ITEM_REF, SCHOOL_REF, user)values
+                        ('" . $no1 . "' ,'" . $schools[$i]->Reference . "','" . $_SESSION['UserName'] . "')";
+                $result = $conn->query($sql);
+
+            }
+
+            for ($i=0; $i < sizeof($levels); $i++) { 
+                //    echo $items[$i]->Reference;
+                $sql = "Insert into m_item_level(ITEM_REF, LEVEL_REF, user)values
+                        ('" . $no1 . "' ,'" . $levels[$i]->Reference . "','" . $_SESSION['UserName'] . "')";
+                $result = $conn->query($sql);
+
+            }
+
+
+
+
 
             $no2 = $no + 1;
             $sql = "update sys_info set item_ref = $no2 where item_ref = $no";

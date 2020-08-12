@@ -74,6 +74,19 @@ if ($_GET["Command"] == "save_item") {
         $result = $conn->query($sql);
 
 
+        // print_r(json_decode($_GET['items']));
+        $items = json_decode($_GET['items']);
+
+        for ($i=0; $i < sizeof($items); $i++) { 
+        //    echo $items[$i]->Reference;
+           $sql = "Insert into m_school_level(SCHOOL_REF, LEVEL_REF, user)values
+                ('" . $no1 . "' ,'" . $items[$i]->Reference . "','" . $_SESSION['UserName'] . "')";
+        $result = $conn->query($sql);
+
+        // echo $sql;
+        }
+
+
         $no2 = $no + 1;
         $sql = "update sys_info set school_ref = $no2 where school_ref = $no";
         $result = $conn->query($sql);

@@ -103,6 +103,10 @@ function save_info()
     url = url + "&REF=" + document.getElementById("REF").value;
     url = url + "&name=" + document.getElementById("name").value;
     
+    var table = $("#exampletable").tableToJSON();
+    url = url + "&items=" + JSON.stringify(table);
+  
+
     xmlHttp.onreadystatechange = salessaveresult;
     xmlHttp.open("GET", url, true);
     xmlHttp.send(null);
@@ -250,9 +254,58 @@ function getFromValues()
             opener.document.getElementById('school_name').value = objSup.name;
         }
 
+        if (IDF === "ADD_SCHOOL") {
+          var rowCount = window.opener.document.getElementById("exampletable")
+            .rows.length;
+
+          var i;
+          var condition = "0";
+          for (i = 0; i < rowCount; i++) {
+            if (
+              window.opener.document.getElementById("exampletable").rows[i]
+                .cells[0].innerHTML == objSup.REF
+            ) {
+              condition = "1";
+            }
+          }
+
+          if (condition != 1) {
+            var table = window.opener.document.getElementById("exampletable");
+
+            var row = table.insertRow(table.length);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell10 = row.insertCell(2);
+
+            cell1.innerHTML = objSup.REF;
+            cell2.innerHTML = objSup.name;
+            cell10.innerHTML =
+              '<input type="button" value="-" onclick="deleteRow(this)">';
+          } else {
+            alert("Already Selected");
+          }
+
+          //   if (objSup.approve == "1") {
+          //     window.opener.document.getElementById("app_status").innerHTML =
+          //       "Approved";
+          //   } else {
+          //     window.opener.document.getElementById("app_status").innerHTML =
+          //       "Not Approved";
+          //   }
+        }
+
       
         self.close();
     
     }
     
+}
+
+
+
+function deleteRow(r) {
+  var i = r.parentNode.parentNode.rowIndex;
+  document.getElementById("exampletable").deleteRow(i);
+
+  qtyTot();
 }
