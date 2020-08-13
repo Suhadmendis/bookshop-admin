@@ -161,6 +161,9 @@ if ($_GET["Command"] == "getForm") {
 
    $ResponseXML .= "<IDF><![CDATA[" . $_GET['IDF'] . "]]></IDF>";
 
+   $ResponseXML .= "<code><![CDATA[" . $_GET['code'] . "]]></code>";
+   $ResponseXML .= "<name><![CDATA[" . $_GET['name'] . "]]></name>";
+
     $ResponseXML .= "</salesdetails>";
     echo $ResponseXML;
 }

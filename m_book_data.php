@@ -83,24 +83,14 @@ if ($_GET["Command"] == "save_item") {
             $result = $conn->query($sqldel);
 
             for ($i=0; $i < sizeof($schools); $i++) { 
-                $sql = "Insert into m_item_school(ITEM_REF, SCHOOL_REF, user)values
-                        ('" . $book_REF . "' ,'" . $schools[$i]->Reference . "','" . $_SESSION['UserName'] . "')";
+                //    echo $items[$i]->Reference;
+                $sql = "Insert into m_item_school(ITEM_REF, SCHOOL_REF, LEVEL_REF, user)values
+                        ('" . $book_REF . "' ,'" . $schools[$i]->{'School Reference'} . "','" . $schools[$i]->{'Level Reference'} . "','" . $_SESSION['UserName'] . "')";
                 $result = $conn->query($sql);
 
             }
 
-            $sqldel = "delete from m_item_level where ITEM_REF='" . $book_REF . "'";
-            $result = $conn->query($sqldel);
-
-
-            for ($i=0; $i < sizeof($levels); $i++) { 
-                $sql = "Insert into m_item_level(ITEM_REF, LEVEL_REF, user)values
-                        ('" . $book_REF . "' ,'" . $levels[$i]->Reference . "','" . $_SESSION['UserName'] . "')";
-                $result = $conn->query($sql);
-
-            }
-
-
+            
             $conn->commit();
             echo 'Updated Item successfully';
         }else{
@@ -115,23 +105,19 @@ if ($_GET["Command"] == "save_item") {
 
             for ($i=0; $i < sizeof($schools); $i++) { 
                 //    echo $items[$i]->Reference;
-                $sql = "Insert into m_item_school(ITEM_REF, SCHOOL_REF, user)values
-                        ('" . $no1 . "' ,'" . $schools[$i]->Reference . "','" . $_SESSION['UserName'] . "')";
+                $sql = "Insert into m_item_school(ITEM_REF, SCHOOL_REF, LEVEL_REF, user)values
+                        ('" . $no1 . "' ,'" . $schools[$i]->{'School Reference'} . "','" . $schools[$i]->{'Level Reference'} . "','" . $_SESSION['UserName'] . "')";
                 $result = $conn->query($sql);
 
             }
 
-            for ($i=0; $i < sizeof($levels); $i++) { 
-                //    echo $items[$i]->Reference;
-                $sql = "Insert into m_item_level(ITEM_REF, LEVEL_REF, user)values
-                        ('" . $no1 . "' ,'" . $levels[$i]->Reference . "','" . $_SESSION['UserName'] . "')";
-                $result = $conn->query($sql);
+            // for ($i=0; $i < sizeof($levels); $i++) { 
+            //     //    echo $items[$i]->Reference;
+            //     $sql = "Insert into m_item_level(ITEM_REF, LEVEL_REF, user)values
+            //             ('" . $no1 . "' ,'" . $levels[$i]->Reference . "','" . $_SESSION['UserName'] . "')";
+            //     $result = $conn->query($sql);
 
-            }
-
-
-
-
+            // }
 
             $no2 = $no + 1;
             $sql = "update sys_info set item_ref = $no2 where item_ref = $no";
@@ -230,18 +216,7 @@ if ($_GET["Command"] == "getForm") {
 
             $row[$i]['school_name'] = $rows['name'];
 
-        }
 
-
-    }
-    $ResponseXML .= "<objschool><![CDATA[" . json_encode($row) . "]]></objschool>";
-
-    $sql = "select * from m_item_level where ITEM_REF= '" . $REF . "'";
-
-    $sql = $conn->query($sql);
-    if ($row = $sql->fetchall()) {
-
-        for ($i=0; $i < sizeof($row); $i++) { 
             $sqlss = "SELECT * FROM m_level where REF = '" . $row[$i]['LEVEL_REF'] . "'";
             $results = $conn->query($sqlss);
             $rows = $results->fetch();
@@ -252,7 +227,26 @@ if ($_GET["Command"] == "getForm") {
 
 
     }
-    $ResponseXML .= "<objlevel><![CDATA[" . json_encode($row) . "]]></objlevel>";
+    
+    $ResponseXML .= "<objschool><![CDATA[" . json_encode($row) . "]]></objschool>";
+
+    // $sql = "select * from m_item_level where ITEM_REF= '" . $REF . "'";
+
+    // $sql = $conn->query($sql);
+    // if ($row = $sql->fetchall()) {
+
+    //     for ($i=0; $i < sizeof($row); $i++) { 
+    //         $sqlss = "SELECT * FROM m_level where REF = '" . $row[$i]['LEVEL_REF'] . "'";
+    //         $results = $conn->query($sqlss);
+    //         $rows = $results->fetch();
+
+    //         $row[$i]['level_name'] = $rows['name'];
+
+    //     }
+
+
+    // }
+    // $ResponseXML .= "<objlevel><![CDATA[" . json_encode($row) . "]]></objlevel>";
 
    $ResponseXML .= "<IDF><![CDATA[" . $_GET['IDF'] . "]]></IDF>";
 

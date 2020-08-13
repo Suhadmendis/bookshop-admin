@@ -54,6 +54,15 @@ include_once './DB_connector.php';
                 if (isset($_GET['IDF'])) {
                     $IDF = $_GET["IDF"];
                 }
+
+                $code = "";
+                if (isset($_GET['code'])) {
+                    $code = $_GET["code"];
+                }
+                $name = "";
+                if (isset($_GET['name'])) {
+                    $name = $_GET["name"];
+                }
                 ?>
              
         </table>    
@@ -78,8 +87,8 @@ include_once './DB_connector.php';
                     $REF = $row['REF'];
                       
                     echo "<tr>                
-                              <td onclick=\"getForm('$REF','$IDF');\">" . $REF . "</a></td>
-                              <td onclick=\"getForm('$REF','$IDF');\">" . $row['name'] . "</a></td>
+                              <td onclick=\"getForm('$REF','$IDF','$code','$name');\">" . $REF . "</a></td>
+                              <td onclick=\"getForm('$REF','$IDF','$code','$name');\">" . $row['name'] . "</a></td>
                               </tr>";
                             }
                 ?>

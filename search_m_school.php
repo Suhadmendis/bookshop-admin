@@ -31,8 +31,6 @@ include_once './DB_connector.php';
 
             <script language="JavaScript" src="js/m_school.js"></script>
 
-
-
     </head>
 
     <body>
@@ -69,6 +67,7 @@ include_once './DB_connector.php';
 
                 <tbody>
                 <?php
+                
                 $sql = "SELECT * from m_school";
               
 

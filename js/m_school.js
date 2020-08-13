@@ -269,21 +269,37 @@ function getFromValues()
             }
           }
 
-          if (condition != 1) {
+          
             var table = window.opener.document.getElementById("exampletable");
+
+             var k = Math.floor(Math.random() * 1000000);
+
+             var t_code = "code" + k;
+             var t_name = "name" + k;
+
 
             var row = table.insertRow(table.length);
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
-            var cell10 = row.insertCell(2);
+
+
+            var cell3 = row.insertCell(2);
+            cell3.setAttribute("id", t_code);
+            var cell4 = row.insertCell(3);
+            cell4.setAttribute("id", t_name);
+
+            var cell5 = row.insertCell(4);
+
+
+            var cell10 = row.insertCell(5);
 
             cell1.innerHTML = objSup.REF;
             cell2.innerHTML = objSup.name;
-            cell10.innerHTML =
-              '<input type="button" value="-" onclick="deleteRow(this)">';
-          } else {
-            alert("Already Selected");
-          }
+
+
+            cell5.innerHTML = "<a class=\"btn btn-default\" onclick=\"window.open('search_m_level.php?IDF=ADD_LEVEL&code="+ t_code +"&name="+ t_name +"', 'mywin', 'width=800, height=700');\" class=\"btn btn-info btn-sm\">Add Level</a>"
+            cell10.innerHTML = '<input type="button" value="-" onclick="deleteRow(this)">';
+         
 
           //   if (objSup.approve == "1") {
           //     window.opener.document.getElementById("app_status").innerHTML =

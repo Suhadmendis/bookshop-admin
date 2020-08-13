@@ -267,8 +267,8 @@ function getFromValues()
 
         XMLAddress1 = xmlHttp.responseXML.getElementsByTagName("objschool");
         var objschool = JSON.parse(XMLAddress1[0].childNodes[0].nodeValue);
-        XMLAddress1 = xmlHttp.responseXML.getElementsByTagName("objlevel");
-        var objlevel = JSON.parse(XMLAddress1[0].childNodes[0].nodeValue);
+        // XMLAddress1 = xmlHttp.responseXML.getElementsByTagName("objlevel");
+        // var objlevel = JSON.parse(XMLAddress1[0].childNodes[0].nodeValue);
 
         if (IDF === "Master") {
           opener.document.getElementById("REF").value = objSup.REF;
@@ -310,15 +310,34 @@ function getFromValues()
 
               var i;
               for (i = 0; i < objschool.length; i++) {
+
+                 var k = Math.floor(Math.random() * 1000000);
+
+                  var t_code = "code" + k;
+                  var t_name = "name" + k;
+
+
                 var row = table.insertRow(table.length);
                 var cell1 = row.insertCell(0);
                 var cell2 = row.insertCell(1);
-                var cell10 = row.insertCell(2);
+
+                var cell3 = row.insertCell(2);
+                cell3.setAttribute("id", t_code);
+                var cell4 = row.insertCell(3);
+                cell4.setAttribute("id", t_name);
+
+
+                 var cell5 = row.insertCell(4);
+
+                 var cell10 = row.insertCell(5);
 
                 cell1.innerHTML = objschool[i].SCHOOL_REF;
                 cell2.innerHTML = objschool[i].school_name;
-                cell10.innerHTML =
-                  '<input type="button" value="-" onclick="deleteRow(this)">';
+                cell3.innerHTML = objschool[i].LEVEL_REF;
+                cell4.innerHTML = objschool[i].level_name;
+                cell5.innerHTML = "<a class=\"btn btn-default\" onclick=\"window.open('search_m_level.php?IDF=ADD_LEVEL&code="+ t_code +"&name="+ t_name +"', 'mywin', 'width=800, height=700');\" class=\"btn btn-info btn-sm\">Add Level</a>"
+                cell10.innerHTML = '<input type="button" value="-" onclick="deleteRow(this)">';
+
               }
 
 
@@ -327,34 +346,34 @@ function getFromValues()
 
 
 
-                 var rowCount = window.opener.document.getElementById(
-                   "exampletable1"
-                 ).rows.length;
+                //  var rowCount = window.opener.document.getElementById(
+                //    "exampletable1"
+                //  ).rows.length;
 
-                 var i;
+                //  var i;
 
-                 for (i = 0; i < rowCount - 1; i++) {
-                   window.opener.document
-                     .getElementById("exampletable1")
-                     .deleteRow(1);
-                 }
+                //  for (i = 0; i < rowCount - 1; i++) {
+                //    window.opener.document
+                //      .getElementById("exampletable1")
+                //      .deleteRow(1);
+                //  }
 
-                 var table = window.opener.document.getElementById(
-                   "exampletable1"
-                 );
+                //  var table = window.opener.document.getElementById(
+                //    "exampletable1"
+                //  );
 
-                 var i;
-                 for (i = 0; i < objlevel.length; i++) {
-                   var row = table.insertRow(table.length);
-                   var cell1 = row.insertCell(0);
-                   var cell2 = row.insertCell(1);
-                   var cell10 = row.insertCell(2);
+                //  var i;
+                //  for (i = 0; i < objlevel.length; i++) {
+                //    var row = table.insertRow(table.length);
+                //    var cell1 = row.insertCell(0);
+                //    var cell2 = row.insertCell(1);
+                //    var cell10 = row.insertCell(2);
 
-                   cell1.innerHTML = objlevel[i].LEVEL_REF;
-                   cell2.innerHTML = objlevel[i].level_name;
-                   cell10.innerHTML =
-                     '<input type="button" value="-" onclick="deleteRow1(this)">';
-                 }
+                //    cell1.innerHTML = objlevel[i].LEVEL_REF;
+                //    cell2.innerHTML = objlevel[i].level_name;
+                //    cell10.innerHTML =
+                //      '<input type="button" value="-" onclick="deleteRow1(this)">';
+                //  }
 
 
 

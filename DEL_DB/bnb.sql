@@ -11,7 +11,7 @@
  Target Server Version : 100131
  File Encoding         : 65001
 
- Date: 12/08/2020 14:50:38
+ Date: 13/08/2020 15:03:27
 */
 
 SET NAMES utf8mb4;
@@ -259,7 +259,7 @@ CREATE TABLE `m_item`  (
   `listtype` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `items`(`REF`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3770 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 3771 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of m_item
@@ -292,6 +292,7 @@ INSERT INTO `m_item` VALUES (3765, 'ITEM/0003786', NULL, '', '', '', NULL, NULL,
 INSERT INTO `m_item` VALUES (3766, 'ITEM/0003787', NULL, 'BIRT', '', '', NULL, NULL, 'dfgdfg', NULL, NULL, NULL, NULL, '', NULL, NULL, '5f19159eb52d8.jpg', '0', 'admin', '2020-07-23 10:14:19', 0, '0', 'CAR');
 INSERT INTO `m_item` VALUES (3767, 'ITEM/0003788', NULL, 'SYL', '', '', '', '', 'fsdf', 'AU/0000007', 'Patrick Ness', 'PUB/0000007', 'Ladybird', 'fds', 'fsd324', NULL, '', '0', 'admin', '2020-08-12 14:41:39', 0, '0', 'BKS');
 INSERT INTO `m_item` VALUES (3769, 'ITEM/0003789', NULL, 'SYL', '', '', '', '', 'sdf', '', '', '', '', 'sdfsdfff', '523525', NULL, '', '0', 'admin', '2020-08-12 14:45:23', 0, '0', 'BKS');
+INSERT INTO `m_item` VALUES (3770, 'ITEM/0003790', NULL, 'SYL', '', '', '', '', 'fsdfs', '', '', '', '', '', '', NULL, '', '0', 'admin', '2020-08-12 18:50:44', 0, '0', 'BKS');
 
 -- ----------------------------
 -- Table structure for m_item_level
@@ -303,14 +304,14 @@ CREATE TABLE `m_item_level`  (
   `LEVEL_REF` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `user` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of m_item_level
 -- ----------------------------
-INSERT INTO `m_item_level` VALUES (3, 'ITEM/0003790', 'LVL/0000001', 'admin');
-INSERT INTO `m_item_level` VALUES (4, 'ITEM/0003790', 'LVL/0000002', 'admin');
-INSERT INTO `m_item_level` VALUES (5, 'ITEM/0003790', 'LVL/0000003', 'admin');
+INSERT INTO `m_item_level` VALUES (6, 'ITEM/0003762', 'LVL/0000002', 'admin');
+INSERT INTO `m_item_level` VALUES (7, 'ITEM/0003762', 'LVL/0000003', 'admin');
+INSERT INTO `m_item_level` VALUES (8, 'ITEM/0003762', 'LVL/0000004', 'admin');
 
 -- ----------------------------
 -- Table structure for m_item_school
@@ -321,14 +322,19 @@ CREATE TABLE `m_item_school`  (
   `ITEM_REF` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `SCHOOL_REF` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `user` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `LEVEL_REF` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of m_item_school
 -- ----------------------------
-INSERT INTO `m_item_school` VALUES (3, 'ITEM/0003790', 'SCL/0000001', 'admin');
-INSERT INTO `m_item_school` VALUES (4, 'ITEM/0003790', 'SCL/0000002', 'admin');
+INSERT INTO `m_item_school` VALUES (12, 'ITEM/0003791', 'SCL/0000001', 'admin', 'LVL/0000001');
+INSERT INTO `m_item_school` VALUES (13, 'ITEM/0003791', 'SCL/0000003', 'admin', 'LVL/0000003');
+INSERT INTO `m_item_school` VALUES (14, 'ITEM/0003791', 'SCL/0000001', 'admin', 'LVL/0000001');
+INSERT INTO `m_item_school` VALUES (15, 'ITEM/0003791', 'SCL/0000005', 'admin', 'LVL/0000001');
+INSERT INTO `m_item_school` VALUES (19, 'ITEM/0003762', 'SCL/0000004', 'admin', 'LVL/0000001');
+INSERT INTO `m_item_school` VALUES (20, 'ITEM/0003762', 'SCL/0000001', 'admin', 'LVL/0000001');
 
 -- ----------------------------
 -- Table structure for m_job
@@ -351,11 +357,8 @@ CREATE TABLE `m_job`  (
 -- ----------------------------
 -- Records of m_job
 -- ----------------------------
-INSERT INTO `m_job` VALUES (2, '1', 'Senior Front End Developer', 'Colombo, Sri Lanka', 53000.00, 63000.00, 'Full Time', 'Ornare aenean euismod elementum nisi quis eleifend. Risus viverra adipiscing at in tellus integer feugiat scelerisque. Viverra justo nec ultrices dui. Facilisi cras fermentum odio eu feugiat pretium nibh ipsum consequat. Ut tellus elementum sagittis vitae', NULL, '2020-07-29 12:18:47');
-INSERT INTO `m_job` VALUES (3, '2', 'Senior Developer', 'Colombo, Sri Lanka', 51000.00, 61000.00, 'Part Time', 'Ornare aenean euismod elementum nisi quis eleifend. Risus viverra adipiscing at in tellus integer feugiat scelerisque. Viverra justo nec ultrices dui. Facilisi cras fermentum odio eu feugiat pretium nibh ipsum consequat. Ut tellus elementum sagittis vitae', NULL, '2020-07-29 12:18:51');
-INSERT INTO `m_job` VALUES (4, '3', 'UI/UX Designer', 'Colombo, Sri Lanka', 52000.00, 62000.00, 'Part Time', 'Ornare aenean euismod elementum nisi quis eleifend. Risus viverra adipiscing at in tellus integer feugiat scelerisque. Viverra justo nec ultrices dui. Facilisi cras fermentum odio eu feugiat pretium nibh ipsum consequat. Ut tellus elementum sagittis vitae', NULL, '2020-07-29 12:18:51');
-INSERT INTO `m_job` VALUES (5, '4', 'Graphic Designer', 'Colombo, Sri Lanka', 52000.00, 62000.00, 'Full Time', 'Ornare aenean euismod elementum nisi quis eleifend. Risus viverra adipiscing at in tellus integer feugiat scelerisque. Viverra justo nec ultrices dui. Facilisi cras fermentum odio eu feugiat pretium nibh ipsum consequat. Ut tellus elementum sagittis vitae', NULL, '2020-07-29 12:18:52');
-INSERT INTO `m_job` VALUES (6, '5', 'Front End Developer', 'Colombo, Sri Lanka', 53000.00, 63000.00, 'Part Time', 'Ornare aenean euismod elementum nisi quis eleifend. Risus viverra adipiscing at in tellus integer feugiat scelerisque. Viverra justo nec ultrices dui. Facilisi cras fermentum odio eu feugiat pretium nibh ipsum consequat. Ut tellus elementum sagittis vitae', NULL, '2020-07-29 12:18:53');
+INSERT INTO `m_job` VALUES (2, '1', 'Custom Care Coordinator', 'Colombo, Sri Lanka', 53000.00, 63000.00, 'Full Time', 'Ornare aenean euismod elementum nisi quis eleifend. Risus viverra adipiscing at in tellus integer feugiat scelerisque. Viverra justo nec ultrices dui. Facilisi cras fermentum odio eu feugiat pretium nibh ipsum consequat. Ut tellus elementum sagittis vitae', NULL, '2020-07-29 12:18:47');
+INSERT INTO `m_job` VALUES (3, '2', 'Custom Care Coordinator', 'Colombo, Sri Lanka', 51000.00, 61000.00, 'Part Time', 'Ornare aenean euismod elementum nisi quis eleifend. Risus viverra adipiscing at in tellus integer feugiat scelerisque. Viverra justo nec ultrices dui. Facilisi cras feum sagittis vitae', NULL, '2020-07-29 12:18:51');
 
 -- ----------------------------
 -- Table structure for m_job_apply
@@ -371,7 +374,7 @@ CREATE TABLE `m_job_apply`  (
   `user` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `sys_time` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0),
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of m_job_apply
@@ -387,6 +390,8 @@ INSERT INTO `m_job_apply` VALUES (9, 'JOBA/0000008', 'Suhad Akila Mendis', ' 947
 INSERT INTO `m_job_apply` VALUES (10, 'JOBA/0000009', 'Suhad Akila Mendis', ' 94778182596', 'akila', 'B', '', '2020-07-30 14:20:15');
 INSERT INTO `m_job_apply` VALUES (11, 'JOBA/0000010', 'Suhad Akila Mendis', ' 94778182596', 'akila', 'B', 'Akila Mendis', '2020-07-30 14:20:44');
 INSERT INTO `m_job_apply` VALUES (12, 'JOBA/0000011', 'Suhad Akila Mendis', ' 94778182596', 'akila', 'B', 'Akila Mendis', '2020-07-30 14:22:46');
+INSERT INTO `m_job_apply` VALUES (13, 'JOBA/0000012', '', '', 'akila', 'B', 'Akila Mendis', '2020-08-13 12:44:59');
+INSERT INTO `m_job_apply` VALUES (14, 'JOBA/0000013', '', '', '', 'B', 'Akila Mendis', '2020-08-13 12:45:00');
 
 -- ----------------------------
 -- Table structure for m_level
@@ -401,23 +406,24 @@ CREATE TABLE `m_level`  (
   `sys_time` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0),
   `approve` varchar(1) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT '0',
   `cancel` varchar(1) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT '0',
+  `sequence` int(3) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 106 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of m_level
 -- ----------------------------
-INSERT INTO `m_level` VALUES (94, 'LVL/0000001', 'Grade 1', NULL, 'admin', '2020-06-19 16:25:49', '0', '0');
-INSERT INTO `m_level` VALUES (95, 'LVL/0000002', 'Grade 2', NULL, 'admin', '2020-06-20 15:06:38', '0', '0');
-INSERT INTO `m_level` VALUES (96, 'LVL/0000003', 'Grade 3', NULL, 'admin', '2020-06-20 15:06:48', '0', '0');
-INSERT INTO `m_level` VALUES (97, 'LVL/0000004', 'Grade 4', NULL, 'admin', '2020-06-20 15:06:55', '0', '0');
-INSERT INTO `m_level` VALUES (98, 'LVL/0000005', 'Grade 5', NULL, 'admin', '2020-06-20 15:06:56', '0', '0');
-INSERT INTO `m_level` VALUES (99, 'LVL/0000006', 'Grade 6', NULL, 'admin', '2020-06-20 15:06:57', '0', '0');
-INSERT INTO `m_level` VALUES (100, 'LVL/0000007', 'Grade 7', NULL, 'admin', '2020-06-20 15:06:58', '0', '0');
-INSERT INTO `m_level` VALUES (101, 'LVL/0000008', 'Grade 8', NULL, 'admin', '2020-06-20 15:06:59', '0', '0');
-INSERT INTO `m_level` VALUES (102, 'LVL/0000009', 'Grade 9', NULL, 'admin', '2020-06-20 15:07:00', '0', '0');
-INSERT INTO `m_level` VALUES (103, 'LVL/0000010', 'Grade 11', NULL, 'admin', '2020-06-20 15:07:01', '0', '0');
-INSERT INTO `m_level` VALUES (105, 'LVL/0000012', 'Grade 12', NULL, 'admin', '2020-06-20 15:07:03', '0', '0');
+INSERT INTO `m_level` VALUES (94, 'LVL/0000001', 'Grade 1', NULL, 'admin', '2020-06-19 16:25:49', '0', '0', 1);
+INSERT INTO `m_level` VALUES (95, 'LVL/0000002', 'Grade 2', NULL, 'admin', '2020-06-20 15:06:38', '0', '0', 2);
+INSERT INTO `m_level` VALUES (96, 'LVL/0000003', 'Grade 3', NULL, 'admin', '2020-06-20 15:06:48', '0', '0', 3);
+INSERT INTO `m_level` VALUES (97, 'LVL/0000004', 'Grade 4', NULL, 'admin', '2020-06-20 15:06:55', '0', '0', 4);
+INSERT INTO `m_level` VALUES (98, 'LVL/0000005', 'Grade 5', NULL, 'admin', '2020-06-20 15:06:56', '0', '0', 5);
+INSERT INTO `m_level` VALUES (99, 'LVL/0000006', 'Grade 6', NULL, 'admin', '2020-06-20 15:06:57', '0', '0', 6);
+INSERT INTO `m_level` VALUES (100, 'LVL/0000007', 'Grade 7', NULL, 'admin', '2020-06-20 15:06:58', '0', '0', 7);
+INSERT INTO `m_level` VALUES (101, 'LVL/0000008', 'Grade 8', NULL, 'admin', '2020-06-20 15:06:59', '0', '0', 8);
+INSERT INTO `m_level` VALUES (102, 'LVL/0000009', 'Grade 9', NULL, 'admin', '2020-06-20 15:07:00', '0', '0', 9);
+INSERT INTO `m_level` VALUES (103, 'LVL/0000010', 'Grade 11', NULL, 'admin', '2020-06-20 15:07:01', '0', '0', 10);
+INSERT INTO `m_level` VALUES (105, 'LVL/0000012', 'Grade 12', NULL, 'admin', '2020-06-20 15:07:03', '0', '0', 11);
 
 -- ----------------------------
 -- Table structure for m_order
@@ -742,7 +748,7 @@ CREATE TABLE `m_school`  (
   `approve` varchar(1) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT '0',
   `cancel` varchar(1) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT '0',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 104 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 102 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of m_school
@@ -784,20 +790,17 @@ CREATE TABLE `m_selection`  (
   `REG_REF` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `ITEM_REF` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4920 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 5078 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of m_selection
 -- ----------------------------
-INSERT INTO `m_selection` VALUES (4760, '::1', 'ITEM/0003760');
-INSERT INTO `m_selection` VALUES (4761, '::1', 'ITEM/0003761');
-INSERT INTO `m_selection` VALUES (4762, '::1', 'ITEM/0003762');
-INSERT INTO `m_selection` VALUES (4763, '::1', 'ITEM/0003763');
-INSERT INTO `m_selection` VALUES (4915, 'REG/0000043', 'ITEM/0003759');
-INSERT INTO `m_selection` VALUES (4916, 'REG/0000043', 'ITEM/0003760');
-INSERT INTO `m_selection` VALUES (4917, 'REG/0000043', 'ITEM/0003761');
-INSERT INTO `m_selection` VALUES (4918, 'REG/0000043', 'ITEM/0003762');
-INSERT INTO `m_selection` VALUES (4919, 'REG/0000043', 'ITEM/0003763');
+INSERT INTO `m_selection` VALUES (4979, '::1', 'ITEM/0003759');
+INSERT INTO `m_selection` VALUES (4980, '::1', 'ITEM/0003760');
+INSERT INTO `m_selection` VALUES (4981, '::1', 'ITEM/0003761');
+INSERT INTO `m_selection` VALUES (4982, '::1', 'ITEM/0003762');
+INSERT INTO `m_selection` VALUES (4983, '::1', 'ITEM/0003763');
+INSERT INTO `m_selection` VALUES (5077, 'REG/0000043', 'ITEM/0003762');
 
 -- ----------------------------
 -- Table structure for m_store
@@ -14378,7 +14381,7 @@ CREATE TABLE `sys_info`  (
 -- ----------------------------
 -- Records of sys_info
 -- ----------------------------
-INSERT INTO `sys_info` VALUES (1, 'Books n Beyond', 'Email', 'Address 1', 'Address 2', 'Contact 1', 'Contact 2', 'FAX', 1200.00, 2, 192, 3790, 25, 71, 86, 1800, 8, 73, 76, 20, 20, 5, 12, 12, 1, 4);
+INSERT INTO `sys_info` VALUES (1, 'Books n Beyond', 'Email', 'Address 1', 'Address 2', 'Contact 1', 'Contact 2', 'FAX', 1200.00, 2, 192, 3791, 25, 71, 86, 1800, 8, 73, 76, 20, 20, 5, 12, 14, 1, 4);
 
 -- ----------------------------
 -- Table structure for sys_log
@@ -14393,7 +14396,7 @@ CREATE TABLE `sys_log`  (
   `user` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `ip` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5613 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 5616 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of sys_log
@@ -20010,6 +20013,9 @@ INSERT INTO `sys_log` VALUES (5609, 'INQT/0000003', 'entry', 'SAVE', '2020-08-12
 INSERT INTO `sys_log` VALUES (5610, 'INQT/0000004', 'entry', 'SAVE', '2020-08-12 13:11:00', 'admin', 'ip');
 INSERT INTO `sys_log` VALUES (5611, 'ITEM/0003788', 'entry', 'SAVE', '2020-08-12 14:41:39', 'admin', 'ip');
 INSERT INTO `sys_log` VALUES (5612, 'ITEM/0003789', 'entry', 'SAVE', '2020-08-12 14:45:23', 'admin', 'ip');
+INSERT INTO `sys_log` VALUES (5613, 'ITEM/0003790', 'entry', 'SAVE', '2020-08-12 18:50:44', 'admin', 'ip');
+INSERT INTO `sys_log` VALUES (5614, 'JOBA/0000012', 'entry', 'SAVE', '2020-08-13 12:44:59', 'Akila Mendis', 'ip');
+INSERT INTO `sys_log` VALUES (5615, 'JOBA/0000013', 'entry', 'SAVE', '2020-08-13 12:45:00', 'Akila Mendis', 'ip');
 
 -- ----------------------------
 -- Table structure for user_mast

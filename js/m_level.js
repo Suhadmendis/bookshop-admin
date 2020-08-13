@@ -186,7 +186,7 @@ function approvesaveresult() {
   }
 }
 
-function getForm(REF, IDF) {
+function getForm(REF, IDF, code, name) {
   xmlHttp = GetXmlHttpObject();
   if (xmlHttp == null) {
     alert("Browser does not support HTTP Request");
@@ -196,6 +196,10 @@ function getForm(REF, IDF) {
   url = url + "?Command=" + "getForm";
   url = url + "&REF=" + REF;
   url = url + "&IDF=" + IDF;
+
+  url = url + "&code=" + code;
+  url = url + "&name=" + name;
+  
 
   xmlHttp.onreadystatechange = getFromValues;
   xmlHttp.open("GET", url, true);
@@ -208,6 +212,12 @@ function getFromValues() {
   if (xmlHttp.readyState == 4 || xmlHttp.readyState == "complete") {
     XMLAddress1 = xmlHttp.responseXML.getElementsByTagName("IDF");
     var IDF = XMLAddress1[0].childNodes[0].nodeValue;
+
+    XMLAddress1 = xmlHttp.responseXML.getElementsByTagName("code");
+    var code = XMLAddress1[0].childNodes[0].nodeValue;
+
+    XMLAddress1 = xmlHttp.responseXML.getElementsByTagName("name");
+    var name = XMLAddress1[0].childNodes[0].nodeValue;
 
     XMLAddress1 = xmlHttp.responseXML.getElementsByTagName("objSup");
     var objSup = JSON.parse(XMLAddress1[0].childNodes[0].nodeValue);
@@ -222,35 +232,39 @@ function getFromValues() {
     }
 
     if (IDF === "ADD_LEVEL") {
-      var rowCount = window.opener.document.getElementById("exampletable1").rows
-        .length;
 
-      var i;
-      var condition = "0";
-      for (i = 0; i < rowCount; i++) {
-        if (
-          window.opener.document.getElementById("exampletable1").rows[i].cells[0]
-            .innerHTML == objSup.REF
-        ) {
-          condition = "1";
-        }
-      }
+             window.opener.document.getElementById(code).innerHTML = objSup.REF;
+             window.opener.document.getElementById(name).innerHTML = objSup.name;
 
-      if (condition != 1) {
-        var table = window.opener.document.getElementById("exampletable1");
+      // var rowCount = window.opener.document.getElementById("exampletable1").rows
+      //   .length;
 
-        var row = table.insertRow(table.length);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        var cell10 = row.insertCell(2);
+      // var i;
+      // var condition = "0";
+      // for (i = 0; i < rowCount; i++) {
+      //   if (
+      //     window.opener.document.getElementById("exampletable1").rows[i].cells[0]
+      //       .innerHTML == objSup.REF
+      //   ) {
+      //     condition = "1";
+      //   }
+      // }
 
-        cell1.innerHTML = objSup.REF;
-        cell2.innerHTML = objSup.name;
-        cell10.innerHTML =
-          '<input type="button" value="-" onclick="deleteRow1(this)">';
-      } else {
-        alert("Already Selected");
-      }
+      // if (condition != 1) {
+      //   var table = window.opener.document.getElementById("exampletable1");
+
+      //   var row = table.insertRow(table.length);
+      //   var cell1 = row.insertCell(0);
+      //   var cell2 = row.insertCell(1);
+      //   var cell10 = row.insertCell(2);
+
+      //   cell1.innerHTML = objSup.REF;
+      //   cell2.innerHTML = objSup.name;
+      //   cell10.innerHTML =
+      //     '<input type="button" value="-" onclick="deleteRow1(this)">';
+      // } else {
+      //   alert("Already Selected");
+      // }
 
       //   if (objSup.approve == "1") {
       //     window.opener.document.getElementById("app_status").innerHTML =

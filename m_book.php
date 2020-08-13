@@ -241,8 +241,11 @@
                   <table id="exampletable"  class='table table-bordered' style="width:100%">
                   <thead>
                       <tr>
-                          <th>Reference</th>
+                          <th>School Reference</th>
                           <th>School</th>
+                          <th>Level Reference</th>
+                          <th>Level</th>
+                          <th>Add</th>
                           <th>Remove</th>
                       </tr>
                   </thead>
@@ -259,7 +262,7 @@
                </div>
 
 
-                   <div class="row">
+                   <!-- <div class="row">
                 <div class="col-sm-8">
 
 
@@ -279,7 +282,7 @@
                   <table id="exampletable1"  class='table table-bordered' style="width:100%">
                   <thead>
                       <tr>
-                          <th>Reference</th>
+                          <th>School Reference</th>
                           <th>Level</th>
                           <th>Remove</th>
                       </tr>
@@ -294,7 +297,7 @@
 
                 </div>
 
-               </div>
+               </div> -->
 
 
 
