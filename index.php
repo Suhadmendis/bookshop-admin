@@ -174,6 +174,10 @@ if (isset($_GET['url'])) {
     include 'm_manage_syllabus.php';
   }
 
+  if ($_GET['url'] == "delivery_rate"){
+    include 'm_delivery_rate.php';
+  }
+
 
 
 
